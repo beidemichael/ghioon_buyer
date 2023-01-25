@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ghioon_buyer/home.dart';
+import 'package:ghioon_buyer/Screens/home.dart';
 
 void main() {
   runApp(const MyApp());
