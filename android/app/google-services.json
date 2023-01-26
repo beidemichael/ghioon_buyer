@@ -1,0 +1,142 @@
+{
+    "project_info": {
+      "project_number": "69046775842",
+      "project_id": "ghioon-d8894",
+      "storage_bucket": "ghioon-d8894.appspot.com"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:69046775842:android:e4cfdc5a74109c4f7c9a7b",
+          "android_client_info": {
+            "package_name": "com.example.ghioon_buyer"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "69046775842-2qv144hebsa98tne1tjcjdosn3h7s43n.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyDM4V9hvxC8IfEr8aGK1l87h6YJnAoD8PM"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "69046775842-2qv144hebsa98tne1tjcjdosn3h7s43n.apps.googleusercontent.com",
+                "client_type": 3
+              },
+              {
+                "client_id": "69046775842-7uletmtqgqg9vc7st4nna12p22p9flvj.apps.googleusercontent.com",
+                "client_type": 2,
+                "ios_info": {
+                  "bundle_id": "com.example.ghioonSeller"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:69046775842:android:f2a893dc4f2048267c9a7b",
+          "android_client_info": {
+            "package_name": "com.example.ghioon_registration"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "69046775842-1hkcug6a8tmdnttk2tl50r1lsdttr2a8.apps.googleusercontent.com",
+            "client_type": 1,
+            "android_info": {
+              "package_name": "com.example.ghioon_registration",
+              "certificate_hash": "2db82823f7cf93240b2b85f8517474a8194d9010"
+            }
+          },
+          {
+            "client_id": "69046775842-2qv144hebsa98tne1tjcjdosn3h7s43n.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyDM4V9hvxC8IfEr8aGK1l87h6YJnAoD8PM"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "69046775842-2qv144hebsa98tne1tjcjdosn3h7s43n.apps.googleusercontent.com",
+                "client_type": 3
+              },
+              {
+                "client_id": "69046775842-7uletmtqgqg9vc7st4nna12p22p9flvj.apps.googleusercontent.com",
+                "client_type": 2,
+                "ios_info": {
+                  "bundle_id": "com.example.ghioonSeller"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:69046775842:android:559f849a2859a5377c9a7b",
+          "android_client_info": {
+            "package_name": "com.ghioon.ghioon_seller"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "69046775842-auv4qudsqkl1jg3fl42crge9ss34ple3.apps.googleusercontent.com",
+            "client_type": 1,
+            "android_info": {
+              "package_name": "com.ghioon.ghioon_seller",
+              "certificate_hash": "aa5d2849fa6d4d377817d42a3ef83fc48e347259"
+            }
+          },
+          {
+            "client_id": "69046775842-qk81h6rrdpuu17jjimikoo5oovp2njlf.apps.googleusercontent.com",
+            "client_type": 1,
+            "android_info": {
+              "package_name": "com.ghioon.ghioon_seller",
+              "certificate_hash": "2db82823f7cf93240b2b85f8517474a8194d9010"
+            }
+          },
+          {
+            "client_id": "69046775842-2qv144hebsa98tne1tjcjdosn3h7s43n.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyDM4V9hvxC8IfEr8aGK1l87h6YJnAoD8PM"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "69046775842-2qv144hebsa98tne1tjcjdosn3h7s43n.apps.googleusercontent.com",
+                "client_type": 3
+              },
+              {
+                "client_id": "69046775842-7uletmtqgqg9vc7st4nna12p22p9flvj.apps.googleusercontent.com",
+                "client_type": 2,
+                "ios_info": {
+                  "bundle_id": "com.example.ghioonSeller"
+                }
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "configuration_version": "1"
+  }

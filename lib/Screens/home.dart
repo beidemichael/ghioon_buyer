@@ -2,16 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ghioon_buyer/HomeScreenWidets/Catagory.dart';
-import 'package:ghioon_buyer/HomeScreenWidets/Dashboard.dart';
-import 'package:ghioon_buyer/HomeScreenWidets/Profile.dart';
-import 'package:ghioon_buyer/HomeScreenWidets/Promotion.dart';
-import 'package:ghioon_buyer/HomeScreenWidets/cart.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/Catagory.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/Dashboard.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/Profile.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/Cart.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/Promotion.dart';
 import 'package:ghioon_buyer/Shared/loading.dart';
 
 import 'package:provider/provider.dart';
 
-import '../Shared/customColors.dart';
+import '../../Shared/customColors.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -120,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Catagory(),
               Dashboard(),
               Promotion(),
-              Profile()
+              Profile(),
             ],
             onPageChanged: (index) {
               setState(() {
