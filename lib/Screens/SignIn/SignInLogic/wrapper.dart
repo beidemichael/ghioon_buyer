@@ -1,29 +1,29 @@
-// import 'package:flutter/material.dart';
-// import 'package:ghioon_buyer/Screens/home.dart';
+import 'package:flutter/material.dart';
+import 'package:ghioon_buyer/Screens/home.dart';
 
-// import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
 
-// import '../../../Models/models.dart';
-// import '../SignInScreens/0,SignInPage.dart';
-// import 'CheckRegisteration.dart';
+import '../../../Models/models.dart';
+import '../../../Services/User/userDatabase.dart';
+import '../SignInScreens/0,SignInPage.dart';
 
-// class Wrapper extends StatefulWidget {
-//   const Wrapper({super.key});
+class Wrapper extends StatefulWidget {
+  const Wrapper({super.key});
 
-//   @override
-//   State<Wrapper> createState() => _WrapperState();
-// }
+  @override
+  State<Wrapper> createState() => _WrapperState();
+}
 
-// class _WrapperState extends State<Wrapper> {
-//   @override
-//   Widget build(BuildContext context) {
-//     final user = Provider.of<UserAuth?>(context);
+class _WrapperState extends State<Wrapper> {
+  @override
+  Widget build(BuildContext context) {
+    final user = Provider.of<UserAuth?>(context);
 
-//     return StreamProvider<List<UserInformation>>.value(
-//         value: DatabaseService(userUid: user?.uid).userInfo,
-//         initialData: const [],
-//         child: user == null
-//             ? SignInPage()
-//             : const HomeScreen());
-//   }
-// }
+    return StreamProvider<List<UserInformation>>.value(
+        value: UserDatabaseService(userUid: user?.uid).userInfo,
+        initialData: const [],
+        child: user == null
+            ? SignInPage()
+            : const HomeScreen());
+  }
+}

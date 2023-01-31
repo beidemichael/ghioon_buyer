@@ -80,6 +80,8 @@ import 'package:provider/provider.dart';
 
 import 'Models/models.dart';
 import 'Providers/AppInfo.dart';
+import 'Screens/SignIn/SignInLogic/wrapper.dart';
+import 'Services/PhoneAuth.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -145,10 +147,17 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: HomeScreen());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: StreamProvider<UserAuth?>.value(
+          value: PhoneAuthServices().user,
+          initialData: null,
+          child: const Wrapper(),
+        ),
+      ),
+    );
   }
 }

@@ -25,7 +25,7 @@ class _SignInPageState extends State<SignInPage> {
   String? email;
   String? password;
   bool isLoading = false;
-  String phoneCode = "+1876";
+  String phoneCode = "+251";
   String phoneNumber = "";
   String wholePhoneNumber = "";
   String otpCode = "";
@@ -171,7 +171,7 @@ class _SignInPageState extends State<SignInPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/Smart phone data_Monochromatic.png',
+                    'assets/undraw_Modern_design_re_dlp8.png',
                     height: MediaQuery.of(context).size.height * .3,
                   ),
                   const Text('Enter Your Phone',
@@ -260,8 +260,8 @@ class _SignInPageState extends State<SignInPage> {
                               flex: 2,
                               child: CountryCodePicker(
                                 onChanged: _onCountryChange,
-                                initialSelection: '+1876',
-                                favorite: const ['+1876', 'JAM'],
+                                initialSelection: '+251',
+                                favorite: const ['+251', 'ETH'],
                                 textStyle: TextStyle(
                                     color: Colors.grey[700],
                                     fontSize: 15.0,
