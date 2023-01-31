@@ -24,8 +24,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final _pageViewController = PageController();
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
-  int _activePage = 2;
-  int _page = 0;
+  int activePage = 2;
+  int page = 0;
   @override
   void dispose() {
     _pageViewController.dispose();
@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.white,
       bottomNavigationBar: CurvedNavigationBar(
         index: 2,
-        color: appInformation.appColor,
+        color: Colors.grey.shade800.withOpacity(0.3),
         buttonBackgroundColor: appInformation.appColor,
         backgroundColor: Colors.white,
         animationCurve: Curves.easeInOut,
@@ -49,17 +49,20 @@ class _HomeScreenState extends State<HomeScreen> {
           _pageViewController.animateToPage(index,
               duration: const Duration(milliseconds: 200),
               curve: Curves.bounceOut);
-          // setState(() {
+          setState(() {
+            page= index;
+            print(page);
+          });
         },
         letIndexChange: (index) => true,
         key: _bottomNavigationKey,
-        items: const <Widget>[
+        items:  <Widget>[
           SizedBox(
             height: 50,
             width: 50,
             child: Icon(
               FontAwesomeIcons.cartShopping,
-              color: Colors.white,
+              color:page ==0? Colors.white:Colors.grey,
             ),
           ),
           SizedBox(
@@ -67,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 50,
             child: Icon(
               FontAwesomeIcons.list,
-              color: Colors.white,
+              color: page ==1? Colors.white:Colors.grey,
             ),
           ),
           SizedBox(
@@ -75,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 50,
             child: Icon(
               FontAwesomeIcons.house,
-              color: Colors.white,
+              color: page ==2? Colors.white:Colors.grey,
             ),
           ),
           SizedBox(
@@ -83,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 50,
             child: Icon(
               FontAwesomeIcons.gift,
-              color: Colors.white,
+              color: page ==3? Colors.white:Colors.grey,
             ),
           ),
           SizedBox(
@@ -91,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 50,
             child: Icon(
               FontAwesomeIcons.solidUser,
-              color: Colors.white,
+              color: page ==4? Colors.white:Colors.grey,
             ),
           ),
         ],
