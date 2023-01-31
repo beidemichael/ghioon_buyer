@@ -8,10 +8,11 @@ import 'package:ghioon_buyer/Screens/HomeScreenWidets/Profile.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/Cart.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/Promotion.dart';
 import 'package:ghioon_buyer/Shared/loading.dart';
-
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../../Shared/customColors.dart';
+import '../Providers/AppInfo.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,92 +23,76 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _pageViewController = PageController();
-
+  GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   int _activePage = 2;
-
+  int _page = 0;
   @override
   void dispose() {
     _pageViewController.dispose();
     super.dispose();
   }
 
-  ///////////////////
-  int netVersion = 0;
-  /////////////////////////// App version
-  int appVersion = 1;
-  //////////////////////////  App version
-  ///
-  ///
-  // optionalUpdateActivator(BuildContext context, netVersionInput) {
-  //   if (netVersionInput == 3 || netVersionInput == 4) {
-  //     OptionalUpdate alert = OptionalUpdate();
-
-  //     showDialog(
-  //       context: context,
-  //       builder: (BuildContext context) {
-  //         return alert;
-  //       },
-  //     );
-  //   }
-  // }
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   Future.delayed(Duration(seconds: 4), () {
-  //     optionalUpdateActivator(context, netVersion);
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
-    // final controller = Provider.of<List<Controller>>(context);
-    // if (controller.isNotEmpty) {
-    //   netVersion = controller[0].sellerVersion - appVersion;
-    // }
+    final appInformation = Provider.of<AppInformation>(context);
 
-    return
-        // controller.isEmpty
-        //     ? Loading()
-        //     :
-        Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.shifting,
-        iconSize: 25,
-        selectedLabelStyle: TextStyle(
-            fontSize: 13.0,
-            color: CustomColors().blue,
-            fontWeight: FontWeight.w600),
-        elevation: 5,
-        selectedItemColor: CustomColors().blue,
-        unselectedItemColor: Colors.grey,
-        currentIndex: _activePage,
+    return Scaffold(
+      backgroundColor: Colors.white,
+      bottomNavigationBar: CurvedNavigationBar(
+        index: 2,
+        color: appInformation.appColor,
+        buttonBackgroundColor: appInformation.appColor,
+        backgroundColor: Colors.white,
+        animationCurve: Curves.easeInOut,
+        animationDuration: const Duration(milliseconds: 600),
         onTap: (index) {
           _pageViewController.animateToPage(index,
               duration: const Duration(milliseconds: 200),
               curve: Curves.bounceOut);
+          // setState(() {
         },
-        // ignore: prefer_const_literals_to_create_immutables
-        items: [
-          const BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.cartShopping),
-            label: 'Cart',
+        letIndexChange: (index) => true,
+        key: _bottomNavigationKey,
+        items: const <Widget>[
+          SizedBox(
+            height: 50,
+            width: 50,
+            child: Icon(
+              FontAwesomeIcons.cartShopping,
+              color: Colors.white,
+            ),
           ),
-          const BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.list),
-            label: 'Catagory',
+          SizedBox(
+            height: 50,
+            width: 50,
+            child: Icon(
+              FontAwesomeIcons.list,
+              color: Colors.white,
+            ),
           ),
-          const BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.house),
-            label: 'Dashboard',
+          SizedBox(
+            height: 50,
+            width: 50,
+            child: Icon(
+              FontAwesomeIcons.house,
+              color: Colors.white,
+            ),
           ),
-          const BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.gift),
-            label: 'Promotion',
+          SizedBox(
+            height: 50,
+            width: 50,
+            child: Icon(
+              FontAwesomeIcons.gift,
+              color: Colors.white,
+            ),
           ),
-          const BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.user),
-            label: 'Profile',
+          SizedBox(
+            height: 50,
+            width: 50,
+            child: Icon(
+              FontAwesomeIcons.solidUser,
+              color: Colors.white,
+            ),
           ),
         ],
       ),
@@ -115,6 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           PageView(
             controller: _pageViewController,
+            physics: const NeverScrollableScrollPhysics(),
             children: const <Widget>[
               Cart(),
               Catagory(),
@@ -122,16 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Promotion(),
               Profile(),
             ],
-            onPageChanged: (index) {
-              setState(() {
-                _activePage = index;
-              });
-            },
           ),
-          // Visibility(
-          //   visible: netVersion > 4,
-          //   child: ForcedUpdate(),
-          // ),
         ],
       ),
     );
