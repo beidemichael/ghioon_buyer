@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final _pageViewController = PageController();
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   int activePage = 2;
-  int page = 0;
+  int page = 2;
   @override
   void dispose() {
     _pageViewController.dispose();
@@ -51,7 +51,6 @@ class _HomeScreenState extends State<HomeScreen> {
               curve: Curves.bounceOut);
           setState(() {
             page= index;
-            print(page);
           });
         },
         letIndexChange: (index) => true,

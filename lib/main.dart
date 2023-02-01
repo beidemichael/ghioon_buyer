@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Models/models.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/GetStarted/Screens/00,Splash.dart';
 import 'package:ghioon_buyer/Screens/home.dart';
 import 'package:ghioon_buyer/Services/Product/readProduct.dart';
 import 'package:ghioon_buyer/firebase_options.dart';
@@ -155,7 +156,7 @@ class MyApp extends StatelessWidget {
         body: StreamProvider<UserAuth?>.value(
           value: PhoneAuthServices().user,
           initialData: null,
-          child: const Wrapper(),
+          child: Splash(),
         ),
       ),
     );

@@ -161,6 +161,7 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     final appInformation = Provider.of<AppInformation>(context);
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: ListView(
           shrinkWrap: true,
@@ -174,11 +175,16 @@ class _SignInPageState extends State<SignInPage> {
                     'assets/undraw_Modern_design_re_dlp8.png',
                     height: MediaQuery.of(context).size.height * .3,
                   ),
-                  const Text('Enter Your Phone',
-                      style: TextStyle(
-                          fontSize: 40.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600)),
+                  GestureDetector(
+                    onTap: (){
+                      PhoneAuthServices.signOut();
+                    },
+                    child: const Text('Enter Your Phone',
+                        style: TextStyle(
+                            fontSize: 40.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600)),
+                  ),
                   const SizedBox(
                     height: 10,
                   ),

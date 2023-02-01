@@ -64,7 +64,7 @@ class ErrorSigningInBlurryDialog extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    okCallBack();
+                    Navigator.of(context).pop();
                   },
                   child: Container(
                     padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
