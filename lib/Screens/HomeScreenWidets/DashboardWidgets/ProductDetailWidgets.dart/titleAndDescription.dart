@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ghioon_buyer/Providers/Order_Provider.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/DashboardWidgets/ProductDetailWidgets.dart/3,inventoryQty.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
-
 import 'package:syncfusion_flutter_barcodes/barcodes.dart';
-
+import 'package:provider/provider.dart';
 import '../../../../../../Models/models.dart';
 
 class TitleAndDescription extends StatefulWidget {
@@ -23,6 +24,7 @@ class _TitleAndDescriptionState extends State<TitleAndDescription> {
 
   @override
   Widget build(BuildContext context) {
+    final order = Provider.of<Order_Provider>(context);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -39,25 +41,31 @@ class _TitleAndDescriptionState extends State<TitleAndDescription> {
                     fontWeight: FontWeight.w700)),
           ),
           widget.product.fixed
-              ? Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Price',
-                          style: TextStyle(
-                              fontSize: 18.0,
-                              fontFamily: 'Inter',
-                              color: CustomColors().grey,
-                              fontWeight: FontWeight.w700)),
-                      Text('ETB ' + widget.product.price[0].toString(),
-                          style: TextStyle(
-                              fontSize: 30.0,
-                              fontFamily: 'Inter',
-                              color: CustomColors().black,
-                              fontWeight: FontWeight.bold)),
-                    ],
-                  ),
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Quantity(quantity: order.quantity),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Price',
+                              style: TextStyle(
+                                  fontSize: 18.0,
+                                  fontFamily: 'Inter',
+                                  color: CustomColors().grey,
+                                  fontWeight: FontWeight.w700)),
+                          Text('ETB ' + widget.product.price[0].toString(),
+                              style: TextStyle(
+                                  fontSize: 30.0,
+                                  fontFamily: 'Inter',
+                                  color: CustomColors().black,
+                                  fontWeight: FontWeight.bold)),
+                        ],
+                      ),
+                    ),
+                  ],
                 )
               : Container(
                   height: 80,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Models/models.dart';
+import 'package:ghioon_buyer/Providers/Order_Provider.dart';
 import 'package:ghioon_buyer/Screens/home.dart';
 import 'package:ghioon_buyer/Services/Product/readProduct.dart';
 import 'package:ghioon_buyer/firebase_options.dart';
@@ -108,9 +109,9 @@ void main() async {
           // ChangeNotifierProvider(
           //   create: (context) => FeedbackData(),
           // ),
-          // ChangeNotifierProvider(
-          //   create: (context) => AppState(),
-          // ),
+          ChangeNotifierProvider(
+            create: (context) => Order_Provider(),
+          ),
           StreamProvider<List<Product>>.value(
             initialData: [],
             value: ReadProductDatabaseService().readProduct,
