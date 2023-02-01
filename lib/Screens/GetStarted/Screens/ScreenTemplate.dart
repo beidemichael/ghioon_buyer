@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../../Providers/AppInfo.dart';
+import '../../../Providers/AppInfo.dart';
 
 class ScreenTemplate extends StatefulWidget {
   String title1;

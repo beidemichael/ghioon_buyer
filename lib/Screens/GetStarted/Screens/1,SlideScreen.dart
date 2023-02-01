@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ghioon_buyer/Screens/HomeScreenWidets/GetStarted/Screens/0,ScreenTemplate.dart';
-import 'package:ghioon_buyer/Screens/HomeScreenWidets/GetStarted/Screens/2,FinalScreen.dart';
+import 'package:ghioon_buyer/Screens/GetStarted/Screens/ScreenTemplate.dart';
+import 'package:ghioon_buyer/Screens/GetStarted/Screens/2,FinalScreen.dart';
 
-import '../SlideDots.dart';
+import '../Widgets/SlideDots.dart';
 
 class SlideScreen extends StatefulWidget {
   const SlideScreen({super.key});

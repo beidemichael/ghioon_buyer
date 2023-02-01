@@ -14,7 +14,7 @@ class AppInformation with ChangeNotifier {
 //   Color lightBlue = const Color.fromARGB(255, 173, 240, 255);
 //   Color superLightBlue = const Color(0xffE3FBFF);
 //   Color darkBlue = const Color.fromARGB(255, 90, 180, 201);
-//   Color white = const Color.fromARGB(255, 255, 255, 255);
+  Color white = Color(0xFFFFFFFF);
 //   Color black = const Color.fromARGB(255, 0, 0, 0);
 //   Color red = const Color.fromARGB(255, 255, 0, 0);
 //   Color grey = const Color.fromARGB(126, 102, 102, 102);

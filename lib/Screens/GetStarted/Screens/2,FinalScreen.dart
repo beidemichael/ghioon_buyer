@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Screens/components/Button.dart';
 import 'package:provider/provider.dart';
-import '../../../../Providers/AppInfo.dart';
-import '../../../SignIn/SignInLogic/wrapper.dart';
+import '../../../Providers/AppInfo.dart';
+import '../../SignIn/SignInLogic/wrapper.dart';
 
 class FinalScreen extends StatefulWidget {
   const FinalScreen({super.key});

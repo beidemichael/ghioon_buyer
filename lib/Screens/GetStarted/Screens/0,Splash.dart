@@ -4,13 +4,13 @@ import 'dart:async';
 
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
-import 'package:ghioon_buyer/Screens/HomeScreenWidets/GetStarted/Screens/1,SlideScreen.dart';
+import 'package:ghioon_buyer/Screens/GetStarted/Screens/1,SlideScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
-import '../../../../Models/models.dart';
-import '../../../../Services/PhoneAuth.dart';
-import '../../../../Shared/loading.dart';
-import '../../../SignIn/SignInLogic/wrapper.dart';
+import '../../../Models/models.dart';
+import '../../../Services/PhoneAuth.dart';
+import '../../../Shared/loading.dart';
+import '../../SignIn/SignInLogic/wrapper.dart';
 
 
 class Splash extends StatefulWidget {
