@@ -6,6 +6,7 @@ import 'package:ghioon_buyer/Screens/HomeScreenWidets/DashboardWidgets/ProductFo
 import 'package:ghioon_buyer/Screens/components/emptyScreen.dart';
 import 'package:ghioon_buyer/Shared/constants.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
+
 import 'package:provider/provider.dart';
 
 class Dashboard extends StatefulWidget {
@@ -27,7 +28,7 @@ class _DashboardState extends State<Dashboard> {
             Expanded(
               child: products.length == 0
                   ? EmptyScreen(context, 'No Products.')
-                  : ProductForGrid(products: products),
+                  : ProductForGrid(),
             ),
           ],
         ),

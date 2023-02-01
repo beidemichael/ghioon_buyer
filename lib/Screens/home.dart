@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
         buttonBackgroundColor: appInformation.appColor,
         backgroundColor: Colors.white,
         animationCurve: Curves.easeInOut,
-        animationDuration: const Duration(milliseconds: 600),
+        animationDuration: const Duration(milliseconds: 300),
         onTap: (index) {
           _pageViewController.animateToPage(index,
               duration: const Duration(milliseconds: 200),
@@ -105,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
             physics: const NeverScrollableScrollPhysics(),
             children: const <Widget>[
               Cart(),
-              Catagory(),
+              CatagoryPage(),
               Dashboard(),
               Promotion(),
               Profile(),

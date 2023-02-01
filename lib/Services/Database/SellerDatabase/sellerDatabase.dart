@@ -1,15 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ghioon_buyer/Models/models.dart';
 
-import '../../Models/models.dart';
-
-class UserDatabaseService {
-  var userUid;
-  UserDatabaseService({this.userUid});
+class SellerDatabaseService {
+  var businessType;
+  SellerDatabaseService({this.businessType});
   final CollectionReference sellersCollection =
-      FirebaseFirestore.instance.collection('Users');
-  List<UserInformation> _userInfoListFromSnapshot(QuerySnapshot snapshot) {
+      FirebaseFirestore.instance.collection('Sellers');
+  List<SellerInformation> _userInfoListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
-      return UserInformation(
+      return SellerInformation(
         GhioonId: (doc.data() as dynamic)['GhioonId'] ?? '',
         userName: (doc.data() as dynamic)['sellerName'] ?? '',
         phoneNumber: (doc.data() as dynamic)['phoneNumber'] ?? '',
@@ -37,11 +36,9 @@ class UserDatabaseService {
   }
 
   //orders lounges stream
-  Stream<List<UserInformation>> get userInfo {
-    print(userUid);
-
+  Stream<List<SellerInformation>> get sellers {
     return sellersCollection
-        .where('userUid', isEqualTo: userUid)
+        .where('businessType', isEqualTo: businessType)
         .snapshots()
         .map(_userInfoListFromSnapshot);
   }

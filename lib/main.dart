@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Models/models.dart';
 import 'package:ghioon_buyer/Screens/GetStarted/Screens/0,Splash.dart';
 import 'package:ghioon_buyer/Screens/home.dart';
-import 'package:ghioon_buyer/Services/Product/readProduct.dart';
 import 'package:ghioon_buyer/firebase_options.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -82,6 +81,8 @@ import 'package:provider/provider.dart';
 import 'Models/models.dart';
 import 'Providers/AppInfo.dart';
 import 'Screens/SignIn/SignInLogic/wrapper.dart';
+import 'Services/Database/Category/readCategory.dart';
+import 'Services/Database/Product/readProduct.dart';
 import 'Services/PhoneAuth.dart';
 
 void main() async {
@@ -122,6 +123,11 @@ void main() async {
             initialData: [],
             value: ReadProductDatabaseService().readProduct,
           ),
+          StreamProvider<List<Category>>.value(
+            initialData: [],
+            value: ReadCategoryDatabaseService().readCategory,
+          ),
+          
 
           // StreamProvider<List<Collection>>.value(
           //   initialData: [],
