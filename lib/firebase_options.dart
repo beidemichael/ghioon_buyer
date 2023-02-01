@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDM4V9hvxC8IfEr8aGK1l87h6YJnAoD8PM',
-    appId: '1:69046775842:android:8f2151eef02c1ec67c9a7b',
+    appId: '1:69046775842:android:e4cfdc5a74109c4f7c9a7b',
     messagingSenderId: '69046775842',
     projectId: 'ghioon-d8894',
     storageBucket: 'ghioon-d8894.appspot.com',
@@ -63,23 +63,23 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAZ4imgxZRx0A3EbgN3zS-vwggGBb32fAQ',
-    appId: '1:69046775842:ios:c34d7ece8ed3284e7c9a7b',
+    appId: '1:69046775842:ios:aea79d9ef0a0faef7c9a7b',
     messagingSenderId: '69046775842',
     projectId: 'ghioon-d8894',
     storageBucket: 'ghioon-d8894.appspot.com',
-    androidClientId: '69046775842-1hkcug6a8tmdnttk2tl50r1lsdttr2a8.apps.googleusercontent.com',
-    iosClientId: '69046775842-7uletmtqgqg9vc7st4nna12p22p9flvj.apps.googleusercontent.com',
-    iosBundleId: 'com.example.ghioonSeller',
+    androidClientId: '69046775842-1cfat6c8splmvb062cc2bt5lcrg61ish.apps.googleusercontent.com',
+    iosClientId: '69046775842-0ff86tc01itcf65cek8buv7ntmt0rttu.apps.googleusercontent.com',
+    iosBundleId: 'com.example.ghioonBuyer',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyAZ4imgxZRx0A3EbgN3zS-vwggGBb32fAQ',
-    appId: '1:69046775842:ios:c34d7ece8ed3284e7c9a7b',
+    appId: '1:69046775842:ios:aea79d9ef0a0faef7c9a7b',
     messagingSenderId: '69046775842',
     projectId: 'ghioon-d8894',
     storageBucket: 'ghioon-d8894.appspot.com',
-    androidClientId: '69046775842-1hkcug6a8tmdnttk2tl50r1lsdttr2a8.apps.googleusercontent.com',
-    iosClientId: '69046775842-7uletmtqgqg9vc7st4nna12p22p9flvj.apps.googleusercontent.com',
-    iosBundleId: 'com.example.ghioonSeller',
+    androidClientId: '69046775842-1cfat6c8splmvb062cc2bt5lcrg61ish.apps.googleusercontent.com',
+    iosClientId: '69046775842-0ff86tc01itcf65cek8buv7ntmt0rttu.apps.googleusercontent.com',
+    iosBundleId: 'com.example.ghioonBuyer',
   );
 }

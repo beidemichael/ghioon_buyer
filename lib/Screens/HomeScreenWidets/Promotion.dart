@@ -1,5 +1,5 @@
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
+import 'package:ghioon_buyer/Screens/GetStarted/Screens/1,SlideScreen.dart';
 
 class Promotion extends StatefulWidget {
   const Promotion({super.key});

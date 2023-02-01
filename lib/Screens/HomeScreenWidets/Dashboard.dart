@@ -3,9 +3,11 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:ghioon_buyer/Models/models.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/DashboardWidgets/ProductForGrid.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/DashboardWidgets/carousel.dart';
 import 'package:ghioon_buyer/Screens/components/emptyScreen.dart';
 import 'package:ghioon_buyer/Shared/constants.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
+
 import 'package:provider/provider.dart';
 
 class Dashboard extends StatefulWidget {
@@ -24,10 +26,12 @@ class _DashboardState extends State<Dashboard> {
         height: ScreenSize().ScreenHeight(context),
         child: Column(
           children: [
+            SizedBox(height: 200,),
+            Carousel(),
             Expanded(
               child: products.length == 0
                   ? EmptyScreen(context, 'No Products.')
-                  : ProductForGrid(products: products),
+                  : ProductForGrid(),
             ),
           ],
         ),

@@ -3,7 +3,8 @@ import 'package:ghioon_buyer/Models/models.dart';
 
 class ReadProductDatabaseService {
   var barcode;
-  ReadProductDatabaseService({this.barcode});
+  var userUid;
+  ReadProductDatabaseService({this.barcode,this.userUid});
   final CollectionReference productCollection =
       FirebaseFirestore.instance.collection('Products');
   List<Product> _productListFromSnapshot(QuerySnapshot snapshot) {
@@ -34,6 +35,12 @@ class ReadProductDatabaseService {
   Stream<List<Product>> get readProduct {
     return productCollection
         //.where('userUid', isEqualTo: userUid)
+        .snapshots()
+        .map(_productListFromSnapshot);
+  }
+   Stream<List<Product>> get readSellerProduct {
+    return productCollection
+        .where('userUid', isEqualTo: userUid)
         .snapshots()
         .map(_productListFromSnapshot);
   }
