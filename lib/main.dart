@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Models/models.dart';
 import 'package:ghioon_buyer/Providers/Order_Provider.dart';
+import 'package:ghioon_buyer/Providers/search.dart';
 import 'package:ghioon_buyer/Screens/GetStarted/Screens/0,Splash.dart';
 import 'package:ghioon_buyer/Screens/home.dart';
 import 'package:ghioon_buyer/firebase_options.dart';
@@ -114,9 +115,9 @@ void main() async {
           // ChangeNotifierProvider(
           //   create: (context) => CollectionData(),
           // ),
-          // ChangeNotifierProvider(
-          //   create: (context) => FeedbackData(),
-          // ),
+          ChangeNotifierProvider(
+            create: (context) => SearchProvider(),
+          ),
           ChangeNotifierProvider(
             create: (context) => Order_Provider(),
           ),
@@ -128,7 +129,6 @@ void main() async {
             initialData: [],
             value: ReadCategoryDatabaseService().readCategory,
           ),
-          
 
           // StreamProvider<List<Collection>>.value(
           //   initialData: [],
