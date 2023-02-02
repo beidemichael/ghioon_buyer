@@ -44,7 +44,7 @@ class _DashboardState extends State<Dashboard> {
                   child: SearchBar()),
             ),
             SizedBox(
-              height: 100,
+              height: 10,
             ),
             Carousel(),
             Expanded(
