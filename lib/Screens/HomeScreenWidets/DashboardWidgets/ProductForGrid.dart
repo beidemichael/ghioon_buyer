@@ -23,8 +23,9 @@ class ProductForGrid extends StatelessWidget {
           shrinkWrap: true,
             physics: const BouncingScrollPhysics(
                 parent: AlwaysScrollableScrollPhysics()),
+                
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 200,
+            maxCrossAxisExtent: 250,
             childAspectRatio: (2.5 / 3),
             crossAxisSpacing: 4.0,
             mainAxisSpacing: 8.0,
