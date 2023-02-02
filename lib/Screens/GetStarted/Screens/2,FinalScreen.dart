@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Screens/components/Button.dart';
 import 'package:provider/provider.dart';
+import '../../../Models/models.dart';
 import '../../../Providers/AppInfo.dart';
+import '../../../Services/PhoneAuth.dart';
 import '../../SignIn/SignInLogic/wrapper.dart';
 
 class FinalScreen extends StatefulWidget {
@@ -113,7 +115,11 @@ class _FinalScreenState extends State<FinalScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => const Wrapper(),
+                        builder: (_) => StreamProvider<UserAuth?>.value(
+                          value: PhoneAuthServices().user,
+                          initialData: null,
+                          child: Wrapper(),
+                        ),
                       ),
                     );
                   },
