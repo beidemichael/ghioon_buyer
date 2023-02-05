@@ -22,7 +22,8 @@ cartList[index].quantity = cartList[index].quantity + 1;
     notifyListeners(); 
   }
   minusQuantity(int index){
-    cartList[index].quantity = cartList[index].quantity - 1;
+
+    cartList[index].quantity>1?cartList[index].quantity = cartList[index].quantity - 1: cartList[index].quantity = 1 ;
     notifyListeners(); 
 
   }
