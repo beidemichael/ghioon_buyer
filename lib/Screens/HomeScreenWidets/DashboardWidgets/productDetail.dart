@@ -97,14 +97,33 @@ class _ProductDetailState extends State<ProductDetail> {
                           ),
                           child: GestureDetector(
                             onTap: (){
-                              if(cart.cartList.contains(widget.product)){
+
+                              // if(cart.cartList.contains(widget.product)){
+                              //  snackBar(context,"Product already in cart",CustomColors().red, CustomColors().white);
+                              // }
+                              // else{
+                              //   cart.addToCart(widget.product, int.parse(order.quantity.text));
+                              //   cart.totalPrice();
+                              //   snackBar(context,"Product added to Cart",CustomColors().white, CustomColors().blue);
+                              //   print("product added");
+                              //   if (cart.cartList.isNotEmpty){
+                              //         print(cart.cartList[0].product.name);
+                              //   }
+                              //   else{
+                              //     print("no cart");
+                              //   }
+                              // }
+
+                             if( cart.cartList.any((cart) => cart.product == widget.product)){
                                snackBar(context,"Product already in cart",CustomColors().red, CustomColors().white);
-                              }
+                             }
                               else{
+                                //add Product yo the cart
                                 cart.addToCart(widget.product, int.parse(order.quantity.text));
+                                //update totalPrice
                                 cart.totalPrice();
                                 snackBar(context,"Product added to Cart",CustomColors().white, CustomColors().blue);
-                                print("product added");
+                               
                                 if (cart.cartList.isNotEmpty){
                                       print(cart.cartList[0].product.name);
                                 }

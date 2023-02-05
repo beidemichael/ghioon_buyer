@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:ghioon_buyer/Models/models.dart';
+import 'package:ghioon_buyer/Providers/AppInfo.dart';
 import 'package:ghioon_buyer/Providers/cartProvider.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/CartWidgets/cartListItem.dart';
 import 'package:ghioon_buyer/Screens/components/BlueButton.dart';
@@ -11,6 +12,8 @@ import 'package:ghioon_buyer/Screens/components/textFormField.dart';
 import 'package:ghioon_buyer/Shared/constants.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
 import 'package:provider/provider.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 
 class Cart extends StatefulWidget {
   const Cart({super.key});
@@ -24,32 +27,39 @@ class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
+    final appInformation = Provider.of<AppInformation>(context);
    return Scaffold(
     appBar: AppBar(
       backgroundColor: CustomColors().white,
       elevation: 0,
       title: Center(
-        child: Text("Cart", style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: ScreenSize().ScreenWidth(context)*0.08,
-                          color: CustomColors().blue,
-                          fontWeight: FontWeight.w700)),
+        child: Text("Cart",  style: TextStyle(
+                        fontSize: 28.0,
+                        color: appInformation.appColor,
+                        fontWeight: FontWeight.w600)),
       ),
       actions: [
-        // IconButton(
-        //     icon:  Icon(Icons.arrow_back, color: CustomColors().blue,),
-        //     tooltip: '',
-        //     onPressed: () {
-        //       // handle the press
-              
-        //     },
-        //   ),
-        IconButton(
-            icon:  Icon(Icons.shopping_cart, color: CustomColors().blue),
-            tooltip: '',
-            onPressed: () {
-              // handle the press
-            },
+      
+       Container(
+            height: 30,
+            width: 30,
+            margin: EdgeInsets.only(right: 20),
+            decoration: BoxDecoration(
+              color: CustomColors().blue,
+              shape: BoxShape.circle,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                child: Text(
+                  cart.cartList.length.toString(),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
           ),
       ],
     ),
@@ -73,8 +83,8 @@ class _CartState extends State<Cart> {
                       child: Padding(
                         padding: EdgeInsets.only(right: 20.0),
                         child: Icon(
-                          Icons.delete,
-                          color: Colors.white,
+                           Icons.delete,
+                          color: CustomColors().white,
                         ),
                       ),
                     ),
