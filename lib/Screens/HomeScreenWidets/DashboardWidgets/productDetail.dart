@@ -1,10 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Models/models.dart';
+import 'package:ghioon_buyer/Providers/Order_Provider.dart';
+import 'package:ghioon_buyer/Providers/cartProvider.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/DashboardWidgets/ProductDetailWidgets.dart/images.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/DashboardWidgets/ProductDetailWidgets.dart/titleAndDescription.dart';
+import 'package:ghioon_buyer/Screens/components/SnackBar.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
-
+import 'package:provider/provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../Shared/constants.dart';
@@ -20,6 +23,8 @@ class ProductDetail extends StatefulWidget {
 class _ProductDetailState extends State<ProductDetail> {
   @override
   Widget build(BuildContext context) {
+     final cart = Provider.of<CartProvider>(context);
+      final order = Provider.of<Order_Provider>(context);
     return Scaffold(
         backgroundColor: Colors.white,
         body: Column(
@@ -90,17 +95,39 @@ class _ProductDetailState extends State<ProductDetail> {
                               ),
                             ],
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Icon(FontAwesomeIcons.cartShopping),
-                              Text("ADD TO CART",
-                                  style: TextStyle(
-                                      fontSize: 18.0,
-                                      fontFamily: 'Inter',
-                                      color: CustomColors().black,
-                                      fontWeight: FontWeight.w700))
-                            ],
+                          child: GestureDetector(
+                            onTap: (){
+                              if(cart.cartList.contains(widget.product)){
+                               snackBar(context,"Product already in cart",CustomColors().red, CustomColors().white);
+                              }
+                              else{
+                                cart.addToCart(widget.product, int.parse(order.quantity.text));
+                                cart.totalPrice();
+                                snackBar(context,"Product added to Cart",CustomColors().white, CustomColors().blue);
+                                print("product added");
+                                if (cart.cartList.isNotEmpty){
+                                      print(cart.cartList[0].product.name);
+                                }
+                                else{
+                                  print("no cart");
+                                }
+                              }
+
+                              
+                             
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Icon(FontAwesomeIcons.cartShopping),
+                                Text("ADD TO CART",
+                                    style: TextStyle(
+                                        fontSize: 18.0,
+                                        fontFamily: 'Inter',
+                                        color: CustomColors().black,
+                                        fontWeight: FontWeight.w700))
+                              ],
+                            ),
                           ),
                         )
                       ],

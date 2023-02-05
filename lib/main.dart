@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Models/models.dart';
 import 'package:ghioon_buyer/Providers/FeedbackProvider.dart';
 import 'package:ghioon_buyer/Providers/Order_Provider.dart';
+import 'package:ghioon_buyer/Providers/cartProvider.dart';
 import 'package:ghioon_buyer/Providers/search.dart';
 import 'package:ghioon_buyer/Screens/GetStarted/Screens/0,Splash.dart';
 import 'package:ghioon_buyer/Screens/home.dart';
@@ -115,9 +116,9 @@ void main() async {
           // ChangeNotifierProvider(
           //   create: (context) => MapProvider(),
           // ),
-          // ChangeNotifierProvider(
-          //   create: (context) => CollectionData(),
-          // ),
+          ChangeNotifierProvider(
+            create: (context) => CartProvider(),
+          ),
           ChangeNotifierProvider(
             create: (context) => SearchProvider(),
           ),

@@ -1,3 +1,5 @@
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/Cart.dart';
+
 class UserAuth {
   final String uid;
   UserAuth({required this.uid});
@@ -244,4 +246,10 @@ class Category {
   String type;
   String documentId;
   Category({required this.documentId, required this.type});
+}
+
+class CartItems{
+  Product product;
+  int quantity;
+  CartItems({required this.product, required this.quantity});
 }
