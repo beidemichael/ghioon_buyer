@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../../../Models/models.dart';
 import '../../../Services/Database/User/userDatabase.dart';
 import '../SignInScreens/0,SignInPage.dart';
+import 'CheckRegisteration.dart';
 
 class Wrapper extends StatefulWidget {
   const Wrapper({super.key});
@@ -24,6 +25,6 @@ class _WrapperState extends State<Wrapper> {
         initialData: const [],
         child: user == null
             ? SignInPage()
-            : const HomeScreen());
+            :  CheckRegisteration());
   }
 }

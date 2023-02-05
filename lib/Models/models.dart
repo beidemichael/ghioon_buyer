@@ -4,49 +4,24 @@ class UserAuth {
 }
 
 class UserInformation {
-  String GhioonId;
+  
   String userName;
   String phoneNumber;
   String userUid;
-  bool approved;
   String documentId;
-  String businessCategory;
-  String businessName;
   String email;
-  String businessNo;
-  List collections;
-  List collection_images;
-  List collection_description;
-  bool online;
-  String address;
-  int views;
-  double rating;
   String image;
-  List profileImages;
-  String profileVideo;
-  bool notification;
+  String gender;
+  var birthday;
   UserInformation({
-    required this.GhioonId,
     required this.userName,
     required this.phoneNumber,
     required this.userUid,
-    required this.approved,
     required this.documentId,
-    required this.businessNo,
-    required this.businessCategory,
-    required this.businessName,
     required this.email,
-    required this.collections,
-    required this.collection_images,
-    required this.collection_description,
-    required this.online,
-    required this.address,
-    required this.views,
-    required this.rating,
     required this.image,
-    required this.profileImages,
-    required this.profileVideo,
-    required this.notification,
+    required this.gender,
+    required this.birthday
   });
 }
 

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Models/models.dart';
 import 'package:ghioon_buyer/Providers/Order_Provider.dart';
@@ -84,6 +85,7 @@ import 'Providers/AppInfo.dart';
 import 'Screens/SignIn/SignInLogic/wrapper.dart';
 import 'Services/Database/Category/readCategory.dart';
 import 'Services/Database/Product/readProduct.dart';
+import 'Services/Database/User/userDatabase.dart';
 import 'Services/PhoneAuth.dart';
 
 void main() async {
@@ -136,12 +138,12 @@ void main() async {
           //           userUid: FirebaseAuth.instance.currentUser!.uid)
           //       .readCollection,
           // ),
-          // StreamProvider<List<UserInformation>>.value(
-          //   initialData: [],
-          //   value: UserDatabaseService(
-          //           userUid: FirebaseAuth.instance.currentUser?.uid)
-          //       .userInfo,
-          // ),
+          StreamProvider<List<UserInformation>>.value(
+            initialData: [],
+            value: UserDatabaseService(
+                    userUid: FirebaseAuth.instance.currentUser?.uid)
+                .userInfo,
+          ),
           // StreamProvider<List<Controller>>.value(
           //   initialData: [],
           //   value: ControllerDatabaseService().controller,

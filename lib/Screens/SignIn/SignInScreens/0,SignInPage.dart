@@ -177,7 +177,7 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                   GestureDetector(
                     onTap: (){
-                      PhoneAuthServices.signOut();
+                      // PhoneAuthServices.signOut();
                     },
                     child: const Text('Enter Your Phone',
                         style: TextStyle(
