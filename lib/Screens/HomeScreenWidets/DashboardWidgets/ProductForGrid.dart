@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Models/models.dart';
-import 'package:ghioon_buyer/Screens/HomeScreenWidets/DashboardWidgets/ProductDetail.dart';
+//import 'package:ghioon_buyer/Screens/HomeScreenWidets/DashboardWidgets/ProductDetail.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/DashboardWidgets/productDetail.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/DashboardWidgets/ProductGridListCard.dart';
 import 'package:provider/provider.dart';
 import 'package:ghioon_buyer/Shared/constants.dart';
@@ -11,8 +12,6 @@ class ProductForGrid extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  
-
   @override
   Widget build(BuildContext context) {
     final products = Provider.of<List<Product>>(context);
@@ -21,9 +20,8 @@ class ProductForGrid extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: GridView.builder(
           shrinkWrap: true,
-            physics: const BouncingScrollPhysics(
-                parent: AlwaysScrollableScrollPhysics()),
-                
+          physics: const BouncingScrollPhysics(
+              parent: AlwaysScrollableScrollPhysics()),
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 250,
             childAspectRatio: (2.5 / 3),
@@ -46,7 +44,7 @@ class ProductForGrid extends StatelessWidget {
             );
           },
         ),
-    
+
         // GridView.count(
         //     childAspectRatio: (2.5 / 3),
         //     shrinkWrap: true,
