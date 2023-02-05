@@ -1,3 +1,5 @@
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/Profile/SettingPages/aboutUs.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/Profile/setting.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -171,16 +173,21 @@ class _ProfileState extends State<Profile> {
                         FontAwesomeIcons.solidUser, 'My Account', width)),
                 GestureDetector(
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //       builder: (context) => const StoreSetting()),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ProfileSetting()),
+                      );
                     },
                     child: StoreList(FontAwesomeIcons.gear, 'Setting', width)),
                 GestureDetector(
                     onTap: () {
                       // support(context);
+                       Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AboutUs()),
+                      );
                     },
                     child: StoreList(
                         FontAwesomeIcons.solidCircleQuestion, 'About', width)),

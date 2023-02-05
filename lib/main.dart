@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Models/models.dart';
+import 'package:ghioon_buyer/Providers/FeedbackProvider.dart';
 import 'package:ghioon_buyer/Providers/Order_Provider.dart';
 import 'package:ghioon_buyer/Providers/search.dart';
 import 'package:ghioon_buyer/Screens/GetStarted/Screens/0,Splash.dart';
@@ -122,6 +123,9 @@ void main() async {
           ),
           ChangeNotifierProvider(
             create: (context) => Order_Provider(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => FeedbackData(),
           ),
           StreamProvider<List<Product>>.value(
             initialData: [],
