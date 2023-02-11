@@ -253,3 +253,10 @@ class CartItems{
   int quantity;
   CartItems({required this.product, required this.quantity});
 }
+
+
+class CompanyPromo{
+  String image;
+  String id;
+  CompanyPromo({required this.image, required this.id});
+}

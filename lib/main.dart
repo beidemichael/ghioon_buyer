@@ -7,6 +7,7 @@ import 'package:ghioon_buyer/Providers/cartProvider.dart';
 import 'package:ghioon_buyer/Providers/search.dart';
 import 'package:ghioon_buyer/Screens/GetStarted/Screens/0,Splash.dart';
 import 'package:ghioon_buyer/Screens/home.dart';
+import 'package:ghioon_buyer/Services/Database/Company_promo/company_promo.dart';
 import 'package:ghioon_buyer/firebase_options.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -135,6 +136,10 @@ void main() async {
           StreamProvider<List<Category>>.value(
             initialData: [],
             value: ReadCategoryDatabaseService().readCategory,
+          ),
+          StreamProvider<List<CompanyPromo>>.value(
+            initialData: [],
+            value: ReadCompanyPromoService().readCategory,
           ),
 
           // StreamProvider<List<Collection>>.value(
