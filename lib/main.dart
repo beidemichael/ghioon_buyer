@@ -139,7 +139,7 @@ void main() async {
           ),
           StreamProvider<List<CompanyPromo>>.value(
             initialData: [],
-            value: ReadCompanyPromoService().readCategory,
+            value: ReadCompanyPromoService().readPromo,
           ),
 
           // StreamProvider<List<Collection>>.value(

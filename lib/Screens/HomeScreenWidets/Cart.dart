@@ -25,6 +25,11 @@ class Cart extends StatefulWidget {
 
 class _CartState extends State<Cart> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print("cart =========");
+  }
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
     final appInformation = Provider.of<AppInformation>(context);
@@ -96,87 +101,85 @@ class _CartState extends State<Cart> {
          ):
          Container( height: ScreenSize().ScreenHeight(context)*0.55,child: EmptyScreen(context,"No Product in Cart"))
          ,
-         Expanded(
-           child: Container(
-            decoration: BoxDecoration( color: CustomColors().white, borderRadius: BorderRadius.only(topLeft: Radius.circular(35),topRight: Radius.circular(35)),
-             boxShadow: [
-            BoxShadow(
-              color: CustomColors().grey,
-              offset: Offset(3.0, 3.0),
-              blurRadius: 5.0,
-            ),
+         Container(
+          decoration: BoxDecoration( color: CustomColors().white, borderRadius: BorderRadius.only(topLeft: Radius.circular(35),topRight: Radius.circular(35)),
+           boxShadow: [
+          BoxShadow(
+            color: CustomColors().grey,
+            offset: Offset(3.0, 3.0),
+            blurRadius: 5.0,
+          ),
           ],
-            ),
-            child: Column(
-              children: [Padding(
-                padding: const EdgeInsets.fromLTRB(15.0,15,15,8),
-                child: Container(
-                  height: ScreenSize().ScreenHeight(context)*0.095,
-                  //decoration:BoxDecoration(color: CustomColors().white),
-                   decoration: BoxDecoration(
-                    color: CustomColors().white,
-                    borderRadius: const BorderRadius.all(
-                     Radius.circular(10)
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        spreadRadius: 5,
-                        blurRadius: 2,
-                        offset: const Offset(0, 0), // changes position of shadow
-                      ),
-                    ],
+          ),
+          child: Column(
+            children: [Padding(
+              padding: const EdgeInsets.fromLTRB(15.0,15,15,8),
+              child: Container(
+                height: ScreenSize().ScreenHeight(context)*0.095,
+                //decoration:BoxDecoration(color: CustomColors().white),
+                 decoration: BoxDecoration(
+                  color: CustomColors().white,
+                  borderRadius: const BorderRadius.all(
+                   Radius.circular(10)
                   ),
-                 child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [ 
-                    Expanded(child: Padding(
-                      padding: const EdgeInsets.fromLTRB(8.0,0,0,0),
-                      child: TextFormFieldWithOutLabel("Promo Code",cart.promoCode,  TextInputType.text ),
-                    )),
-                  Padding(
-                   padding: const EdgeInsets.all(8.0),
-                   child: Container(height: ScreenSize().ScreenHeight(context)*0.06, width: ScreenSize().ScreenWidth(context)*0.3, decoration: BoxDecoration(
-                    color: CustomColors().blue,
-                    borderRadius: const BorderRadius.all(
-                     Radius.circular(10)
-                    ),
-                   
-                  ),child: Center(child: Text('Apply', style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: ScreenSize().ScreenWidth(context)*0.05,
-                        color: CustomColors().white,
-                        fontWeight: FontWeight.w700))),),
-                 ),  ],)
-                ),
-              ),Container(
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text('Total', style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 30,
-                        color: CustomColors().blue,
-                        fontWeight: FontWeight.w700)),
-                  Text("ETB " + cart.total.toString(), style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 25,
-                        color: CustomColors().black,
-                        fontWeight: FontWeight.w700))
-                  ]),
-                ),
-              ),Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0,0,8,20),
-                      child: BlueButton(text: "Proceed To Checkout",),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 5,
+                      blurRadius: 2,
+                      offset: const Offset(0, 0), // changes position of shadow
                     ),
                   ],
                 ),
-              ),],
+               child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [ 
+                  Expanded(child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8.0,0,0,0),
+                    child: TextFormFieldWithOutLabel("Promo Code",cart.promoCode,  TextInputType.text ),
+                  )),
+                Padding(
+                 padding: const EdgeInsets.all(8.0),
+                 child: Container(height: ScreenSize().ScreenHeight(context)*0.06, width: ScreenSize().ScreenWidth(context)*0.3, decoration: BoxDecoration(
+                  color: CustomColors().blue,
+                  borderRadius: const BorderRadius.all(
+                   Radius.circular(10)
+                  ),
+                 
+                ),child: Center(child: Text('Apply', style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: ScreenSize().ScreenWidth(context)*0.05,
+                      color: CustomColors().white,
+                      fontWeight: FontWeight.w700))),),
+               ),  ],)
+              ),
+            ),Container(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text('Total', style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 30,
+                      color: CustomColors().blue,
+                      fontWeight: FontWeight.w700)),
+                Text("ETB " + cart.total.toString(), style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 25,
+                      color: CustomColors().black,
+                      fontWeight: FontWeight.w700))
+                ]),
+              ),
+            ),Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0,0,8,20),
+                    child: BlueButton(text: "Proceed To Checkout",),
+                  ),
+                ],
+              ),
+            ),],
 
-            ),
-           ),
+          ),
          )
        ],
      ),

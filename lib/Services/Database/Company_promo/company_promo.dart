@@ -17,7 +17,7 @@ class ReadCompanyPromoService {
   }
 
   //orders lounges stream
-  Stream<List<CompanyPromo>> get readCategory {
+  Stream<List<CompanyPromo>> get readPromo {
     return categoryCollection.snapshots().map(_productListFromSnapshot);
   }
 }

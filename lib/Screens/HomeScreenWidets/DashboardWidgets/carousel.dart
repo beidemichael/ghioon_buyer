@@ -18,9 +18,9 @@ class _CarouselState extends State<Carousel> {
   @override
   Widget build(BuildContext context) {
     final promo = Provider.of<List<CompanyPromo>>(context);
+
     var items = [
-      
-      Padding(
+      promo.length == 0?Container(): Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
           decoration: BoxDecoration(
@@ -49,7 +49,7 @@ class _CarouselState extends State<Carousel> {
           ),
     ),
     
-    Padding(
+   promo.length == 0?Container(): Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
           decoration: BoxDecoration(
@@ -77,7 +77,7 @@ class _CarouselState extends State<Carousel> {
           ),
       ),
     ),
-     Padding(
+    promo.length == 0?Container(): Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
           decoration: BoxDecoration(
