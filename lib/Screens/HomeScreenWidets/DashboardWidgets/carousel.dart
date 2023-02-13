@@ -28,7 +28,6 @@ class _CarouselState extends State<Carousel> {
         }).toList(),
                   options: CarouselOptions(
                    enlargeCenterPage: true,
-        
                     height: ScreenSize().ScreenHeight(context) * 0.25,
                     aspectRatio: 16 / 9,
                     viewportFraction: 0.85,
