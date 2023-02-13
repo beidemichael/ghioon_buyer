@@ -6,7 +6,6 @@ class UserAuth {
 }
 
 class UserInformation {
-  
   String userName;
   String phoneNumber;
   String userUid;
@@ -15,16 +14,15 @@ class UserInformation {
   String image;
   String gender;
   var birthday;
-  UserInformation({
-    required this.userName,
-    required this.phoneNumber,
-    required this.userUid,
-    required this.documentId,
-    required this.email,
-    required this.image,
-    required this.gender,
-    required this.birthday
-  });
+  UserInformation(
+      {required this.userName,
+      required this.phoneNumber,
+      required this.userUid,
+      required this.documentId,
+      required this.email,
+      required this.image,
+      required this.gender,
+      required this.birthday});
 }
 
 class SellerInformation {
@@ -129,6 +127,28 @@ class Product {
     required this.video,
     required this.barcode,
   });
+
+  factory Product.fromMap(Map<String, dynamic> map) {
+    return Product(
+      productId: map['productId'],
+      name: map['name'],
+      description: map['description'],
+      fixed: map['fixed'],
+      price: map['price'],
+      rangeFrom: map['rangeFrom'],
+      rangeTo: map['rangeTo'],
+      Product_Type: map['Product_Type'],
+      Product_collection: map['Product_collection'],
+      rating: map['rating'],
+      video: map['video'],
+      category: map['category'],
+      image: map['image'],
+      inStock: map['isStock'],
+      quantity: map['quantity'],
+      barcode: map['barcode'],
+      documentId: map['productId'],
+    );
+  }
 }
 
 class ProductBar {
@@ -248,14 +268,13 @@ class Category {
   Category({required this.documentId, required this.type});
 }
 
-class CartItems{
+class CartItems {
   Product product;
   int quantity;
   CartItems({required this.product, required this.quantity});
 }
 
-
-class CompanyPromo{
+class CompanyPromo {
   String image;
   String id;
   CompanyPromo({required this.image, required this.id});

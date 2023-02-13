@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:ghioon_buyer/Models/models.dart';
+import 'package:ghioon_buyer/Screens/components/Button.dart';
 import 'package:intl/intl.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -14,7 +15,6 @@ import '../../../Services/Database/User/userDatabase.dart';
 import '../../../Shared/customColors.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../Shared/loading.dart';
-import '../../Components/Button.dart';
 
 class Account extends StatefulWidget {
   const Account({super.key});
@@ -91,7 +91,10 @@ class _AccountState extends State<Account> {
 
         // Provider.of<Order>(context, listen: false).addTime(date);
         print('confirm $date');
-      }, currentTime:  DateTime.fromMicrosecondsSinceEpoch(userInfo[0].birthday.microsecondsSinceEpoch), locale: LocaleType.en);
+      },
+          currentTime: DateTime.fromMicrosecondsSinceEpoch(
+              userInfo[0].birthday.microsecondsSinceEpoch),
+          locale: LocaleType.en);
     }
 
     return userInfo.isEmpty
@@ -264,8 +267,9 @@ class _AccountState extends State<Account> {
                 Text(
                     DateFormat('MMM dd yyyy').format(
                       DateTime.parse(
-                        DateTime.fromMicrosecondsSinceEpoch(cloudBirthdate.microsecondsSinceEpoch)
-                        .toString(),
+                        DateTime.fromMicrosecondsSinceEpoch(
+                                cloudBirthdate.microsecondsSinceEpoch)
+                            .toString(),
                       ),
                     ),
                     style: const TextStyle(

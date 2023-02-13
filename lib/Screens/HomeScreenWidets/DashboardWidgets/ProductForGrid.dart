@@ -17,7 +17,7 @@ class ProductForGrid extends StatelessWidget {
     final products = Provider.of<List<Product>>(context);
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.fromLTRB(8.0, 0, 8, 8),
         child: GridView.builder(
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(
