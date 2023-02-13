@@ -5,6 +5,7 @@ import 'package:ghioon_buyer/Models/models.dart';
 import 'package:ghioon_buyer/Providers/search.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/DashboardWidgets/ProductForGrid.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/DashboardWidgets/carousel.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/DashboardWidgets/carousel_pro.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/DashboardWidgets/search/searchScreen.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/DashboardWidgets/search/searchbar.dart';
 import 'package:ghioon_buyer/Screens/components/emptyScreen.dart';
@@ -46,7 +47,7 @@ class _DashboardState extends State<Dashboard> {
             SizedBox(
               height: 10,
             ),
-            Carousel(),
+           Carousel(), //CarouselSlider(), //
             Expanded(
               child: products.length == 0
                   ? EmptyScreen(context, 'No Products.')

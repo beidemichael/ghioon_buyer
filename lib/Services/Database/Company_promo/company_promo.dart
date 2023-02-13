@@ -6,8 +6,8 @@ class ReadCompanyPromoService {
   ReadCompanyPromoService();
   
   final CollectionReference categoryCollection =
-      FirebaseFirestore.instance.collection('Compnay');
-  List<CompanyPromo> _productListFromSnapshot(QuerySnapshot snapshot) {
+      FirebaseFirestore.instance.collection('Company');
+  List<CompanyPromo> _promoListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
       return CompanyPromo(
         image: (doc.data() as dynamic)['image'] ?? '',
@@ -18,6 +18,8 @@ class ReadCompanyPromoService {
 
   //orders lounges stream
   Stream<List<CompanyPromo>> get readPromo {
-    return categoryCollection.snapshots().map(_productListFromSnapshot);
+    return categoryCollection.snapshots().map(_promoListFromSnapshot);
   }
+
+
 }
