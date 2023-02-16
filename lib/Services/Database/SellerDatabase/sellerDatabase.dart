@@ -2,8 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ghioon_buyer/Models/models.dart';
 
 class SellerDatabaseService {
+  var sellerId;
   var businessType;
-  SellerDatabaseService({this.businessType});
+  SellerDatabaseService({this.businessType, this.sellerId});
   final CollectionReference sellersCollection =
       FirebaseFirestore.instance.collection('Sellers');
   List<SellerInformation> _userInfoListFromSnapshot(QuerySnapshot snapshot) {
@@ -39,6 +40,13 @@ class SellerDatabaseService {
   Stream<List<SellerInformation>> get sellers {
     return sellersCollection
         .where('businessType', isEqualTo: businessType)
+        .snapshots()
+        .map(_userInfoListFromSnapshot);
+  }
+
+  Stream<List<SellerInformation>> get sellerprofile {
+    return sellersCollection
+        .where('userUid', isEqualTo: sellerId)
         .snapshots()
         .map(_userInfoListFromSnapshot);
   }

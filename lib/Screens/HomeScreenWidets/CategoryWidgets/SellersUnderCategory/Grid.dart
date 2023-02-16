@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Models/models.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/CategoryWidgets/SellersUnderCategory/GridListCard.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/CategoryWidgets/SellersUnderCategory/StoreProfile/store_profile.dart';
 //import 'package:ghioon_buyer/Screens/HomeScreenWidets/DashboardWidgets/ProductDetail.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/DashboardWidgets/productDetail.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/DashboardWidgets/ProductGridListCard.dart';
+import 'package:ghioon_buyer/Services/Database/SellerDatabase/sellerDatabase.dart';
 import 'package:provider/provider.dart';
 import 'package:ghioon_buyer/Shared/constants.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
@@ -35,15 +37,25 @@ class SellersUnderCategoryGrid extends StatelessWidget {
         itemBuilder: (BuildContext ctx, index) {
           return GestureDetector(
             onTap: () {
+              print(sellers[index].userUid);
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => StreamProvider<List<Product>>.value(
-                      initialData: [],
-                      value: ReadProductDatabaseService(
-                              userUid: sellers[index].userUid)
-                          .readSellerProduct,
-                      child: ProductForGrid()),
+                  builder: (context) =>
+                      StreamProvider<List<SellerInformation>>.value(
+                    initialData: [],
+                    value:
+                        SellerDatabaseService(sellerId: sellers[index].userUid)
+                            .sellerprofile,
+                    child: StoreProfile(),
+                  ),
+
+                  // StreamProvider<List<Product>>.value(
+                  //     initialData: [],
+                  //     value: ReadProductDatabaseService(
+                  //       userUid: sellers[index].userUid,
+                  //     ).readSellerProduct,
+                  //     child: ProductForGrid())
                 ),
               );
             },

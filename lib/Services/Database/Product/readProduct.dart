@@ -27,6 +27,7 @@ class ReadProductDatabaseService {
         image: (doc.data() as dynamic)['image'] ?? '',
         inStock: (doc.data() as dynamic)['isStock'] ?? '',
         quantity: (doc.data() as dynamic)['quantity'] ?? '',
+        userUid: (doc.data() as dynamic)['userUid'] ?? '',
         barcode: (doc.data() as dynamic)['barcode'] ?? '',
         documentId: doc.reference.id,
       );
@@ -43,8 +44,9 @@ class ReadProductDatabaseService {
 
   Stream<List<Product>> get readSellerProduct {
     return productCollection
-        .where("name", isGreaterThanOrEqualTo: productName)
-        .where("name", isLessThan: productName + "\uf8ff")
+        // .where("name", isGreaterThanOrEqualTo: productName)
+        .where("userUid", isEqualTo: userUid)
+        //.where("userUid", isLessThan: userUid + "\uf8ff")
         .snapshots()
         .map(_productListFromSnapshot);
   }

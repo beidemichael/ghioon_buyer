@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Models/models.dart';
 import 'package:ghioon_buyer/Providers/FeedbackProvider.dart';
 import 'package:ghioon_buyer/Providers/Order_Provider.dart';
+import 'package:ghioon_buyer/Providers/RangeProvider.dart';
 import 'package:ghioon_buyer/Providers/cartProvider.dart';
 import 'package:ghioon_buyer/Providers/search.dart';
 import 'package:ghioon_buyer/Screens/GetStarted/Screens/0,Splash.dart';
@@ -140,6 +141,9 @@ void main() async {
           StreamProvider<List<CompanyPromo>>.value(
             initialData: [],
             value: ReadCompanyPromoService().readPromo,
+          ),
+          ChangeNotifierProvider(
+            create: (context) => RangeData(),
           ),
 
           // StreamProvider<List<Collection>>.value(

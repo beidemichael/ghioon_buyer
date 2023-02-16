@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -29,9 +30,7 @@ class _Carousel_SliderState extends State<Carousel_Slider> {
             itemBuilder: ((context, index, realIndex) {
               print(promo);
               if (promo.length == 0) {
-                return Center(
-                  child: CircularProgressIndicator()
-                  );
+                return Center(child: CircularProgressIndicator());
               } else {
                 final image = promo[index].image;
                 return buildImage(image, index);
@@ -43,7 +42,7 @@ class _Carousel_SliderState extends State<Carousel_Slider> {
               //reverse: true,
               enableInfiniteScroll: true,
               enlargeCenterPage: true,
-              enlargeStrategy: CenterPageEnlargeStrategy.height, 
+              enlargeStrategy: CenterPageEnlargeStrategy.height,
               autoPlay: true,
               autoPlayInterval: Duration(seconds: 5),
               autoPlayAnimationDuration: Duration(milliseconds: 800),
@@ -66,7 +65,9 @@ class _Carousel_SliderState extends State<Carousel_Slider> {
       //color: Colors.grey,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: NetworkImage(image),
+          image: CachedNetworkImageProvider(
+            image,
+          ), //NetworkImage(image),
           fit: BoxFit.cover,
         ),
         border: Border.all(

@@ -50,18 +50,18 @@ class _HomeScreenState extends State<HomeScreen> {
               duration: const Duration(milliseconds: 200),
               curve: Curves.bounceOut);
           setState(() {
-            page= index;
+            page = index;
           });
         },
         letIndexChange: (index) => true,
         key: _bottomNavigationKey,
-        items:  <Widget>[
+        items: <Widget>[
           SizedBox(
             height: 50,
             width: 50,
             child: Icon(
               FontAwesomeIcons.cartShopping,
-              color:page ==0? Colors.white:Colors.grey,
+              color: page == 0 ? Colors.white : Colors.grey,
             ),
           ),
           SizedBox(
@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 50,
             child: Icon(
               FontAwesomeIcons.list,
-              color: page ==1? Colors.white:Colors.grey,
+              color: page == 1 ? Colors.white : Colors.grey,
             ),
           ),
           SizedBox(
@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 50,
             child: Icon(
               FontAwesomeIcons.house,
-              color: page ==2? Colors.white:Colors.grey,
+              color: page == 2 ? Colors.white : Colors.grey,
             ),
           ),
           SizedBox(
@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 50,
             child: Icon(
               FontAwesomeIcons.gift,
-              color: page ==3? Colors.white:Colors.grey,
+              color: page == 3 ? Colors.white : Colors.grey,
             ),
           ),
           SizedBox(
@@ -93,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 50,
             child: Icon(
               FontAwesomeIcons.solidUser,
-              color: page ==4? Colors.white:Colors.grey,
+              color: page == 4 ? Colors.white : Colors.grey,
             ),
           ),
         ],

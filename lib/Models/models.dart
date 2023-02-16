@@ -106,6 +106,7 @@ class Product {
   int quantity;
   String documentId;
   String video;
+  String userUid;
   String barcode;
 
   Product({
@@ -125,6 +126,7 @@ class Product {
     required this.quantity,
     required this.documentId,
     required this.video,
+    required this.userUid,
     required this.barcode,
   });
 
@@ -146,6 +148,7 @@ class Product {
       inStock: map['isStock'],
       quantity: map['quantity'],
       barcode: '', // map['barcode'],
+      userUid: map['userUid'],
       documentId: map['productId'],
     );
   }
