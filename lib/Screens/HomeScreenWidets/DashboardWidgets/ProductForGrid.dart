@@ -45,17 +45,6 @@ class ProductForGrid extends StatelessWidget {
           },
         ),
 
-        // GridView.count(
-        //     childAspectRatio: (2.5 / 3),
-        //     shrinkWrap: true,
-        //     physics: const BouncingScrollPhysics(
-        //         parent: AlwaysScrollableScrollPhysics()),
-        //     crossAxisCount: 2,
-        //     crossAxisSpacing: 4.0,
-        //     mainAxisSpacing: 8.0,
-        //     children: List.generate(products.length, (index) {
-        //       return
-        //     })),
       ),
     );
   }

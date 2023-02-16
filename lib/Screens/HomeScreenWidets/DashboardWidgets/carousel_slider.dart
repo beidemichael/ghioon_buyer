@@ -29,7 +29,9 @@ class _Carousel_SliderState extends State<Carousel_Slider> {
             itemBuilder: ((context, index, realIndex) {
               print(promo);
               if (promo.length == 0) {
-                return Container();
+                return Center(
+                  child: CircularProgressIndicator()
+                  );
               } else {
                 final image = promo[index].image;
                 return buildImage(image, index);
@@ -37,17 +39,21 @@ class _Carousel_SliderState extends State<Carousel_Slider> {
             }),
             options: CarouselOptions(
               height: ScreenSize().ScreenHeight(context) * 0.2,
-              autoPlay: true,
-              reverse: true,
+              //autoPlay: true,
+              //reverse: true,
               enableInfiniteScroll: true,
               enlargeCenterPage: true,
-              enlargeStrategy: CenterPageEnlargeStrategy.height,
+              enlargeStrategy: CenterPageEnlargeStrategy.height, 
+              autoPlay: true,
               autoPlayInterval: Duration(seconds: 5),
+              autoPlayAnimationDuration: Duration(milliseconds: 800),
+              autoPlayCurve: Curves.decelerate,
+              enlargeFactor: 0.3,
               onPageChanged: (index, reason) =>
                   setState(() => activeIndex = index),
             )),
         SizedBox(
-          height: 15,
+          height: 10,
         ),
         buildIndicator(promo),
       ],

@@ -7,18 +7,30 @@ import 'package:ghioon_buyer/Shared/constants.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
 import 'package:provider/provider.dart';
 
-class HorizontalSlider extends StatelessWidget {
+class HorizontalSlider extends StatefulWidget {
   HorizontalSlider();
 
   @override
+  State<HorizontalSlider> createState() => _HorizontalSliderState();
+}
+
+class _HorizontalSliderState extends State<HorizontalSlider>  {
+ 
+ 
+  @override
+ 
+
+  @override
+
   Widget build(BuildContext context) {
     final appInformation = Provider.of<AppInformation>(context);
     final catagory = Provider.of<List<Category>>(context);
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
       child: Container(
-        height: ScreenSize().ScreenHeight(context) * 0.08,
-        child: ListView.builder(
+        height: ScreenSize().ScreenHeight(context) * 0.07,
+        child:catagory.length != 0? ListView.builder(
+          
           scrollDirection: Axis.horizontal,
           itemCount: catagory.length,
           itemBuilder: (context, index) {
@@ -42,7 +54,7 @@ class HorizontalSlider extends StatelessWidget {
                 );
               },
               child: Container(
-                width: 100,
+               // width: 100,
                 //height: 10,
                 //height: ScreenSize().ScreenHeight(context) * 0.5,
                 decoration: BoxDecoration(
@@ -51,10 +63,10 @@ class HorizontalSlider extends StatelessWidget {
                       width: 1,
                       color: const Color.fromARGB(255, 224, 224, 224)),
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15),
-                      topRight: Radius.circular(15),
-                      bottomRight: Radius.circular(15),
-                      bottomLeft: Radius.circular(15)),
+                      topLeft: Radius.circular(25),
+                      topRight: Radius.circular(25),
+                      bottomRight: Radius.circular(25),
+                      bottomLeft: Radius.circular(25)),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.9),
@@ -65,43 +77,25 @@ class HorizontalSlider extends StatelessWidget {
                   ],
                 ),
                 margin: EdgeInsets.all(10.0),
-                child: Center(
-                  child: Text(
-                    catagory[index].type,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 13.0,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                    child: Text(
+                      catagory[index].type,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: ScreenSize().ScreenWidth(context)*0.035,// 13.0,
+                      ),
                     ),
                   ),
                 ),
               ),
             );
           },
-        ),
+          
+        ):ListView(),
       ),
     );
   }
 }
 
-class ContainerDetails extends StatelessWidget {
-  final String item;
-
-  ContainerDetails({required this.item});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Container Details'),
-      ),
-      body: Center(
-        child: Text(
-          item,
-          style: TextStyle(
-            fontSize: 20.0,
-          ),
-        ),
-      ),
-    );
-  }
-}

@@ -19,4 +19,6 @@ class ReadCompanyPromoService {
   Stream<List<CompanyPromo>> get readPromo {
     return promoCollection.snapshots().map(_promoListFromSnapshot);
   }
+
+
 }

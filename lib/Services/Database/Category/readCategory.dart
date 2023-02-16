@@ -15,7 +15,7 @@ class ReadCategoryDatabaseService {
     }).toList();
   }
 
-  //orders lounges stream
+  //catagory lounges stream
   Stream<List<Category>> get readCategory {
     return categoryCollection.snapshots().map(_productListFromSnapshot);
   }
