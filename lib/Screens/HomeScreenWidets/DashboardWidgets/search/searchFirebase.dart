@@ -8,6 +8,7 @@ import 'package:ghioon_buyer/Screens/HomeScreenWidets/DashboardWidgets/productDe
 import 'package:ghioon_buyer/Services/Database/Product/readProduct.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ghioon_buyer/Shared/constants.dart';
+import 'package:ghioon_buyer/Shared/customColors.dart';
 import 'package:provider/provider.dart';
 
 class ProductSearch extends StatefulWidget {
@@ -22,56 +23,104 @@ class _ProductSearchState extends State<ProductSearch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: TextField(
-          controller: _searchController,
-          decoration: InputDecoration(
-              hintText: "Search for products",
-              prefixIcon: Icon(Icons.search),
-              border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(25.0)))),
-          onChanged: (value) {
-            setState(() {
-              if (value.isNotEmpty) {
-                _products = FirebaseFirestore.instance
-                    .collection("Products")
-                    // .where("name", isEqualTo: value)
-                    .where("name".toLowerCase(),
-                        isGreaterThanOrEqualTo: value.toLowerCase())
-                    .where("name".toLowerCase(),
-                        isLessThan: value.toLowerCase() + "\uf8ff")
-                    .get();
-              }
-            });
-          },
-        ),
-      ),
-      body: Container(
-        child: FutureBuilder(
-          future: _products,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (snapshot.hasData) {
-              return ListView.builder(
-                itemCount: snapshot.data!.docs.length,
-                itemBuilder: (context, index) {
-                  Map<String, dynamic> product =
-                      snapshot.data!.docs[index].data() as Map<String, dynamic>;
-                  return searchResultWidget(product: product);
-                },
-              );
-            } else {
-              return Center(
-                child: Text(
-                  "No products found",
-                  style: TextStyle(color: Colors.black, fontSize: 30),
+      // appBar: AppBar(
+      //   backgroundColor: CustomColors().white,
+      // title: TextField(
+      //   controller: _searchController,
+      //   decoration: InputDecoration(
+      //       hintText: "Search for products",
+      //       prefixIcon: Icon(Icons.search),
+      //       border: OutlineInputBorder(
+      //           borderRadius: BorderRadius.all(Radius.circular(25.0)))),
+      //   onChanged: (value) {
+      //     setState(() {
+      //       if (value.isNotEmpty) {
+      //         _products = FirebaseFirestore.instance
+      //             .collection("Products")
+      //             // .where("name", isEqualTo: value)
+      //             .where("name".toLowerCase(),
+      //                 isGreaterThanOrEqualTo: value.toLowerCase())
+      //             .where("name".toLowerCase(),
+      //                 isLessThan: value.toLowerCase() + "\uf8ff")
+      //             .get();
+      //       }
+      //     });
+      //   },
+      // ),
+      // ),
+
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: Icon(Icons.arrow_back)),
+                  Expanded(
+                    child: TextField(
+                      controller: _searchController,
+                      decoration: InputDecoration(
+                          hintText: "Search for products",
+                          prefixIcon: Icon(Icons.search),
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(25.0)))),
+                      onChanged: (value) {
+                        setState(() {
+                          if (value.isNotEmpty) {
+                            _products = FirebaseFirestore.instance
+                                .collection("Products")
+                                // .where("name", isEqualTo: value)
+                                .where("name".toLowerCase(),
+                                    isGreaterThanOrEqualTo: value.toLowerCase())
+                                .where("name".toLowerCase(),
+                                    isLessThan: value.toLowerCase() + "\uf8ff")
+                                .get();
+                          }
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              Expanded(
+                child: Container(
+                  child: FutureBuilder(
+                    future: _products,
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else if (snapshot.hasData) {
+                        return ListView.builder(
+                          itemCount: snapshot.data!.docs.length,
+                          itemBuilder: (context, index) {
+                            Map<String, dynamic> product =
+                                snapshot.data!.docs[index].data()
+                                    as Map<String, dynamic>;
+                            return searchResultWidget(product: product);
+                          },
+                        );
+                      } else {
+                        return Center(
+                          child: Text(
+                            "No products found",
+                            style: TextStyle(color: Colors.black, fontSize: 30),
+                          ),
+                        );
+                      }
+                    },
+                  ),
                 ),
-              );
-            }
-          },
+              ),
+            ],
+          ),
         ),
       ),
     );

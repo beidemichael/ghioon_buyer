@@ -14,14 +14,9 @@ class HorizontalSlider extends StatefulWidget {
   State<HorizontalSlider> createState() => _HorizontalSliderState();
 }
 
-class _HorizontalSliderState extends State<HorizontalSlider>  {
- 
- 
+class _HorizontalSliderState extends State<HorizontalSlider> {
   @override
- 
-
   @override
-
   Widget build(BuildContext context) {
     final appInformation = Provider.of<AppInformation>(context);
     final catagory = Provider.of<List<Category>>(context);
@@ -29,73 +24,73 @@ class _HorizontalSliderState extends State<HorizontalSlider>  {
       padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
       child: Container(
         height: ScreenSize().ScreenHeight(context) * 0.07,
-        child:catagory.length != 0? ListView.builder(
-          
-          scrollDirection: Axis.horizontal,
-          itemCount: catagory.length,
-          itemBuilder: (context, index) {
-            return GestureDetector(
-              onTap: () {
-                // Navigate to the details page for the tapped container
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        StreamProvider<List<SellerInformation>>.value(
-                      initialData: [],
-                      value: SellerDatabaseService(
-                              businessType: catagory[index].type)
-                          .sellers,
-                      child: CategoryScreen(
-                        category: catagory[index].type,
+        child: catagory.length != 0
+            ? ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: catagory.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      // Navigate to the details page for the tapped container
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              StreamProvider<List<SellerInformation>>.value(
+                            initialData: [],
+                            value: SellerDatabaseService(
+                                    businessType: catagory[index].type)
+                                .sellers,
+                            child: CategoryScreen(
+                              category: catagory[index].type,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      // width: 100,
+                      //height: 10,
+                      //height: ScreenSize().ScreenHeight(context) * 0.5,
+                      decoration: BoxDecoration(
+                        color: CustomColors().blue,
+                        border: Border.all(
+                            width: 1,
+                            color: const Color.fromARGB(255, 224, 224, 224)),
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(25),
+                            topRight: Radius.circular(25),
+                            bottomRight: Radius.circular(25),
+                            bottomLeft: Radius.circular(25)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.9),
+                            spreadRadius: 1,
+                            blurRadius: 1,
+                            offset: Offset(0, 1), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      margin: EdgeInsets.all(10.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Center(
+                          child: Text(
+                            catagory[index].type,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: ScreenSize().ScreenWidth(context) *
+                                  0.035, // 13.0,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                );
-              },
-              child: Container(
-               // width: 100,
-                //height: 10,
-                //height: ScreenSize().ScreenHeight(context) * 0.5,
-                decoration: BoxDecoration(
-                  color: CustomColors().blue,
-                  border: Border.all(
-                      width: 1,
-                      color: const Color.fromARGB(255, 224, 224, 224)),
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(25),
-                      topRight: Radius.circular(25),
-                      bottomRight: Radius.circular(25),
-                      bottomLeft: Radius.circular(25)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.9),
-                      spreadRadius: 2,
-                      blurRadius: 3,
-                      offset: Offset(0, 2), // changes position of shadow
-                    ),
-                  ],
-                ),
-                margin: EdgeInsets.all(10.0),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(
-                    child: Text(
-                      catagory[index].type,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: ScreenSize().ScreenWidth(context)*0.035,// 13.0,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            );
-          },
-          
-        ):ListView(),
+                  );
+                },
+              )
+            : ListView(),
       ),
     );
   }
 }
-
