@@ -75,11 +75,17 @@ class _ProductSearchState extends State<ProductSearch> {
                           if (value.isNotEmpty) {
                             _products = FirebaseFirestore.instance
                                 .collection("Products")
-                                // .where("name", isEqualTo: value)
-                                .where("name".toLowerCase(),
-                                    isGreaterThanOrEqualTo: value.toLowerCase())
-                                .where("name".toLowerCase(),
-                                    isLessThan: value.toLowerCase() + "\uf8ff")
+                                .where("name", isGreaterThanOrEqualTo: value)
+                                // .where("name", isLessThan: value + "\uf8ff")
+                                .where("name",
+                                    isLessThan: value.substring(
+                                            0, value.length - 1) +
+                                        String.fromCharCode(
+                                            value.codeUnitAt(value.length - 1) +
+                                                1))
+                                // .where("name".toLowerCase(),
+                                //     isGreaterThanOrEqualTo: value.toLowerCase())
+
                                 .get();
                           }
                         });
