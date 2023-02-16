@@ -145,7 +145,7 @@ class Product {
       image: map['image'],
       inStock: map['isStock'],
       quantity: map['quantity'],
-      barcode: map['barcode'],
+      barcode: '', // map['barcode'],
       documentId: map['productId'],
     );
   }

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/Profile/SettingPages/aboutUs.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/Profile/setting.dart';
 import 'package:provider/provider.dart';
@@ -183,7 +184,7 @@ class _ProfileState extends State<Profile> {
                 GestureDetector(
                     onTap: () {
                       // support(context);
-                       Navigator.push(
+                      Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const AboutUs()),
@@ -192,11 +193,12 @@ class _ProfileState extends State<Profile> {
                     child: StoreList(
                         FontAwesomeIcons.solidCircleQuestion, 'About', width)),
                 GestureDetector(
-                    onTap: () {
-                      // support(context);
+                    onTap: () async {
+                      await FirebaseAuth.instance.signOut();
+                      Navigator.of(context).pop();
                     },
-                    child: StoreList(FontAwesomeIcons.arrowRightFromBracket,
-                        'Logout', width)),
+                    child: StoreList(
+                        FontAwesomeIcons.rightFromBracket, 'Logout', width)),
               ],
             ),
           );
