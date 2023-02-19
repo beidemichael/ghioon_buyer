@@ -88,6 +88,7 @@ import 'package:provider/provider.dart';
 import 'Models/models.dart';
 import 'Providers/AppInfo.dart';
 import 'Screens/SignIn/SignInLogic/wrapper.dart';
+import 'Services/Database/Addresses/DatabaseAddress.dart';
 import 'Services/Database/Category/readCategory.dart';
 import 'Services/Database/Product/readProduct.dart';
 import 'Services/Database/User/userDatabase.dart';
@@ -129,6 +130,12 @@ void main() async {
           ),
           ChangeNotifierProvider(
             create: (context) => FeedbackData(),
+          ),
+          StreamProvider<List<Addresses>>.value(
+            initialData: [],
+            value:
+                DatabaseAddress(userUid: FirebaseAuth.instance.currentUser?.uid)
+                    .address,
           ),
           StreamProvider<List<Product>>.value(
             initialData: [],

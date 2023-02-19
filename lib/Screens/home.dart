@@ -22,7 +22,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final _pageViewController = PageController();
+  final _pageViewController = PageController(initialPage: 2);
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   int activePage = 2;
   int page = 2;

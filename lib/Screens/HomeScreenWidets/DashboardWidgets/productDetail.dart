@@ -119,7 +119,7 @@ class _ProductDetailState extends State<ProductDetail> {
                              }
                               else{
                                 //add Product yo the cart
-                                cart.addToCart(widget.product, int.parse(order.quantity.text));
+                                cart.addToCart(widget.product, int.parse(order.quantity.text),widget.product.userUid);
                                 //update totalPrice
                                 cart.totalPrice();
                                 snackBar(context,"Product added to Cart",CustomColors().white, CustomColors().blue);

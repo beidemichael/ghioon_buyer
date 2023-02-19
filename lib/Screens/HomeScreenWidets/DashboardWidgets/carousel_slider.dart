@@ -33,7 +33,7 @@ class _Carousel_SliderState extends State<Carousel_Slider> {
                 return Center(child: CircularProgressIndicator());
               } else {
                 final image = promo[index].image;
-                return buildImage(image, index);
+                return Center(child: buildImage(image, index));
               }
             }),
             options: CarouselOptions(
@@ -61,8 +61,9 @@ class _Carousel_SliderState extends State<Carousel_Slider> {
 
   Widget buildImage(String image, int index) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 12),
-      //color: Colors.grey,
+      margin: EdgeInsets.symmetric(horizontal: 12,vertical: 8),
+      // color: Colors.grey,
+      // height: 100,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: CachedNetworkImageProvider(

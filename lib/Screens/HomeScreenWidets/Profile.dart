@@ -11,6 +11,7 @@ import '../../Shared/loading.dart';
 import '../components/SnackBar.dart';
 import '../components/storeList.dart';
 import 'Profile/Account.dart';
+import 'ProfileWidgets/DeliveryAddresses/Delivery_Address.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -172,6 +173,16 @@ class _ProfileState extends State<Profile> {
                     },
                     child: StoreList(
                         FontAwesomeIcons.solidUser, 'My Account', width)),
+                         GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const deliveryaddress()),
+                      );
+                    },
+                    child: StoreList(
+                        FontAwesomeIcons.locationDot, 'Saved Addresses', width)),
                 GestureDetector(
                     onTap: () {
                       Navigator.push(

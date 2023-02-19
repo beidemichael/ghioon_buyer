@@ -274,11 +274,95 @@ class Category {
 class CartItems {
   Product product;
   int quantity;
-  CartItems({required this.product, required this.quantity});
+  String sellerId;
+  CartItems(
+      {required this.product, required this.quantity, required this.sellerId});
 }
 
 class CompanyPromo {
   String image;
   String id;
   CompanyPromo({required this.image, required this.id});
+}
+
+class Addresses {
+  String userUid;
+  double longitude;
+  double latitude;
+  String information;
+  String name;
+  String documentId;
+  Addresses(
+      {required this.information,
+      required this.latitude,
+      required this.longitude,
+      required this.userUid,
+      required this.name,
+      required this.documentId});
+}
+
+class Orders {
+  List foodName;
+  List foodPrice;
+  List foodQuantity;
+  List foodImage;
+  double subTotal;
+
+  bool isTaken;
+  bool isDelivered;
+  bool isCancelled;
+  String userName;
+  String userPhone;
+  String userUid;
+  String userPic;
+  double longitude;
+  double latitude;
+  String information;
+  var created;
+  String orderNumber;
+  String loungeOrderNumber;
+  double serviceCharge;
+  double deliveryFee;
+  double tip;
+  double distance;
+
+  String documentId;
+  double carrierLatitude;
+  double carrierLongitude;
+  String carrierName;
+  String carrierImage;
+  String carrierPhone;
+  bool isBeingPrepared;
+
+  Orders({
+    required this.created,
+    required this.deliveryFee,
+    required this.distance,
+    required this.foodImage,
+    required this.foodName,
+    required this.foodPrice,
+    required this.foodQuantity,
+    required this.information,
+    required this.isCancelled,
+    required this.isDelivered,
+    required this.isTaken,
+    required this.latitude,
+    required this.longitude,
+    required this.loungeOrderNumber,
+    required this.orderNumber,
+    required this.serviceCharge,
+    required this.subTotal,
+    required this.tip,
+    required this.userName,
+    required this.userPhone,
+    required this.userPic,
+    required this.userUid,
+    required this.documentId,
+    required this.carrierLatitude,
+    required this.carrierLongitude,
+    required this.carrierPhone,
+    required this.isBeingPrepared,
+    required this.carrierImage,
+    required this.carrierName,
+  });
 }

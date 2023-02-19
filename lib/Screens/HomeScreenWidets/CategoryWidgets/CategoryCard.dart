@@ -3,6 +3,8 @@ import 'package:ghioon_buyer/Providers/AppInfo.dart';
 import 'package:provider/provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../Shared/customColors.dart';
+
 class CategoryCard extends StatefulWidget {
   String text;
 
@@ -22,7 +24,8 @@ class _CategoryCardState extends State<CategoryCard> {
       height: 80,
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(width: 1, color: Colors.grey.shade400),
+           border: Border.all(
+            width: 1, color: CustomColors().blue),
         borderRadius: BorderRadius.circular(15.0),
       ),
       child: Padding(
@@ -32,9 +35,9 @@ class _CategoryCardState extends State<CategoryCard> {
           children: [
             Text(
               widget.text,
-              style: const TextStyle(
+              style:  TextStyle(
                   fontSize: 25.0,
-                  color: Colors.black,
+                  color: CustomColors().darkBlue,
                   fontWeight: FontWeight.w500),
             ),
             Icon(

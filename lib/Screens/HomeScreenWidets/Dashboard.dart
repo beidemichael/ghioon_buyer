@@ -29,34 +29,36 @@ class _DashboardState extends State<Dashboard> {
     final products = Provider.of<List<Product>>(context);
     final search = Provider.of<SearchProvider>(context);
     return Scaffold(
-      body: Container(
-        height: ScreenSize().ScreenHeight(context),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20.0, 40, 20, 8),
-              child: GestureDetector(
-                  onTap: () {
-                    search.searchResults.clear();
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => ProductSearch(), //SearchScreen(),
-                      ),
-                    );
-                  },
-                  child: SearchBar()),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            HorizontalSlider(),
-            Carousel_Slider(), //  Carousel(),
-            Expanded(
-              child: products.length == 0
-                  ? EmptyScreen(context, 'No Products.')
-                  : ProductForGrid(),
-            ),
-          ],
+      body: SafeArea(
+        child: SizedBox(
+          height: ScreenSize().ScreenHeight(context),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20.0, 40, 20, 8),
+                child: GestureDetector(
+                    onTap: () {
+                      search.searchResults.clear();
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => ProductSearch(), //SearchScreen(),
+                        ),
+                      );
+                    },
+                    child: SearchBar()),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              HorizontalSlider(),
+              Carousel_Slider(), //  Carousel(),
+              Expanded(
+                child: products.length == 0
+                    ? EmptyScreen(context, 'No Products.')
+                    : ProductForGrid(),
+              ),
+            ],
+          ),
         ),
       ),
     );
