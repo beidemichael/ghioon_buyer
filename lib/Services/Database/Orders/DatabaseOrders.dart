@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../../../Models/models.dart';
-import '../../../Screens/HomeScreenWidets/ProfileWidgets/SnackBar.dart';
+import '../../../Screens/HomeScreenWidets/5,Profile/ProfileWidgets/SnackBar.dart';
 
 class DatabaseOrders {
   String? userUid;
@@ -18,6 +18,7 @@ class DatabaseOrders {
       List foodPrice,
       List foodQuantity,
       List foodImage,
+      List itemsDelivered,
 
       double subTotal,
       double serviceCharge,
@@ -56,6 +57,7 @@ class DatabaseOrders {
       'price': foodPrice,
       'quantity': foodQuantity,
       'images': foodImage,
+      'itemsDelivered':itemsDelivered,
       'subTotal': subTotal,
       'created': created,
       'isTaken': isTaken,
@@ -89,7 +91,7 @@ class DatabaseOrders {
       // 'userMessagingToken': userMessagingToken,
       'promoCode': promoCode
     }).then((result) {
-      snackBar(context, 'Order is Placed.', Colors.red, Colors.white);
+      snackBar(context, 'Order is Placed.', Colors.green, Colors.white);
       // orderConfirmation(context)
       print("Success!");
     });

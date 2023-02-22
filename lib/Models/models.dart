@@ -1,4 +1,4 @@
-import 'package:ghioon_buyer/Screens/HomeScreenWidets/Cart.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/1,Cart.dart';
 
 class UserAuth {
   final String uid;
@@ -365,4 +365,18 @@ class Orders {
     required this.carrierImage,
     required this.carrierName,
   });
+}
+class Promotion{
+    String image;
+    String video;
+    bool isImage;
+    String sellerUid;
+    String screenRealestate;
+    Promotion({
+      required this.image,
+      required this.video,
+      required this.isImage,
+      required this.sellerUid,
+      required this.screenRealestate,
+    });
 }

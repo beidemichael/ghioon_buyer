@@ -249,6 +249,6 @@ information, or delete it. To request to review, update, or delete your personal
 
 class AboutUsText {
   String p1 = '''
-Ghioon technology application software allows customers to rowse and purchase items from an online store. Our company primarily focus on buying and selling of goods and services by transmitting of data over an electronic network.
+Ghioon technology application software allows customers to browse and purchase items from an online store. Our company primarily focus on buying and selling of goods and services by transmitting of data over an electronic network.
 ''';
 }

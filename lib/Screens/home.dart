@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ghioon_buyer/Screens/HomeScreenWidets/Catagory.dart';
-import 'package:ghioon_buyer/Screens/HomeScreenWidets/Dashboard.dart';
-import 'package:ghioon_buyer/Screens/HomeScreenWidets/Profile.dart';
-import 'package:ghioon_buyer/Screens/HomeScreenWidets/Cart.dart';
-import 'package:ghioon_buyer/Screens/HomeScreenWidets/Promotion.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/2,Catagory.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,Dashboard.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/5,Profile.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/1,Cart.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/4,Promotion.dart';
 import 'package:ghioon_buyer/Shared/loading.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:provider/provider.dart';
@@ -103,12 +103,12 @@ class _HomeScreenState extends State<HomeScreen> {
           PageView(
             controller: _pageViewController,
             physics: const NeverScrollableScrollPhysics(),
-            children: const <Widget>[
-              Cart(),
-              CatagoryPage(),
-              Dashboard(),
-              Promotion(),
-              Profile(),
+            children:  <Widget>[
+              const Cart(),
+              const CatagoryPage(),
+              Dashboard(context: context),
+              const Promotion(),
+              const Profile(),
             ],
           ),
         ],
