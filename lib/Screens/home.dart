@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const Cart(),
               const CatagoryPage(),
               Dashboard(context: context),
-              const Promotion(),
+              const PromotionPage(),
               const Profile(),
             ],
           ),
