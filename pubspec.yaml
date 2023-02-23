@@ -38,13 +38,13 @@ dependencies:
   firebase_auth: ^4.2.5
   firebase_core: ^2.4.1
   firebase_storage: ^11.0.10
- 
   flutter:
     sdk: flutter
   flutter_datetime_picker: ^1.5.1
   flutter_launcher_icons: ^0.11.0
   flutter_native_splash: ^2.2.16
   geolocator: ^9.0.2
+  get: ^4.6.5 
   google_maps_flutter: ^2.2.3
   image_picker: ^0.8.6+1
   marquee_widget: ^1.2.0

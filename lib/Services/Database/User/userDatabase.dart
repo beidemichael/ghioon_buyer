@@ -21,14 +21,16 @@ class UserDatabaseService {
     }).toList();
   }
 
-  //orders lounges stream
   Stream<List<UserInformation>> get userInfo {
     print(userUid);
-
-    return userCollection
-        .where('userUid', isEqualTo: userUid)
-        .snapshots()
-        .map(_userInfoListFromSnapshot);
+    if (userUid == null) {
+      return Stream.value([]);
+    } else {
+      return userCollection
+          .where('userUid', isEqualTo: userUid)
+          .snapshots()
+          .map(_userInfoListFromSnapshot);
+    }
   }
 
   Future registerInformation(
@@ -54,7 +56,7 @@ class UserDatabaseService {
               'phoneNumber': phoneNumber,
               'image': '',
               'gender': gender,
-              'birthday':birthday
+              'birthday': birthday
             })
             .then((value) => print("Registration Info Added"))
             .catchError((error) => print("Failed to Register: $error"));
@@ -79,7 +81,7 @@ class UserDatabaseService {
       'phoneNumber': phoneNumber,
       'image': image,
       'gender': gender,
-      'birthday':birthday
+      'birthday': birthday
     });
   }
 }

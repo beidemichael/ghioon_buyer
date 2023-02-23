@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:ghioon_buyer/Models/models.dart';
 import 'package:ghioon_buyer/Providers/FeedbackProvider.dart';
 import 'package:ghioon_buyer/Providers/Order_Provider.dart';
@@ -101,25 +102,13 @@ void main() async {
   Firebase.apps;
 
   runApp(
-    MaterialApp(
+    GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: MultiProvider(
         providers: [
           ChangeNotifierProvider(
             create: (context) => AppInformation(),
           ),
-          // ChangeNotifierProvider(
-          //   create: (context) => RangeData(),
-          // ),
-          // ChangeNotifierProvider(
-          //   create: (context) => EditRangeData(),
-          // ),
-          // ChangeNotifierProvider(
-          //   create: (context) => EditProfileData(),
-          // ),
-          // ChangeNotifierProvider(
-          //   create: (context) => MapProvider(),
-          // ),
           ChangeNotifierProvider(
             create: (context) => CartProvider(),
           ),
@@ -132,11 +121,19 @@ void main() async {
           ChangeNotifierProvider(
             create: (context) => FeedbackData(),
           ),
-          StreamProvider<List<Addresses>>.value(
+          StreamProvider<List<UserInformation>>(
+            create: (_) {
+              final userUid = FirebaseAuth.instance.currentUser?.uid;
+              return UserDatabaseService(userUid: userUid).userInfo;
+            },
             initialData: [],
-            value:
-                DatabaseAddress(userUid: FirebaseAuth.instance.currentUser!.uid)
-                    .address,
+          ),
+          StreamProvider<List<Addresses>>(
+            create: (_) {
+              final userUid = FirebaseAuth.instance.currentUser?.uid;
+              return DatabaseAddress(userUid: userUid).address;
+            },
+            initialData: [],
           ),
           StreamProvider<List<Product>>.value(
             initialData: [],
@@ -157,23 +154,6 @@ void main() async {
           ChangeNotifierProvider(
             create: (context) => RangeData(),
           ),
-
-          // StreamProvider<List<Collection>>.value(
-          //   initialData: [],
-          //   value: ReadCollectionDatabaseService(
-          //           userUid: FirebaseAuth.instance.currentUser!.uid)
-          //       .readCollection,
-          // ),
-          StreamProvider<List<UserInformation>>.value(
-            initialData: [],
-            value: UserDatabaseService(
-                    userUid: FirebaseAuth.instance.currentUser!.uid)
-                .userInfo,
-          ),
-          // StreamProvider<List<Controller>>.value(
-          //   initialData: [],
-          //   value: ControllerDatabaseService().controller,
-          // ),
         ],
         child: const MyApp(),
       ),

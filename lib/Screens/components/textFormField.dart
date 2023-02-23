@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
+import 'package:ghioon_buyer/Shared/dimensions.dart';
 import 'package:provider/provider.dart';
-
 
 Widget TextFormFieldWithIcon(String label, String hintText,
     TextEditingController control, IconData icon) {
@@ -112,8 +112,8 @@ Widget TextFormFieldWithOutLabel(
           decoration: InputDecoration(
             hintText: hintText,
             floatingLabelBehavior: FloatingLabelBehavior.always,
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            contentPadding: EdgeInsets.symmetric(
+                horizontal: 20, vertical: Dimensions.width15),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
               borderSide:

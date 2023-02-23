@@ -35,6 +35,7 @@ class _CartState extends State<Cart> {
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
     final appInformation = Provider.of<AppInformation>(context);
+
     void whenChooseLocationTapped() {
       showModalBottomSheet(
           backgroundColor: Colors.transparent,
@@ -220,8 +221,9 @@ class _CartState extends State<Cart> {
                     onTap: () {
                       if (cart.cartList.isNotEmpty) {
                         whenChooseLocationTapped();
-                      }else{
-                        snackBar(context, 'Cart is empty', Colors.white, CustomColors().blue);
+                      } else {
+                        snackBar(context, 'Cart is empty', Colors.white,
+                            CustomColors().blue);
                       }
                     },
                     child: Row(

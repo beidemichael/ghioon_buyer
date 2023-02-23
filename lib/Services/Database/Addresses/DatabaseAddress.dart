@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../Models/models.dart';
 
-
 class DatabaseAddress {
   String? userUid;
   DatabaseAddress({this.userUid});
@@ -24,14 +23,18 @@ class DatabaseAddress {
 
   //orders lounges stream
   Stream<List<Addresses>> get address {
-    return addressCollection
-        .where('userUid', isEqualTo: userUid)
-        .snapshots()
-        .map(_adressListFromSnapshot);
+    if (userUid == null) {
+      return Stream.value([]);
+    } else {
+      return addressCollection
+          .where('userUid', isEqualTo: userUid)
+          .snapshots()
+          .map(_adressListFromSnapshot);
+    }
   }
 
   Future removeAdress(id) async {
-    return await  addressCollection.doc(id).delete();
+    return await addressCollection.doc(id).delete();
   }
 
   Future addAdress(

@@ -26,6 +26,7 @@ class _ChooseDeliveryLocationState extends State<ChooseDeliveryLocation> {
     final address = Provider.of<List<Addresses>>(context);
     final order = Provider.of<CartProvider>(context);
     final userInfo = Provider.of<List<UserInformation>>(context);
+    print(userInfo.length);
     // print(userInfo[0].userName);
 
     return userInfo.isEmpty

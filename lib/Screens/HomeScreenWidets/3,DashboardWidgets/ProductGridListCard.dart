@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Models/models.dart';
 import 'package:ghioon_buyer/Shared/constants.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
+import 'package:ghioon_buyer/Shared/dimensions.dart';
 
 class ProductListCard extends StatelessWidget {
   const ProductListCard({Key? key, required this.product}) : super(key: key);
@@ -78,7 +79,7 @@ class ProductListCard extends StatelessWidget {
                     product.name,
                     style: TextStyle(
                         fontFamily: 'Inter',
-                        fontSize: 18,
+                        fontSize: Dimensions.font16,
                         color: CustomColors().blue,
                         fontWeight: FontWeight.w700),
                   ),
