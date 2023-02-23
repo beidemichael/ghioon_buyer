@@ -19,6 +19,7 @@ class DatabaseOrders {
       List foodQuantity,
       List foodImage,
       List itemsDelivered,
+      List sellerId,
 
       double subTotal,
       double serviceCharge,
@@ -58,6 +59,7 @@ class DatabaseOrders {
       'quantity': foodQuantity,
       'images': foodImage,
       'itemsDelivered':itemsDelivered,
+      'sellerId':sellerId,
       'subTotal': subTotal,
       'created': created,
       'isTaken': isTaken,

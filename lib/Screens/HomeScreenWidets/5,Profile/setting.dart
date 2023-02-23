@@ -121,14 +121,14 @@ class _ProfileSettingState extends State<ProfileSetting> {
                 );
               },
               child: StoreList(FontAwesomeIcons.info, 'About Us', width)),
-          GestureDetector(
-              onTap: () async {
-                await FirebaseAuth.instance.signOut();
-                Navigator.of(context).pop();
-              },
-              child: StoreList(
-                  FontAwesomeIcons.rightFromBracket, 'Logout', width)),
-        ],
+        //   GestureDetector(
+        //       onTap: () async {
+        //         await FirebaseAuth.instance.signOut();
+        //         Navigator.of(context).pop();
+        //       },
+        //       child: StoreList(
+        //           FontAwesomeIcons.rightFromBracket, 'Logout', width)),
+        ],                                                                    
       ),
     );
   }

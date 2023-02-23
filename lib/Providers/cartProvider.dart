@@ -83,6 +83,7 @@ class CartProvider with ChangeNotifier {
         foodQuantity,
         foodImage,
         itemsDelivered,
+        sellerId,
         total,
         total * 0.05,
         15,

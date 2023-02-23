@@ -135,7 +135,7 @@ void main() async {
           StreamProvider<List<Addresses>>.value(
             initialData: [],
             value:
-                DatabaseAddress(userUid: FirebaseAuth.instance.currentUser?.uid)
+                DatabaseAddress(userUid: FirebaseAuth.instance.currentUser!.uid)
                     .address,
           ),
           StreamProvider<List<Product>>.value(
@@ -167,7 +167,7 @@ void main() async {
           StreamProvider<List<UserInformation>>.value(
             initialData: [],
             value: UserDatabaseService(
-                    userUid: FirebaseAuth.instance.currentUser?.uid)
+                    userUid: FirebaseAuth.instance.currentUser!.uid)
                 .userInfo,
           ),
           // StreamProvider<List<Controller>>.value(

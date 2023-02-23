@@ -25,6 +25,7 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     final userInfo = Provider.of<List<UserInformation>>(context);
     double width = MediaQuery.of(context).size.width;
+    // print(userInfo[0].userName);
     return userInfo.isEmpty
         ? Loading()
         : Scaffold(
