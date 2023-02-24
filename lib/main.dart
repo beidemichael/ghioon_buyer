@@ -135,22 +135,32 @@ void main() async {
             },
             initialData: [],
           ),
-          StreamProvider<List<Product>>.value(
+          // StreamProvider<List<Product>>.value(
+          //   initialData: [],
+          //   value: ReadProductDatabaseService().readProduct,
+          // ),
+
+          StreamProvider<List<Product>>(
+            create: (_) {
+              return ReadProductDatabaseService().readProduct;
+            },
             initialData: [],
-            value: ReadProductDatabaseService().readProduct,
           ),
-          StreamProvider<List<Category>>.value(
-            initialData: [],
-            value: ReadCategoryDatabaseService().readCategory,
-          ),
-          StreamProvider<List<Promotion>>.value(
-            initialData: [],
-            value: DatabasePromotion().promotions,
-          ),
-          StreamProvider<List<CompanyPromo>>.value(
-            initialData: [],
-            value: ReadCompanyPromoService().readPromo,
-          ),
+          StreamProvider<List<Category>>(
+              initialData: [],
+              create: (_) {
+                return ReadCategoryDatabaseService().readCategory;
+              }),
+          StreamProvider<List<Promotion>>(
+              initialData: [],
+              create: (_) {
+                return DatabasePromotion().promotions;
+              }),
+          StreamProvider<List<CompanyPromo>>(
+              initialData: [],
+              create: (_) {
+                return ReadCompanyPromoService().readPromo;
+              }),
           ChangeNotifierProvider(
             create: (context) => RangeData(),
           ),
