@@ -7,11 +7,14 @@ import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,Dashboard.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/5,Profile.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/1,Cart.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/4,Promotion.dart';
+import 'package:ghioon_buyer/Screens/update/forced_update.dart';
+import 'package:ghioon_buyer/Screens/update/optional_update.dart';
 import 'package:ghioon_buyer/Shared/loading.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../../Shared/customColors.dart';
+import '../Models/models.dart';
 import '../Providers/AppInfo.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -26,6 +29,32 @@ class _HomeScreenState extends State<HomeScreen> {
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   int activePage = 2;
   int page = 2;
+   ///////////////////
+  int netVersion = 0;
+  /////////////////////////// App version
+  int appVersion = 1;
+  //////////////////////////  App version
+  ///
+  optionalUpdateActivator(BuildContext context, netVersionInput) {
+    if (netVersionInput == 3 || netVersionInput == 4) {
+      OptionalUpdate alert = OptionalUpdate();
+
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return alert;
+        },
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 4), () {
+      optionalUpdateActivator(context, netVersion);
+    });
+  }
   @override
   void dispose() {
     _pageViewController.dispose();
@@ -36,7 +65,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final appInformation = Provider.of<AppInformation>(context);
 
-    return Scaffold(
+    final controller = Provider.of<List<VersionController>>(context);
+    if (controller.isNotEmpty) {
+      netVersion = controller[0].sellerVersion - appVersion;
+    }
+
+    return controller.isEmpty
+        ? Loading()
+        : Scaffold(
       backgroundColor: Colors.white,
       bottomNavigationBar: CurvedNavigationBar(
         index: 2,
@@ -111,6 +147,10 @@ class _HomeScreenState extends State<HomeScreen> {
               const Profile(),
             ],
           ),
+          Visibility(
+                  visible: netVersion > 4,
+                  child: ForcedUpdate(),
+                ),
         ],
       ),
     );

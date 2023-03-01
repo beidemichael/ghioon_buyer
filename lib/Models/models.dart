@@ -380,3 +380,11 @@ class Promotion{
       required this.screenRealestate,
     });
 }
+class VersionController {
+  int sellerVersion;
+  String documentId;
+  VersionController({
+    required this.sellerVersion,
+    required this.documentId,
+  });
+}

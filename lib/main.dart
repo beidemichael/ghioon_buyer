@@ -92,6 +92,7 @@ import 'Providers/AppInfo.dart';
 import 'Screens/SignIn/SignInLogic/wrapper.dart';
 import 'Services/Database/Addresses/DatabaseAddress.dart';
 import 'Services/Database/Category/readCategory.dart';
+import 'Services/Database/Controller/Controller.dart';
 import 'Services/Database/Product/readProduct.dart';
 import 'Services/Database/User/userDatabase.dart';
 import 'Services/PhoneAuth.dart';
@@ -156,6 +157,10 @@ void main() async {
               create: (_) {
                 return DatabasePromotion().promotions;
               }),
+          StreamProvider<List<VersionController>>.value(
+            initialData: [],
+            value: ControllerDatabaseService().controller,
+          ),
           StreamProvider<List<CompanyPromo>>(
               initialData: [],
               create: (_) {
