@@ -15,18 +15,18 @@ class ReadProductDatabaseService {
         productId: (doc.data() as dynamic)['productId'] ?? '',
         name: (doc.data() as dynamic)['name'] ?? '',
         description: (doc.data() as dynamic)['description'] ?? '',
-        fixed: (doc.data() as dynamic)['fixed'] ?? '',
-        price: (doc.data() as dynamic)['price'] ?? '',
-        rangeFrom: (doc.data() as dynamic)['rangeFrom'] ?? '',
-        rangeTo: (doc.data() as dynamic)['rangeTo'] ?? '',
+        fixed: (doc.data() as dynamic)['fixed'] ?? false,
+        price: (doc.data() as dynamic)['price'] ?? [],
+        rangeFrom: (doc.data() as dynamic)['rangeFrom'] ?? [],
+        rangeTo: (doc.data() as dynamic)['rangeTo'] ?? [],
         Product_Type: (doc.data() as dynamic)['Product_Type'] ?? '',
         Product_collection: (doc.data() as dynamic)['Product_collection'] ?? '',
-        rating: (doc.data() as dynamic)['rating'] ?? '',
+        rating: (doc.data() as dynamic)['rating'] ?? 0.0,
         video: (doc.data() as dynamic)['video'] ?? '',
         category: (doc.data() as dynamic)['category'] ?? '',
-        image: (doc.data() as dynamic)['image'] ?? '',
-        inStock: (doc.data() as dynamic)['isStock'] ?? '',
-        quantity: (doc.data() as dynamic)['quantity'] ?? '',
+        image: (doc.data() as dynamic)['image'] ?? [],
+        inStock: (doc.data() as dynamic)['isStock'] ?? false,
+        quantity: (doc.data() as dynamic)['quantity'] ?? 0,
         userUid: (doc.data() as dynamic)['userUid'] ?? '',
         barcode: (doc.data() as dynamic)['barcode'] ?? '',
         documentId: doc.reference.id,
@@ -64,7 +64,7 @@ class ReadProductDatabaseService {
         productId: (doc.data() as dynamic)['productId'] ?? '',
         name: (doc.data() as dynamic)['name'] ?? '',
         description: (doc.data() as dynamic)['description'] ?? '',
-        fixed: (doc.data() as dynamic)['fixed'] ?? '',
+        fixed: (doc.data() as dynamic)['fixed'] ?? false,
         price: (doc.data() as dynamic)['price'] ?? '',
         rangeFrom: (doc.data() as dynamic)['rangeFrom'] ?? '',
         rangeTo: (doc.data() as dynamic)['rangeTo'] ?? '',
@@ -74,7 +74,7 @@ class ReadProductDatabaseService {
         video: (doc.data() as dynamic)['video'] ?? '',
         category: (doc.data() as dynamic)['category'] ?? '',
         image: (doc.data() as dynamic)['image'] ?? '',
-        inStock: (doc.data() as dynamic)['isStock'] ?? '',
+        inStock: (doc.data() as dynamic)['isStock'] ?? false,
         quantity: (doc.data() as dynamic)['quantity'] ?? '',
         barcode: (doc.data() as dynamic)['barcode'] ?? '',
         documentId: doc.reference.id,
@@ -88,5 +88,18 @@ class ReadProductDatabaseService {
         .where('barcode', isEqualTo: barcode)
         .snapshots()
         .map(_productBarListFromSnapshot);
+  }
+
+  Future addUserRead(
+    String userName,
+    String userUid,
+    var time,
+    String documentId
+  ) async {
+    return await productCollection.doc(documentId).update({
+      'viewCountUserName': FieldValue.arrayUnion([userName]),
+      'viewCountUserUid': FieldValue.arrayUnion([userUid]),
+      'viewCountTime': FieldValue.arrayUnion([time]),
+    });
   }
 }

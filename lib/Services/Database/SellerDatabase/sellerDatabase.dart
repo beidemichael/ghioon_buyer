@@ -50,4 +50,26 @@ class SellerDatabaseService {
         .snapshots()
         .map(_userInfoListFromSnapshot);
   }
+
+  Future<bool> getOnline(String sellerId) async {
+    DocumentReference documentReference = sellersCollection.doc(sellerId);
+    bool online = false;
+    await documentReference.get().then((snapshot) {
+      online = (snapshot.data() as dynamic)['online'] ?? false;
+      // online = snapshot.data['specie'].toString();
+    });
+    return online;
+  }
+   Future addUserRead(
+    String userName,
+    String userUid,
+    var time,
+    String documentId
+  ) async {
+    return await sellersCollection.doc(documentId).update({
+      'viewCountUserName': FieldValue.arrayUnion([userName]),
+      'viewCountUserUid': FieldValue.arrayUnion([userUid]),
+      'viewCountTime': FieldValue.arrayUnion([time]),
+    });
+  }
 }
