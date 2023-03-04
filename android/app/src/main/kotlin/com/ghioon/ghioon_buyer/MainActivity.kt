@@ -1,4 +1,4 @@
-package com.example.ghioon_buyer
+package com.ghioon.ghioon_buyer
 
 import io.flutter.embedding.android.FlutterActivity
 

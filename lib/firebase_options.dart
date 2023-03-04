@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDM4V9hvxC8IfEr8aGK1l87h6YJnAoD8PM',
-    appId: '1:69046775842:android:e4cfdc5a74109c4f7c9a7b',
+    appId: '1:69046775842:android:2ae95ca094328de57c9a7b',
     messagingSenderId: '69046775842',
     projectId: 'ghioon-d8894',
     storageBucket: 'ghioon-d8894.appspot.com',
@@ -63,7 +63,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAZ4imgxZRx0A3EbgN3zS-vwggGBb32fAQ',
-    appId: '1:69046775842:ios:aea79d9ef0a0faef7c9a7b',
+    appId: '1:69046775842:ios:102f14346e03cd747c9a7b',
     messagingSenderId: '69046775842',
     projectId: 'ghioon-d8894',
     storageBucket: 'ghioon-d8894.appspot.com',
@@ -74,7 +74,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyAZ4imgxZRx0A3EbgN3zS-vwggGBb32fAQ',
-    appId: '1:69046775842:ios:aea79d9ef0a0faef7c9a7b',
+    appId: '1:69046775842:ios:102f14346e03cd747c9a7b',
     messagingSenderId: '69046775842',
     projectId: 'ghioon-d8894',
     storageBucket: 'ghioon-d8894.appspot.com',
