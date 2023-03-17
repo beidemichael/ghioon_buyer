@@ -14,6 +14,8 @@ class SellersUnderCategoryProductListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final TextStyle textStyle = Theme.of(context).textTheme.;
+
+    print("sellerImage: "+seller.image);
     return seller == null
         ? Loading()
         : Padding(
@@ -45,7 +47,7 @@ class SellersUnderCategoryProductListCard extends StatelessWidget {
                       Container(
                         width: ScreenSize().ScreenWidth(context) / 2,
                         height: ScreenSize().ScreenWidth(context) / 2.8,
-                        child: seller.image != ''
+                        child: seller.profileImages.isNotEmpty
                             ? ClipRRect(
                                 borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(20.0),
@@ -54,7 +56,7 @@ class SellersUnderCategoryProductListCard extends StatelessWidget {
                                     topRight: Radius.circular(10.0)),
                                 child: CachedNetworkImage(
                                   fit: BoxFit.cover,
-                                  imageUrl: seller.image,
+                                  imageUrl: seller.profileImages[0],
                                   progressIndicatorBuilder:
                                       (context, url, downloadProgress) =>
                                           Center(

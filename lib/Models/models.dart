@@ -47,6 +47,7 @@ class SellerInformation {
   List profileImages;
   String profileVideo;
   bool notification;
+  List viewCountTime;
   SellerInformation({
     required this.GhioonId,
     required this.userName,
@@ -69,6 +70,7 @@ class SellerInformation {
     required this.profileImages,
     required this.profileVideo,
     required this.notification,
+    required this.viewCountTime,
   });
 }
 

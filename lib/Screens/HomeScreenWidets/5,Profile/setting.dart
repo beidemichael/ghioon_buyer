@@ -7,7 +7,7 @@ import 'package:ghioon_buyer/Screens/HomeScreenWidets/5,Profile/SettingPages/Fee
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/5,Profile/SettingPages/aboutUs.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/5,Profile/SettingPages/privacy_terms.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
-
+import 'package:launch_review/launch_review.dart';
 import 'package:provider/provider.dart';
 
 import '../../components/storeList.dart';
@@ -110,7 +110,7 @@ class _ProfileSettingState extends State<ProfileSetting> {
               child: StoreList(FontAwesomeIcons.solidFile, 'Feedback', width)),
           GestureDetector(
               onTap: () {
-                // link to playstore
+                 LaunchReview.launch(androidAppId: "com.ghioon.ghioon_buyer");
               },
               child: StoreList(FontAwesomeIcons.arrowsSpin, 'Upgrade', width)),
           GestureDetector(

@@ -31,6 +31,7 @@ class SellerDatabaseService {
         image: (doc.data() as dynamic)['image'] ?? '',
         profileImages: (doc.data() as dynamic)['profileImages'] ?? [],
         profileVideo: (doc.data() as dynamic)['profileVideo'] ?? '',
+        viewCountTime: (doc.data() as dynamic)['viewCountTime'] ?? [],
         notification: (doc.data() as dynamic)['notification'] ?? false,
       );
     }).toList();
@@ -60,12 +61,9 @@ class SellerDatabaseService {
     });
     return online;
   }
-   Future addUserRead(
-    String userName,
-    String userUid,
-    var time,
-    String documentId
-  ) async {
+
+  Future addUserRead(
+      String userName, String userUid, var time, String documentId) async {
     return await sellersCollection.doc(documentId).update({
       'viewCountUserName': FieldValue.arrayUnion([userName]),
       'viewCountUserUid': FieldValue.arrayUnion([userUid]),

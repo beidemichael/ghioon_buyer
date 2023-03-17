@@ -11,8 +11,6 @@ class DatabaseOrders {
   final CollectionReference orderCollection =
       FirebaseFirestore.instance.collection('Orders');
 
- 
-
   Future addOrderData(
       List foodName,
       List foodPrice,
@@ -20,34 +18,25 @@ class DatabaseOrders {
       List foodImage,
       List itemsDelivered,
       List sellerId,
-
       double subTotal,
       double serviceCharge,
       int deliveryFee,
       double tip,
       double distance,
       String promoCode,
-
-      bool isTaken,
-      bool isDelivered,
-      bool isCancelled,
-
+      List isTaken,
+      List isDelivered,
+      List isCancelled,
       String userName,
       String userPhone,
       String userUid,
       String userPic,
-
-     
       double longitude,
       double latitude,
       String information,
-
       DateTime created,
       String orderNumber,
-
       bool cash,
-      
-      
       BuildContext context
       // String loungeMessagingToken,
       // String userMessagingToken,
@@ -58,8 +47,8 @@ class DatabaseOrders {
       'price': foodPrice,
       'quantity': foodQuantity,
       'images': foodImage,
-      'itemsDelivered':itemsDelivered,
-      'sellerId':sellerId,
+      'itemsDelivered': itemsDelivered,
+      'sellerId': sellerId,
       'subTotal': subTotal,
       'created': created,
       'isTaken': isTaken,
@@ -91,7 +80,9 @@ class DatabaseOrders {
       'carrierLongitude': 0.0,
       // 'loungeMessagingToken': loungeMessagingToken,
       // 'userMessagingToken': userMessagingToken,
-      'promoCode': promoCode
+      'promoCode': promoCode,
+      'completed': false,
+      'cancelled': false,
     }).then((result) {
       snackBar(context, 'Order is Placed.', Colors.green, Colors.white);
       // orderConfirmation(context)

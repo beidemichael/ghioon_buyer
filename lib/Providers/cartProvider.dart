@@ -18,6 +18,9 @@ class CartProvider with ChangeNotifier {
   List foodQuantity = [];
   List sellerId = [];
   List itemsDelivered = [];
+  List isTaken = [];
+  List isDelivered = [];
+  List isCancelled = [];
   var created;
   double longitude = 0.0;
   double latitude = 0.0;
@@ -76,6 +79,9 @@ class CartProvider with ChangeNotifier {
       foodImage.add(cartList[i].product.image[0]);
       sellerId.add(cartList[i].product.userUid);
       itemsDelivered.add(false);
+      isTaken.add(false);
+      isDelivered.add(false);
+      isCancelled.add(false);
     }
     await DatabaseOrders().addOrderData(
         foodName,
@@ -90,9 +96,9 @@ class CartProvider with ChangeNotifier {
         0,
         0,
         promoCode.text,
-        false,
-        false,
-        false,
+        isTaken,
+        isDelivered,
+        isCancelled,
         userName,
         userPhone,
         userUid,

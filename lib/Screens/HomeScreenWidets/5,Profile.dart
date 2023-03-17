@@ -12,6 +12,7 @@ import '../components/SnackBar.dart';
 import '../components/storeList.dart';
 import '5,Profile/Account.dart';
 import '5,Profile/ProfileWidgets/DeliveryAddresses/Delivery_Address.dart';
+import '5,Profile/SettingPages/LogOut.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -21,6 +22,20 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  _showLogoutDialog(BuildContext context) {
+    VoidCallback okCallBack = () => {
+          // Navigator.of(context).pop(),
+        };
+    LogOutMessage alert = LogOutMessage();
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final userInfo = Provider.of<List<UserInformation>>(context);
@@ -174,7 +189,7 @@ class _ProfileState extends State<Profile> {
                     },
                     child: StoreList(
                         FontAwesomeIcons.solidUser, 'My Account', width)),
-                         GestureDetector(
+                GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
@@ -182,8 +197,8 @@ class _ProfileState extends State<Profile> {
                             builder: (context) => const deliveryaddress()),
                       );
                     },
-                    child: StoreList(
-                        FontAwesomeIcons.locationDot, 'Saved Addresses', width)),
+                    child: StoreList(FontAwesomeIcons.locationDot,
+                        'Saved Addresses', width)),
                 GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -206,8 +221,7 @@ class _ProfileState extends State<Profile> {
                         FontAwesomeIcons.solidCircleQuestion, 'About', width)),
                 GestureDetector(
                     onTap: () async {
-                      await FirebaseAuth.instance.signOut();
-                      // Navigator.of(context).pop();
+                      _showLogoutDialog(context);
                     },
                     child: StoreList(
                         FontAwesomeIcons.rightFromBracket, 'Logout', width)),

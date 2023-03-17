@@ -21,7 +21,7 @@ class CollectionListGrid extends StatelessWidget {
       child: ListView.builder(
         physics: const BouncingScrollPhysics(
             parent: AlwaysScrollableScrollPhysics()),
-        itemCount: sellers[0].collections.length,
+        itemCount: sellers[0].collection_description.length,
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
