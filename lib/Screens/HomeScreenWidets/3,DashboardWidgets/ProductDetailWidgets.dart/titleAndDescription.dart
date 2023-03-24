@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Providers/Order_Provider.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,DashboardWidgets/ProductDetailWidgets.dart/3,inventoryQty.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
+import 'package:ghioon_buyer/Shared/dimensions.dart';
 import 'package:syncfusion_flutter_barcodes/barcodes.dart';
 import 'package:provider/provider.dart';
 import '../../../../../../Models/models.dart';
@@ -44,7 +45,7 @@ class _TitleAndDescriptionState extends State<TitleAndDescription> {
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Quantity(quantity: order.quantity),
+                    // Quantity(quantity: order.quantity),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
                       child: Column(
@@ -56,9 +57,15 @@ class _TitleAndDescriptionState extends State<TitleAndDescription> {
                                   fontFamily: 'Inter',
                                   color: CustomColors().grey,
                                   fontWeight: FontWeight.w700)),
-                          Text('ETB ' + widget.product.price[0].toString(),
+                          // Text('ETB ' + widget.product.price[0].toString(),
+                          //     style: TextStyle(
+                          //         fontSize: 30.0,
+                          //         fontFamily: 'Inter',
+                          //         color: CustomColors().black,
+                          //         fontWeight: FontWeight.bold)),
+                          Text('Negotiable ',
                               style: TextStyle(
-                                  fontSize: 30.0,
+                                  fontSize: Dimensions.font23,
                                   fontFamily: 'Inter',
                                   color: CustomColors().black,
                                   fontWeight: FontWeight.bold)),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Providers/search.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,DashboardWidgets/ProductGridListCard.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,DashboardWidgets/productDetail.dart';
+import 'package:ghioon_buyer/Services/Database/SellerDatabase/sellerDatabase.dart';
 import 'package:ghioon_buyer/Shared/constants.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
 import 'package:provider/provider.dart';
@@ -89,12 +90,15 @@ class SearchScreen extends StatelessWidget {
                   //   title: Text(searchData.searchResults[index].name),
                   // );
                   return GestureDetector(
-                    onTap: () {
+                    onTap: () async {
+                      var phone = await SellerDatabaseService().getSellerPhone(
+                          searchData.searchResults[index].userUid);
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => ProductDetail(
                                   product: searchData.searchResults[index],
+                                  phone: phone,
                                 )),
                       );
                     },

@@ -7,6 +7,7 @@ import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,DashboardWidgets/Product
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,DashboardWidgets/productDetail.dart';
 import 'package:ghioon_buyer/Services/Database/Product/readProduct.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ghioon_buyer/Services/Database/SellerDatabase/sellerDatabase.dart';
 import 'package:ghioon_buyer/Shared/constants.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
 import 'package:provider/provider.dart';
@@ -180,13 +181,14 @@ class searchResultWidget extends StatelessWidget {
             color: appInformation.appColor,
             size: 25,
           ),
-          onTap: () {
+          onTap: () async {
+            var phone = await SellerDatabaseService()
+                .getSellerPhone(Product.fromMap(product).userUid);
             Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) => ProductDetail(
-                        product: Product.fromMap(product),
-                      )),
+                      product: Product.fromMap(product), phone: phone)),
             );
           },
         ),

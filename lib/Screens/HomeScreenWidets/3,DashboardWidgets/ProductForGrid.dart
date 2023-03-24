@@ -48,19 +48,21 @@ class ProductForGrid extends StatelessWidget {
                             if (await SellerDatabaseService()
                                     .getOnline(products[index].userUid) ==
                                 true) {
+                              var phone = await SellerDatabaseService()
+                                  .getSellerPhone(products[index].userUid);
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => ProductDetail(
                                           product: products[index],
+                                          phone: phone,
                                         )),
                               );
                               await ReadProductDatabaseService().addUserRead(
                                   userInfo[0].userName,
                                   userInfo[0].userUid,
                                   Timestamp.now(),
-                                  products[index].documentId
-                                  );
+                                  products[index].documentId);
                             } else {
                               snackBar(context, 'Product not available.',
                                   CustomColors().blue, Colors.white);

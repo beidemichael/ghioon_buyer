@@ -62,6 +62,16 @@ class SellerDatabaseService {
     return online;
   }
 
+  Future<String> getSellerPhone(String sellerId) async {
+    DocumentReference documentReference = sellersCollection.doc(sellerId);
+    String phone = "0";
+    await documentReference.get().then((snapshot) {
+      phone = (snapshot.data() as dynamic)['phoneNumber'] ?? false;
+      // online = snapshot.data['specie'].toString();
+    });
+    return phone;
+  }
+
   Future addUserRead(
       String userName, String userUid, var time, String documentId) async {
     return await sellersCollection.doc(documentId).update({

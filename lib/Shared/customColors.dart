@@ -10,4 +10,5 @@ class CustomColors {
   Color red = Color.fromARGB(255, 255, 0, 0);
   Color grey = Color.fromARGB(126, 102, 102, 102);
   Color lightgrey = Color.fromARGB(125, 200, 199, 199);
+  Color green = Color.fromARGB(255, 13, 173, 74);
 }
