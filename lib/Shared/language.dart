@@ -2,7 +2,7 @@ class Language {
   // main pages
   List<String> search = ["Search Product", "ምርትን ይፈልጉ"];
   List<String> categories = ["categories", "ምድቦች"];
-  List<String> promotion = ["Promotion", "ማስተዋወቂያ"];
+  List<String> promotion = ["Promotion", "ማስታወቂያ"];
   List<String> profile = ["Profile", "መገለጫ"];
   List<String> cart = ["Cart", "ዘምቢል"];
 //Words in profile
@@ -43,6 +43,19 @@ class Language {
   // words in cart
   List<String> total = ["Total", "ጠቅላላ"];
   //words in search
-
   List<String> No_products = ["No products found", "ምንም ምርቶች አልተገኙም"];
+
+  //words in sign in page
+  List<String> enter_phone = ["Enter Your Phone", "ስልክህን አስገባ"];
+  List<String> receive6digit = [
+    "You’ll receive 6 digit code for phone number verification",
+    "ለስልክ ቁጥር ማረጋገጫ ባለ 6 አሃዝ ኮድ ይደርስዎታል"
+  ];
+  List<String> enterOtp = [
+    "Please enter the activation code we have sent via SMS to: ",
+    "እባኮትን በኤስኤምኤስ የላክነውን ኮድ ያስገቡ፡ "
+  ];
+  List<String> phonenumber = ["phonenumber", "ስልክ ቁጥር"];
+  List<String> submit = ["Submit", "አስገባ"];
+  List<String> login = ["Login", "ግባ"];
 }

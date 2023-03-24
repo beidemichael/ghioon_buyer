@@ -3,6 +3,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class LanguageProvider extends ChangeNotifier {
   int LanguageIndex = 0;
+  List<String> languagesList = [
+    'English',
+    'አማርኛ',
+  ];
 
   //int get LanguageIndex => _LanguageIndex;
 

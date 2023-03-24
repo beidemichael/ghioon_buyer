@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Providers/search.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,DashboardWidgets/ProductGridListCard.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,DashboardWidgets/productDetail.dart';
@@ -17,6 +18,7 @@ class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final search = Provider.of<SearchProvider>(context);
+    var languageprov = Provider.of<LanguageProvider>(context);
 
     return Scaffold(
       // appBar: AppBar(
