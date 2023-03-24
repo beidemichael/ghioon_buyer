@@ -4,11 +4,13 @@ import 'package:get/get.dart';
 import 'package:ghioon_buyer/Models/models.dart';
 import 'package:ghioon_buyer/Providers/Order_Provider.dart';
 import 'package:ghioon_buyer/Providers/cartProvider.dart';
+import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,DashboardWidgets/ProductDetailWidgets.dart/images.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,DashboardWidgets/ProductDetailWidgets.dart/titleAndDescription.dart';
 import 'package:ghioon_buyer/Screens/components/SnackBar.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
 import 'package:ghioon_buyer/Shared/dimensions.dart';
+import 'package:ghioon_buyer/Shared/language.dart';
 import 'package:provider/provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -29,6 +31,7 @@ class _ProductDetailState extends State<ProductDetail> {
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
     final order = Provider.of<Order_Provider>(context);
+    var languageprov = Provider.of<LanguageProvider>(context);
     return Scaffold(
         backgroundColor: Colors.white,
         body: Column(
@@ -157,14 +160,20 @@ class _ProductDetailState extends State<ProductDetail> {
                           widget: widget,
                           scheme: 'SMS',
                           icon: FontAwesomeIcons.commentSms,
-                          title: "Send SMS",
+                          title: Language().sms[languageprov.LanguageIndex],
                         ),
                         ContactButtons(
                           widget: widget,
                           scheme: 'tel',
                           icon: FontAwesomeIcons.phone,
-                          title: "Call Seller",
-                        )
+                          title: Language().call[languageprov.LanguageIndex],
+                        ),
+                        // ContactButtons(
+                        //   widget: widget,
+                        //   scheme: 'whatsapp',
+                        //   icon: FontAwesomeIcons.phone,
+                        //   title: "Send",
+                        // )
                       ],
                     ),
                   )
@@ -195,7 +204,7 @@ class ContactButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+        padding: const EdgeInsets.only(left: 8.0, right: 4.0),
         child: Container(
           // width: ScreenSize().ScreenWidth(context) * 0.45,
           height: ScreenSize().ScreenWidth(context) * 0.15,
@@ -222,7 +231,7 @@ class ContactButtons extends StatelessWidget {
                 try {
                   print("Launch URL: whatsapp://send?phone=");
                   if (!await launchUrl(
-                      Uri.parse("whatsapp://send?phone=+251940679413"),
+                      Uri.parse("whatsapp://send?phone=" + widget.phone),
                       mode: LaunchMode.externalApplication)) {
                     snackBar(context, 'Something went wrong',
                         CustomColors().blue, Colors.white);

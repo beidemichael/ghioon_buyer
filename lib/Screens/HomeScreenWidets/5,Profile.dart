@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/5,Profile/SettingPages/aboutUs.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/5,Profile/setting.dart';
+import 'package:ghioon_buyer/Shared/language.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -39,6 +41,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     final userInfo = Provider.of<List<UserInformation>>(context);
+    var languageprov = Provider.of<LanguageProvider>(context);
     double width = MediaQuery.of(context).size.width;
     // print(userInfo[0].userName);
     return userInfo.isEmpty
@@ -53,7 +56,7 @@ class _ProfileState extends State<Profile> {
                     mainAxisSize: MainAxisSize.min,
                     // ignore: prefer_const_literals_to_create_immutables
                     children: [
-                      Text('Profile',
+                      Text(Language().profile[languageprov.LanguageIndex],
                           style: TextStyle(
                               fontFamily: 'Inter',
                               fontSize: 30.0,
@@ -188,7 +191,9 @@ class _ProfileState extends State<Profile> {
                       );
                     },
                     child: StoreList(
-                        FontAwesomeIcons.solidUser, 'My Account', width)),
+                        FontAwesomeIcons.solidUser,
+                        Language().my_account[languageprov.LanguageIndex],
+                        width)),
                 GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -197,8 +202,10 @@ class _ProfileState extends State<Profile> {
                             builder: (context) => const deliveryaddress()),
                       );
                     },
-                    child: StoreList(FontAwesomeIcons.locationDot,
-                        'Saved Addresses', width)),
+                    child: StoreList(
+                        FontAwesomeIcons.locationDot,
+                        Language().saved_address[languageprov.LanguageIndex],
+                        width)),
                 GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -207,7 +214,8 @@ class _ProfileState extends State<Profile> {
                             builder: (context) => const ProfileSetting()),
                       );
                     },
-                    child: StoreList(FontAwesomeIcons.gear, 'Setting', width)),
+                    child: StoreList(FontAwesomeIcons.gear,
+                        Language().setting[languageprov.LanguageIndex], width)),
                 GestureDetector(
                     onTap: () {
                       // support(context);
@@ -217,14 +225,14 @@ class _ProfileState extends State<Profile> {
                             builder: (context) => const AboutUs()),
                       );
                     },
-                    child: StoreList(
-                        FontAwesomeIcons.solidCircleQuestion, 'About', width)),
+                    child: StoreList(FontAwesomeIcons.solidCircleQuestion,
+                        Language().about[languageprov.LanguageIndex], width)),
                 GestureDetector(
                     onTap: () async {
                       _showLogoutDialog(context);
                     },
-                    child: StoreList(
-                        FontAwesomeIcons.rightFromBracket, 'Logout', width)),
+                    child: StoreList(FontAwesomeIcons.rightFromBracket,
+                        Language().logout[languageprov.LanguageIndex], width)),
               ],
             ),
           );

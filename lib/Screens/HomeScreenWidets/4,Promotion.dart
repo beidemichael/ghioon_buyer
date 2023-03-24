@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Screens/GetStarted/Screens/1,SlideScreen.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/4,Promotion/PromotionScreens.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
+import 'package:ghioon_buyer/Shared/language.dart';
 import 'package:provider/provider.dart';
 
 import '../../Models/models.dart';
@@ -18,6 +20,7 @@ class _PromotionPageState extends State<PromotionPage> {
   @override
   Widget build(BuildContext context) {
     final promotion = Provider.of<List<Promotion>>(context);
+    var languageprov = Provider.of<LanguageProvider>(context);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -29,7 +32,7 @@ class _PromotionPageState extends State<PromotionPage> {
               mainAxisSize: MainAxisSize.min,
               // ignore: prefer_const_literals_to_create_immutables
               children: [
-                Text('Promotion',
+                Text(Language().promotion[languageprov.LanguageIndex],
                     style: TextStyle(
                         fontSize: 28.0,
                         color: CustomColors().white,
@@ -47,17 +50,11 @@ class _PromotionPageState extends State<PromotionPage> {
             height: MediaQuery.of(context).size.height,
             child: ListView(
               children: [
-                Carousel25(
-                    promotion,
-                    MediaQuery.of(context).size.width,
+                Carousel25(promotion, MediaQuery.of(context).size.width,
                     MediaQuery.of(context).size.height),
-                Carousel50(
-                    promotion,
-                    MediaQuery.of(context).size.width,
+                Carousel50(promotion, MediaQuery.of(context).size.width,
                     MediaQuery.of(context).size.height),
-                Carousel100(
-                    promotion,
-                    MediaQuery.of(context).size.width,
+                Carousel100(promotion, MediaQuery.of(context).size.width,
                     MediaQuery.of(context).size.height),
               ],
             )),

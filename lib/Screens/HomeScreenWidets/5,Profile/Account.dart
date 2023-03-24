@@ -4,7 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:ghioon_buyer/Models/models.dart';
+import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Screens/components/Button.dart';
+import 'package:ghioon_buyer/Shared/language.dart';
 import 'package:intl/intl.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -73,6 +75,7 @@ class _AccountState extends State<Account> {
   @override
   Widget build(BuildContext context) {
     final userInfo = Provider.of<List<UserInformation>>(context);
+    var languageprov = Provider.of<LanguageProvider>(context);
     void whenScheduleUpDateTapped() {
       DatePicker.showDatePicker(context,
           // minTime: DateTime.now(),
@@ -124,12 +127,17 @@ class _AccountState extends State<Account> {
                         const SizedBox(
                           height: 20,
                         ),
-                        TextField(userInfo[0].userName, 'Name', 'name'),
+                        TextField(
+                            userInfo[0].userName,
+                            Language().name[languageprov.LanguageIndex],
+                            'name'),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            addRadioButton(0, 'Male'),
-                            addRadioButton(1, 'Female'),
+                            addRadioButton(
+                                0, Language().male[languageprov.LanguageIndex]),
+                            addRadioButton(1,
+                                Language().female[languageprov.LanguageIndex]),
                           ],
                         ),
                         GestureDetector(
@@ -138,7 +146,10 @@ class _AccountState extends State<Account> {
                             },
                             child: birthdayWidget(userInfo[0].birthday)),
 
-                        TextField(userInfo[0].email, 'Email', 'email'),
+                        TextField(
+                            userInfo[0].email,
+                            Language().email[languageprov.LanguageIndex],
+                            'email'),
                         const SizedBox(
                           height: 20,
                         ),

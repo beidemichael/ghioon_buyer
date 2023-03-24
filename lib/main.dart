@@ -6,6 +6,7 @@ import 'package:ghioon_buyer/Providers/FeedbackProvider.dart';
 import 'package:ghioon_buyer/Providers/Order_Provider.dart';
 import 'package:ghioon_buyer/Providers/RangeProvider.dart';
 import 'package:ghioon_buyer/Providers/cartProvider.dart';
+import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Providers/search.dart';
 import 'package:ghioon_buyer/Screens/GetStarted/Screens/0,Splash.dart';
 import 'package:ghioon_buyer/Screens/home.dart';
@@ -168,6 +169,15 @@ void main() async {
               }),
           ChangeNotifierProvider(
             create: (context) => RangeData(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => LanguageProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) {
+              LanguageProvider().loadSelectedLanguageIndex;
+            },
+            //create: (context) => LanguageProvider().loadSelectedLanguageIndex,
           ),
         ],
         child: const MyApp(),

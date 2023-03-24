@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ghioon_buyer/Models/models.dart';
+import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/5,Profile/SettingPages/Feedback.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/5,Profile/SettingPages/Select_language.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/5,Profile/SettingPages/aboutUs.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/5,Profile/SettingPages/privacy_terms.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
+import 'package:ghioon_buyer/Shared/language.dart';
 import 'package:launch_review/launch_review.dart';
 import 'package:provider/provider.dart';
 
 import '../../components/storeList.dart';
-
 
 class ProfileSetting extends StatefulWidget {
   const ProfileSetting({super.key});
@@ -27,6 +29,7 @@ class _ProfileSettingState extends State<ProfileSetting> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     final userInfo = Provider.of<List<UserInformation>>(context);
+    var languageprov = Provider.of<LanguageProvider>(context);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(70.0),
@@ -38,7 +41,7 @@ class _ProfileSettingState extends State<ProfileSetting> {
                 mainAxisSize: MainAxisSize.min,
                 // ignore: prefer_const_literals_to_create_immutables
                 children: [
-                  Text('Setting',
+                  Text(Language().setting[languageprov.LanguageIndex],
                       style: TextStyle(
                           fontSize: 30.0,
                           color: CustomColors().white,
@@ -95,11 +98,23 @@ class _ProfileSettingState extends State<ProfileSetting> {
               onTap: () {
                 Navigator.push(
                   context,
+                  MaterialPageRoute(
+                      builder: (context) => const LanguageSelectionPage()),
+                );
+              },
+              child: StoreList(FontAwesomeIcons.lock,
+                  Language().language[languageprov.LanguageIndex], width)),
+          GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
                   MaterialPageRoute(builder: (context) => const Terms()),
                 );
               },
               child: StoreList(
-                  FontAwesomeIcons.lock, 'Terms and Conditions', width)),
+                  FontAwesomeIcons.lock,
+                  Language().Term_condition[languageprov.LanguageIndex],
+                  width)),
           GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -107,12 +122,14 @@ class _ProfileSettingState extends State<ProfileSetting> {
                   MaterialPageRoute(builder: (context) => const FeedbackPage()),
                 );
               },
-              child: StoreList(FontAwesomeIcons.solidFile, 'Feedback', width)),
+              child: StoreList(FontAwesomeIcons.solidFile,
+                  Language().feedback[languageprov.LanguageIndex], width)),
           GestureDetector(
               onTap: () {
-                 LaunchReview.launch(androidAppId: "com.ghioon.ghioon_buyer");
+                LaunchReview.launch(androidAppId: "com.ghioon.ghioon_buyer");
               },
-              child: StoreList(FontAwesomeIcons.arrowsSpin, 'Upgrade', width)),
+              child: StoreList(FontAwesomeIcons.arrowsSpin,
+                  Language().upgrade[languageprov.LanguageIndex], width)),
           GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -120,15 +137,16 @@ class _ProfileSettingState extends State<ProfileSetting> {
                   MaterialPageRoute(builder: (context) => const AboutUs()),
                 );
               },
-              child: StoreList(FontAwesomeIcons.info, 'About Us', width)),
-        //   GestureDetector(
-        //       onTap: () async {
-        //         await FirebaseAuth.instance.signOut();
-        //         Navigator.of(context).pop();
-        //       },
-        //       child: StoreList(
-        //           FontAwesomeIcons.rightFromBracket, 'Logout', width)),
-        ],                                                                    
+              child: StoreList(FontAwesomeIcons.info,
+                  Language().about[languageprov.LanguageIndex], width)),
+          //   GestureDetector(
+          //       onTap: () async {
+          //         await FirebaseAuth.instance.signOut();
+          //         Navigator.of(context).pop();
+          //       },
+          //       child: StoreList(
+          //           FontAwesomeIcons.rightFromBracket, 'Logout', width)),
+        ],
       ),
     );
   }

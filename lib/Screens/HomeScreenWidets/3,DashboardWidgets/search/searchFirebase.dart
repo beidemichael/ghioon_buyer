@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ghioon_buyer/Models/models.dart';
 import 'package:ghioon_buyer/Providers/AppInfo.dart';
+import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,DashboardWidgets/ProductGridListCard.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,DashboardWidgets/productDetail.dart';
 import 'package:ghioon_buyer/Services/Database/Product/readProduct.dart';
@@ -10,6 +11,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ghioon_buyer/Services/Database/SellerDatabase/sellerDatabase.dart';
 import 'package:ghioon_buyer/Shared/constants.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
+import 'package:ghioon_buyer/Shared/language.dart';
 import 'package:provider/provider.dart';
 
 class ProductSearch extends StatefulWidget {
@@ -23,33 +25,8 @@ class _ProductSearchState extends State<ProductSearch> {
 
   @override
   Widget build(BuildContext context) {
+    var languageprov = Provider.of<LanguageProvider>(context);
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: CustomColors().white,
-      // title: TextField(
-      //   controller: _searchController,
-      //   decoration: InputDecoration(
-      //       hintText: "Search for products",
-      //       prefixIcon: Icon(Icons.search),
-      //       border: OutlineInputBorder(
-      //           borderRadius: BorderRadius.all(Radius.circular(25.0)))),
-      //   onChanged: (value) {
-      //     setState(() {
-      //       if (value.isNotEmpty) {
-      //         _products = FirebaseFirestore.instance
-      //             .collection("Products")
-      //             // .where("name", isEqualTo: value)
-      //             .where("name".toLowerCase(),
-      //                 isGreaterThanOrEqualTo: value.toLowerCase())
-      //             .where("name".toLowerCase(),
-      //                 isLessThan: value.toLowerCase() + "\uf8ff")
-      //             .get();
-      //       }
-      //     });
-      //   },
-      // ),
-      // ),
-
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -66,7 +43,8 @@ class _ProductSearchState extends State<ProductSearch> {
                     child: TextField(
                       controller: _searchController,
                       decoration: InputDecoration(
-                          hintText: "Search for products",
+                          hintText:
+                              Language().search[languageprov.LanguageIndex],
                           prefixIcon: Icon(Icons.search),
                           border: OutlineInputBorder(
                               borderRadius:
@@ -117,7 +95,7 @@ class _ProductSearchState extends State<ProductSearch> {
                       } else {
                         return Center(
                           child: Text(
-                            "No products found",
+                            Language().No_products[languageprov.LanguageIndex],
                             style: TextStyle(color: Colors.black, fontSize: 30),
                           ),
                         );

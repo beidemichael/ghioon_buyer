@@ -9,8 +9,6 @@ Widget StoreList(IconData icon, String name, double width) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 5),
     child: Container(
-      // height: ,
-
       decoration: BoxDecoration(
         border: Border.all(
             width: 1, color: const Color.fromARGB(255, 224, 224, 224)),

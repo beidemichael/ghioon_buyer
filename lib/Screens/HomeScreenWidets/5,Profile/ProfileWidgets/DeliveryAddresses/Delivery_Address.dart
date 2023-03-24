@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
+import 'package:ghioon_buyer/Shared/language.dart';
 import 'package:provider/provider.dart';
 import 'package:marquee_widget/marquee_widget.dart';
 import '../../../../../Models/models.dart';
@@ -20,15 +22,16 @@ class _deliveryaddressState extends State<deliveryaddress> {
   @override
   Widget build(BuildContext context) {
     final address = Provider.of<List<Addresses>>(context);
+    var languageprov = Provider.of<LanguageProvider>(context);
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
         backgroundColor: CustomColors().blue,
         centerTitle: true,
         foregroundColor: Colors.white,
-        title: const Center(
+        title: Center(
           child: Text(
-            'Saved Delivery Addresses',
+            Language().saved_addresses[languageprov.LanguageIndex],
             style: TextStyle(color: Colors.white),
           ),
         ),
