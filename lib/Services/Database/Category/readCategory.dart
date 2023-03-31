@@ -10,6 +10,7 @@ class ReadCategoryDatabaseService {
     return snapshot.docs.map((doc) {
       return Category(
         type: (doc.data() as dynamic)['type'] ?? '',
+         image: (doc.data() as dynamic)['image'] ?? '',
         documentId: doc.reference.id,
       );
     }).toList();

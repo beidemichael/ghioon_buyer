@@ -270,7 +270,12 @@ class Controller {
 class Category {
   String type;
   String documentId;
-  Category({required this.documentId, required this.type});
+  String image;
+  Category({
+    required this.documentId,
+    required this.type,
+    required this.image,
+  });
 }
 
 class CartItems {
@@ -368,20 +373,22 @@ class Orders {
     required this.carrierName,
   });
 }
-class Promotion{
-    String image;
-    String video;
-    bool isImage;
-    String sellerUid;
-    String screenRealestate;
-    Promotion({
-      required this.image,
-      required this.video,
-      required this.isImage,
-      required this.sellerUid,
-      required this.screenRealestate,
-    });
+
+class Promotion {
+  String image;
+  String video;
+  bool isImage;
+  String sellerUid;
+  String screenRealestate;
+  Promotion({
+    required this.image,
+    required this.video,
+    required this.isImage,
+    required this.sellerUid,
+    required this.screenRealestate,
+  });
 }
+
 class VersionController {
   int sellerVersion;
   String documentId;
