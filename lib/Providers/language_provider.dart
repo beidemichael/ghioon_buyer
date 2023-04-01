@@ -23,10 +23,7 @@ class LanguageProvider extends ChangeNotifier {
   Future<void> saveSelectedLanguageIndex(int index) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setInt('language', index);
-    print(  prefs.getInt('language') );
-    print("language");
     LanguageIndex = index;
     notifyListeners();
-    print(index);
   }
 }

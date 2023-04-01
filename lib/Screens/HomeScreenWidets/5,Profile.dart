@@ -43,7 +43,7 @@ class _ProfileState extends State<Profile> {
     final userInfo = Provider.of<List<UserInformation>>(context);
     var languageprov = Provider.of<LanguageProvider>(context);
     double width = MediaQuery.of(context).size.width;
-    // print(userInfo[0].userName);
+    
     return userInfo.isEmpty
         ? Loading()
         : Scaffold(

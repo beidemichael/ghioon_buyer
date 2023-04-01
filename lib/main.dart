@@ -180,13 +180,7 @@ void main() async {
            ),
 
 
-          // ChangeNotifierProvider(
-          //   create: (_) {
-          //     LanguageProvider().loadSelectedLanguageIndex;
-          //     print(LanguageProvider().LanguageIndex);
-          //   },
-          //   //create: (context) => LanguageProvider().loadSelectedLanguageIndex,
-          // ),
+         
         ],
         child: const MyApp(),
       ),
