@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ghioon_buyer/Providers/language_provider.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/4,Promotion/promotion_demo.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/5,Profile/SettingPages/aboutUs.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/5,Profile/setting.dart';
 import 'package:ghioon_buyer/Shared/language.dart';
@@ -233,6 +234,16 @@ class _ProfileState extends State<Profile> {
                     },
                     child: StoreList(FontAwesomeIcons.rightFromBracket,
                         Language().logout[languageprov.LanguageIndex], width)),
+                         GestureDetector(
+                    onTap: () async {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>  PromotionsPage()),
+                      );
+                    },
+                    child: StoreList(FontAwesomeIcons.rightFromBracket,
+                       "promo", width)),
               ],
             ),
           );
