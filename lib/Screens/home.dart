@@ -25,10 +25,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final _pageViewController = PageController(initialPage: 2);
+  final _pageViewController = PageController(initialPage: 0);
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
-  int activePage = 2;
-  int page = 2;
+  int activePage = 0;
+  int page = 0;
    ///////////////////
   int netVersion = 0;
   /////////////////////////// App version
@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
         : Scaffold(
       backgroundColor: Colors.white,
       bottomNavigationBar: CurvedNavigationBar(
-        index: 2,
+        index: 0,
         color: Colors.grey.shade800.withOpacity(0.3),
         buttonBackgroundColor: appInformation.appColor,
         backgroundColor: Colors.white,
@@ -92,11 +92,19 @@ class _HomeScreenState extends State<HomeScreen> {
         letIndexChange: (index) => true,
         key: _bottomNavigationKey,
         items: <Widget>[
-          SizedBox(
+          // SizedBox(
+          //   height: 50,
+          //   width: 50,
+          //   child: Icon(
+          //     FontAwesomeIcons.cartShopping,
+          //     color: page == 0 ? Colors.white : Colors.grey,
+          //   ),
+          // ),
+           SizedBox(
             height: 50,
             width: 50,
             child: Icon(
-              FontAwesomeIcons.cartShopping,
+              FontAwesomeIcons.house,
               color: page == 0 ? Colors.white : Colors.grey,
             ),
           ),
@@ -108,11 +116,12 @@ class _HomeScreenState extends State<HomeScreen> {
               color: page == 1 ? Colors.white : Colors.grey,
             ),
           ),
+         
           SizedBox(
             height: 50,
             width: 50,
             child: Icon(
-              FontAwesomeIcons.house,
+              FontAwesomeIcons.gift,
               color: page == 2 ? Colors.white : Colors.grey,
             ),
           ),
@@ -120,16 +129,8 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 50,
             width: 50,
             child: Icon(
-              FontAwesomeIcons.gift,
-              color: page == 3 ? Colors.white : Colors.grey,
-            ),
-          ),
-          SizedBox(
-            height: 50,
-            width: 50,
-            child: Icon(
               FontAwesomeIcons.solidUser,
-              color: page == 4 ? Colors.white : Colors.grey,
+              color: page == 3 ? Colors.white : Colors.grey,
             ),
           ),
         ],
@@ -140,9 +141,10 @@ class _HomeScreenState extends State<HomeScreen> {
             controller: _pageViewController,
             physics: const NeverScrollableScrollPhysics(),
             children:  <Widget>[
-              const Cart(),
+            //  const Cart(),
+             Dashboard(context: context),
               const CatagoryPage(),
-              Dashboard(context: context),
+             
               const PromotionPage(),
               const Profile(),
             ],

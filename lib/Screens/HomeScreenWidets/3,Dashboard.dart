@@ -45,7 +45,7 @@ class _DashboardState extends State<Dashboard> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(20.0, 40, 20, 8),
+                padding: const EdgeInsets.fromLTRB(20.0, 20, 20, 8),
                 child: GestureDetector(
                     onTap: () {
                       search.searchResults.clear();
@@ -58,9 +58,7 @@ class _DashboardState extends State<Dashboard> {
                     },
                     child: SearchBar()),
               ),
-              SizedBox(
-                height: 10,
-              ),
+             
               HorizontalSlider(),
               Carousel_Slider(), //  Carousel(),
               Expanded(
