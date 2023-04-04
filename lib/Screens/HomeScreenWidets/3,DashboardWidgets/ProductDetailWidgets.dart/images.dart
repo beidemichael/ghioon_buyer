@@ -102,31 +102,31 @@ class _ImagesListState extends State<ImagesList> {
             ),
           ),
         ),
-        Visibility(
-          visible: play,
-          child: GestureDetector(
-            onTap: () {
-              setState(() {
-                clear = !clear;
-              });
-            },
-            child: Center(
-              child: widget.product.video != ''
-                  ? _controller.value.isInitialized
-                      ? Container(
-                          color: Colors.red,
-                          width: ScreenSize().ScreenWidth(context),
-                          height: ScreenSize().ScreenWidth(context),
-                          child: AspectRatio(
-                            aspectRatio: _controller.value.aspectRatio,
-                            child: VideoPlayer(_controller),
-                          ),
-                        )
-                      : Container()
-                  : Container(),
-            ),
-          ),
-        ),
+        // Visibility(
+        //   visible: play,
+        //   child: GestureDetector(
+        //     onTap: () {
+        //       setState(() {
+        //         clear = !clear;
+        //       });
+        //     },
+        //     child: Center(
+        //       child: widget.product.video != ''
+        //           ? _controller.value.isInitialized
+        //               ? Container(
+        //                   color: Colors.red,
+        //                   width: ScreenSize().ScreenWidth(context),
+        //                   height: ScreenSize().ScreenWidth(context),
+        //                   child: AspectRatio(
+        //                     aspectRatio: _controller.value.aspectRatio,
+        //                     child: VideoPlayer(_controller),
+        //                   ),
+        //                 )
+        //               : Container()
+        //           : Container(),
+        //     ),
+        //   ),
+        // ),
         Visibility(
           visible: clear,
           child: Positioned(
@@ -155,112 +155,112 @@ class _ImagesListState extends State<ImagesList> {
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
                             children: [
-                              Visibility(
-                                visible: index == 0,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(right: 8.0),
-                                  child: Stack(
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            if (_controller.value.isPlaying) {
-                                              _controller.pause();
-                                              play = false;
-                                            } else {
-                                              _controller.play();
-                                              _controller.setLooping(true);
-                                              play = true;
-                                            }
-                                          });
-                                        },
-                                        child: Center(
-                                          child: widget.product.video != ''
-                                              ? _controller.value.isInitialized
-                                                  ? Stack(
-                                                      children: [
-                                                        ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                          child: Container(
-                                                            color: Colors.red,
-                                                            width: 90,
-                                                            height: 90,
-                                                            child: AspectRatio(
-                                                              aspectRatio:
-                                                                  _controller
-                                                                      .value
-                                                                      .aspectRatio,
-                                                              child: VideoPlayer(
-                                                                  _controller),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Positioned(
-                                                          left: 0,
-                                                          right: 0,
-                                                          top: 0,
-                                                          bottom: 0,
-                                                          child: ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8.0),
-                                                            child: Container(
-                                                              color: Colors
-                                                                  .black
-                                                                  .withOpacity(
-                                                                      0.2),
-                                                              width: 90,
-                                                              height: 90,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Positioned(
-                                                          left: 0,
-                                                          right: 0,
-                                                          top: 0,
-                                                          bottom: 0,
-                                                          child: Icon(
-                                                            size: 40,
-                                                            play == false
-                                                                ? FontAwesomeIcons
-                                                                    .play
-                                                                : FontAwesomeIcons
-                                                                    .pause,
-                                                            color:
-                                                                CustomColors()
-                                                                    .white,
-                                                          ),
-                                                        )
-                                                      ],
-                                                    )
-                                                  : ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                      child: Container(
-                                                        color: Colors.white
-                                                            .withOpacity(0.5),
-                                                        width: 90,
-                                                        height: 90,
-                                                        child: const Center(
-                                                          child: SpinKitCircle(
-                                                            color: Colors.white,
-                                                            size: 25.0,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    )
-                                              : Container(),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
+                              // Visibility(
+                              //   visible: index == 0,
+                              //   child: Padding(
+                              //     padding: const EdgeInsets.only(right: 8.0),
+                              //     child: Stack(
+                              //       children: [
+                              //         GestureDetector(
+                              //           onTap: () {
+                              //             setState(() {
+                              //               if (_controller.value.isPlaying) {
+                              //                 _controller.pause();
+                              //                 play = false;
+                              //               } else {
+                              //                 _controller.play();
+                              //                 _controller.setLooping(true);
+                              //                 play = true;
+                              //               }
+                              //             });
+                              //           },
+                              //           child: Center(
+                              //             child: widget.product.video != ''
+                              //                 ? _controller.value.isInitialized
+                              //                     ? Stack(
+                              //                         children: [
+                              //                           ClipRRect(
+                              //                             borderRadius:
+                              //                                 BorderRadius
+                              //                                     .circular(
+                              //                                         8.0),
+                              //                             child: Container(
+                              //                               color: Colors.red,
+                              //                               width: 90,
+                              //                               height: 90,
+                              //                               child: AspectRatio(
+                              //                                 aspectRatio:
+                              //                                     _controller
+                              //                                         .value
+                              //                                         .aspectRatio,
+                              //                                 child: VideoPlayer(
+                              //                                     _controller),
+                              //                               ),
+                              //                             ),
+                              //                           ),
+                              //                           Positioned(
+                              //                             left: 0,
+                              //                             right: 0,
+                              //                             top: 0,
+                              //                             bottom: 0,
+                              //                             child: ClipRRect(
+                              //                               borderRadius:
+                              //                                   BorderRadius
+                              //                                       .circular(
+                              //                                           8.0),
+                              //                               child: Container(
+                              //                                 color: Colors
+                              //                                     .black
+                              //                                     .withOpacity(
+                              //                                         0.2),
+                              //                                 width: 90,
+                              //                                 height: 90,
+                              //                               ),
+                              //                             ),
+                              //                           ),
+                              //                           Positioned(
+                              //                             left: 0,
+                              //                             right: 0,
+                              //                             top: 0,
+                              //                             bottom: 0,
+                              //                             child: Icon(
+                              //                               size: 40,
+                              //                               play == false
+                              //                                   ? FontAwesomeIcons
+                              //                                       .play
+                              //                                   : FontAwesomeIcons
+                              //                                       .pause,
+                              //                               color:
+                              //                                   CustomColors()
+                              //                                       .white,
+                              //                             ),
+                              //                           )
+                              //                         ],
+                              //                       )
+                              //                     : ClipRRect(
+                              //                         borderRadius:
+                              //                             BorderRadius.circular(
+                              //                                 8.0),
+                              //                         child: Container(
+                              //                           color: Colors.white
+                              //                               .withOpacity(0.5),
+                              //                           width: 90,
+                              //                           height: 90,
+                              //                           child: const Center(
+                              //                             child: SpinKitCircle(
+                              //                               color: Colors.white,
+                              //                               size: 25.0,
+                              //                             ),
+                              //                           ),
+                              //                         ),
+                              //                       )
+                              //                 : Container(),
+                              //           ),
+                              //         ),
+                              //       ],
+                              //     ),
+                              //   ),
+                              // ),
                               ClipRRect(
                                 borderRadius: const BorderRadius.all(
                                     Radius.circular(8.0)),
