@@ -112,7 +112,7 @@ class _FinalScreenState extends State<FinalScreen> {
               child: Center(
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                         builder: (_) => StreamProvider<UserAuth?>.value(
