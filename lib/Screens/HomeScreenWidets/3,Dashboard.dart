@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:ghioon_buyer/Models/models.dart';
 import 'package:ghioon_buyer/Providers/cartProvider.dart';
+import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Providers/search.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,DashboardWidgets/ProductForGrid.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,DashboardWidgets/carousel.dart';
@@ -14,6 +15,8 @@ import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,DashboardWidgets/topcata
 import 'package:ghioon_buyer/Screens/components/emptyScreen.dart';
 import 'package:ghioon_buyer/Shared/constants.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
+import 'package:ghioon_buyer/Shared/dimensions.dart';
+import 'package:ghioon_buyer/Shared/language.dart';
 
 import 'package:provider/provider.dart';
 
@@ -38,38 +41,42 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     final products = Provider.of<List<Product>>(context);
     final search = Provider.of<SearchProvider>(context);
+     var languageprov = Provider.of<LanguageProvider>(context);
+
     return Scaffold(
       body: SafeArea(
-        child: SizedBox(
-          height: ScreenSize().ScreenHeight(context),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20.0, 40, 20, 8),
-                child: GestureDetector(
-                    onTap: () {
-                      search.searchResults.clear();
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              ProductSearch(), //SearchScreen(),
-                        ),
-                      );
-                    },
-                    child: SearchBar()),
+        child: ListView(
+          children: [
+            SizedBox(
+              height: ScreenSize().ScreenHeight(context),
+              child: Column(
+                children: [
+                  Padding(
+                    padding:  EdgeInsets.fromLTRB(Dimensions.width10, Dimensions.width20, Dimensions.width10, Dimensions.width10),
+                    child: GestureDetector(
+                        onTap: () {
+                          search.searchResults.clear();
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  ProductSearch(), //SearchScreen(),
+                            ),
+                          );
+                        },
+                        child: SearchBar()),
+                  ),
+                 
+                  HorizontalSlider(),
+                  Carousel_Slider(), //  Carousel(),
+                  Expanded(
+                    child: products.length == 0
+                        ? EmptyScreen(context,(Language().No_products[languageprov.LanguageIndex]))
+                        : ProductForGrid(),
+                  ),
+                ],
               ),
-              SizedBox(
-                height: 10,
-              ),
-              HorizontalSlider(),
-              Carousel_Slider(), //  Carousel(),
-              Expanded(
-                child: products.length == 0
-                    ? EmptyScreen(context, 'No Products.')
-                    : ProductForGrid(),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

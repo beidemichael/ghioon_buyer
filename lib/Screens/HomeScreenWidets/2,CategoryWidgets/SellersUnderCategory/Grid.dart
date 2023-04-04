@@ -42,7 +42,7 @@ class SellersUnderCategoryGrid extends StatelessWidget {
               itemBuilder: (BuildContext ctx, index) {
                 return GestureDetector(
                   onTap: () async {
-                    print(sellers[index].userUid);
+                   
                     if (sellers[index].online) {
                       Navigator.push(
                         context,

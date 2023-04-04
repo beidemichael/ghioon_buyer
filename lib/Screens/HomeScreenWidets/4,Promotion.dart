@@ -50,12 +50,14 @@ class _PromotionPageState extends State<PromotionPage> {
             height: MediaQuery.of(context).size.height,
             child: ListView(
               children: [
-                Carousel25(promotion, MediaQuery.of(context).size.width,
+                 Carousel100(promotion, MediaQuery.of(context).size.width,
                     MediaQuery.of(context).size.height),
+               
                 Carousel50(promotion, MediaQuery.of(context).size.width,
                     MediaQuery.of(context).size.height),
-                Carousel100(promotion, MediaQuery.of(context).size.width,
+                     Carousel25(promotion, MediaQuery.of(context).size.width,
                     MediaQuery.of(context).size.height),
+               
               ],
             )),
       ),

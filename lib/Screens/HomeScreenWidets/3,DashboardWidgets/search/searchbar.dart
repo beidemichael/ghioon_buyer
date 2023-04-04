@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
-
+import 'package:ghioon_buyer/Shared/language.dart';
+import 'package:provider/provider.dart';
 class SearchBar extends StatefulWidget {
   @override
   _SearchBarState createState() => _SearchBarState();
@@ -17,12 +19,13 @@ class _SearchBarState extends State<SearchBar> {
 
   @override
   Widget build(BuildContext context) {
+     var languageprov = Provider.of<LanguageProvider>(context);
     return Container(
       width: double.infinity,
       height: 50.0,
       decoration: BoxDecoration(
         color: Colors.grey[200],
-        borderRadius: BorderRadius.circular(40.0),
+        borderRadius: BorderRadius.circular(25.0),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -32,7 +35,7 @@ class _SearchBarState extends State<SearchBar> {
               enabled: false,
               controller: _controller,
               decoration: InputDecoration(
-                hintText: 'Search product',
+                hintText: Language().search[languageprov.LanguageIndex],
                 border: InputBorder.none,
                 hintStyle: TextStyle(
                   color: Colors.grey[600],

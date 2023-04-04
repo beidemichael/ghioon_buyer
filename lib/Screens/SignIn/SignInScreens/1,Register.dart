@@ -41,7 +41,7 @@ class _RegisterState extends State<Register> {
           groupValue: select,
           onChanged: (value) {
             setState(() {
-              print(value);
+             
               select = value;
             });
           },

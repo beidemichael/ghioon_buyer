@@ -44,8 +44,10 @@ class _TitleAndDescriptionState extends State<TitleAndDescription> {
                     color: CustomColors().blue,
                     fontWeight: FontWeight.w700)),
           ),
-          widget.product.fixed
-              ? Row(
+         
+         
+         
+         Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // Quantity(quantity: order.quantity),
@@ -60,12 +62,7 @@ class _TitleAndDescriptionState extends State<TitleAndDescription> {
                                   fontFamily: 'Inter',
                                   color: CustomColors().grey,
                                   fontWeight: FontWeight.w700)),
-                          // Text('ETB ' + widget.product.price[0].toString(),
-                          //     style: TextStyle(
-                          //         fontSize: 30.0,
-                          //         fontFamily: 'Inter',
-                          //         color: CustomColors().black,
-                          //         fontWeight: FontWeight.bold)),
+                       
                           Text(
                               Language().negotiable[languageprov.LanguageIndex],
                               style: TextStyle(
@@ -77,47 +74,75 @@ class _TitleAndDescriptionState extends State<TitleAndDescription> {
                       ),
                     ),
                   ],
-                )
-              : Container(
-                  height: 80,
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(8.0, 0, 8, 8),
-                    child: ListView.builder(
-                      physics: const BouncingScrollPhysics(
-                          parent: AlwaysScrollableScrollPhysics()),
-                      scrollDirection: Axis.horizontal,
-                      itemCount: widget.product.rangeFrom.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                  'ETB ' +
-                                      widget.product.price[index].toString(),
-                                  style: TextStyle(
-                                      fontSize: 22.0,
-                                      fontFamily: 'Inter',
-                                      color: CustomColors().black,
-                                      fontWeight: FontWeight.bold)),
-                              Text(
-                                  widget.product.rangeFrom[index].toString() +
-                                      ' - ' +
-                                      widget.product.rangeTo[index].toString() +
-                                      ' pieces',
-                                  style: TextStyle(
-                                      fontSize: 15.0,
-                                      fontFamily: 'Inter',
-                                      color: CustomColors().grey,
-                                      fontWeight: FontWeight.w700)),
-                            ],
-                          ),
-                        );
-                      },
-                    ),
-                  ),
                 ),
+          // widget.product.fixed
+          //     ? Row(
+          //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //         children: [
+          //           // Quantity(quantity: order.quantity),
+          //           Padding(
+          //             padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
+          //             child: Column(
+          //               crossAxisAlignment: CrossAxisAlignment.start,
+          //               children: [
+          //                 Text(Language().price[languageprov.LanguageIndex],
+          //                     style: TextStyle(
+          //                         fontSize: 18.0,
+          //                         fontFamily: 'Inter',
+          //                         color: CustomColors().grey,
+          //                         fontWeight: FontWeight.w700)),
+          //                 Text('ETB ' + widget.product.price[0].toString(),
+          //                     style: TextStyle(
+          //                         fontSize: 30.0,
+          //                         fontFamily: 'Inter',
+          //                         color: CustomColors().black,
+          //                         fontWeight: FontWeight.bold)),
+     
+          //               ],
+          //             ),
+          //           ),
+          //         ],
+          //       )
+          //     : Container(
+          //         height: 80,
+          //         child: Padding(
+          //           padding: const EdgeInsets.fromLTRB(8.0, 0, 8, 8),
+          //           child: ListView.builder(
+          //             physics: const BouncingScrollPhysics(
+          //                 parent: AlwaysScrollableScrollPhysics()),
+          //             scrollDirection: Axis.horizontal,
+          //             itemCount: widget.product.rangeFrom.length,
+          //             itemBuilder: (context, index) {
+          //               return Padding(
+          //                 padding: const EdgeInsets.all(8.0),
+          //                 child: Column(
+          //                   crossAxisAlignment: CrossAxisAlignment.start,
+          //                   children: [
+          //                     Text(
+          //                         'ETB ' +
+          //                             widget.product.price[index].toString(),
+          //                         style: TextStyle(
+          //                             fontSize: 22.0,
+          //                             fontFamily: 'Inter',
+          //                             color: CustomColors().black,
+          //                             fontWeight: FontWeight.bold)),
+          //                     Text(
+          //                         widget.product.rangeFrom[index].toString() +
+          //                             ' - ' +
+          //                             widget.product.rangeTo[index].toString() +
+          //                             ' pieces',
+          //                         style: TextStyle(
+          //                             fontSize: 15.0,
+          //                             fontFamily: 'Inter',
+          //                             color: CustomColors().grey,
+          //                             fontWeight: FontWeight.w700)),
+          //                   ],
+          //                 ),
+          //               );
+          //             },
+          //           ),
+          //         ),
+          //       ),
 
           SizedBox(
             height: 60,

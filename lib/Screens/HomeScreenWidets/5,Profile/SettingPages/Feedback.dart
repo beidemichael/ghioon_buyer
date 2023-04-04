@@ -117,7 +117,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
                               PopupDialog alert = PopupDialog(
                                   "Are You Sure you want to send this feedback? (your user id will be sent for feedback reply)",
                                   () {
-                                print(appState.isLoading);
+                              
                                 appState.sendFeedback(context).then(
                                     (value) => appState.isLoading = false);
                               }, () {});

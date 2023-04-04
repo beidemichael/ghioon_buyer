@@ -34,7 +34,7 @@ class FeedbackData with ChangeNotifier {
     final user = FirebaseAuth.instance.currentUser;
 
     uploadToDatabase(context);
-    print('done');
+
     feedbackDescription.clear();
 
     Navigator.pop(context);

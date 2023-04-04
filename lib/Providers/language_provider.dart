@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LanguageProvider extends ChangeNotifier {
+   LanguageProvider() {
+    loadSelectedLanguageIndex();
+  }
+
   int LanguageIndex = 0;
   List<String> languagesList = [
     'English',
@@ -21,6 +25,5 @@ class LanguageProvider extends ChangeNotifier {
     await prefs.setInt('language', index);
     LanguageIndex = index;
     notifyListeners();
-    print(index);
   }
 }

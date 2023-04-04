@@ -132,7 +132,7 @@ class _SignInPageState extends State<SignInPage> {
           PhoneAuthServices(wholePhoneNumber: wholePhoneNumber)
               .submitPhoneNumber(toManyTimes),
           startTimer(),
-          print('submit'),
+         
           setState(() {
             otpVisible = true;
             _start = 59;
@@ -446,7 +446,7 @@ class _SignInPageState extends State<SignInPage> {
                                 wholePhoneNumber,
                                 codeInvalid,
                                 cancelTimer);
-                            print('otp');
+                            
                           }
                           if (!otpVisible) {
                             wholePhoneNumber = " ";

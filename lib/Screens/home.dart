@@ -25,11 +25,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final _pageViewController = PageController(initialPage: 2);
+  final _pageViewController = PageController(initialPage: 0);
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
-  int activePage = 2;
-  int page = 2;
-   ///////////////////
+  int activePage = 0;
+  int page = 0;
+  ///////////////////
   int netVersion = 0;
   /////////////////////////// App version
   int appVersion = 10;
@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
   optionalUpdateActivator(BuildContext context, netVersionInput) {
     if (netVersionInput == 3 || netVersionInput == 4) {
       OptionalUpdate alert = OptionalUpdate();
-
+ 
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -55,6 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
       optionalUpdateActivator(context, netVersion);
     });
   }
+
   @override
   void dispose() {
     _pageViewController.dispose();
@@ -73,86 +74,87 @@ class _HomeScreenState extends State<HomeScreen> {
     return controller.isEmpty
         ? Loading()
         : Scaffold(
-      backgroundColor: Colors.white,
-      bottomNavigationBar: CurvedNavigationBar(
-        index: 2,
-        color: Colors.grey.shade800.withOpacity(0.3),
-        buttonBackgroundColor: appInformation.appColor,
-        backgroundColor: Colors.white,
-        animationCurve: Curves.easeInOut,
-        animationDuration: const Duration(milliseconds: 300),
-        onTap: (index) {
-          _pageViewController.animateToPage(index,
-              duration: const Duration(milliseconds: 200),
-              curve: Curves.bounceOut);
-          setState(() {
-            page = index;
-          });
-        },
-        letIndexChange: (index) => true,
-        key: _bottomNavigationKey,
-        items: <Widget>[
-          SizedBox(
-            height: 50,
-            width: 50,
-            child: Icon(
-              FontAwesomeIcons.cartShopping,
-              color: page == 0 ? Colors.white : Colors.grey,
+            backgroundColor: Colors.white,
+            bottomNavigationBar: CurvedNavigationBar(
+              index: 0,
+              color: Colors.grey.shade800.withOpacity(0.3),
+              buttonBackgroundColor: appInformation.appColor,
+              backgroundColor: Colors.white,
+              animationCurve: Curves.easeInOut,
+              animationDuration: const Duration(milliseconds: 300),
+              onTap: (index) {
+                _pageViewController.animateToPage(index,
+                    duration: const Duration(milliseconds: 200),
+                    curve: Curves.bounceOut);
+                setState(() {
+                  page = index;
+                });
+              },
+              letIndexChange: (index) => true,
+              key: _bottomNavigationKey,
+              items: <Widget>[
+                // SizedBox(
+                //   height: 50,
+                //   width: 50,
+                //   child: Icon(
+                //     FontAwesomeIcons.cartShopping,
+                //     color: page == 0 ? Colors.white : Colors.grey,
+                //   ),
+                // ),
+                SizedBox(
+                  height: 50,
+                  width: 50,
+                  child: Icon(
+                    FontAwesomeIcons.house,
+                    color: page == 0 ? Colors.white : Colors.grey,
+                  ),
+                ),
+                SizedBox(
+                  height: 50,
+                  width: 50,
+                  child: Icon(
+                    FontAwesomeIcons.list,
+                    color: page == 1 ? Colors.white : Colors.grey,
+                  ),
+                ),
+                SizedBox(
+                  height: 50,
+                  width: 50,
+                  child: Icon(
+                    FontAwesomeIcons.gift,
+                    color: page == 2 ? Colors.white : Colors.grey,
+                  ),
+                ),
+                SizedBox(
+                  height: 50,
+                  width: 50,
+                  child: Icon(
+                    FontAwesomeIcons.solidUser,
+                    color: page == 3 ? Colors.white : Colors.grey,
+                  ),
+                ),
+              ],
             ),
-          ),
-          SizedBox(
-            height: 50,
-            width: 50,
-            child: Icon(
-              FontAwesomeIcons.list,
-              color: page == 1 ? Colors.white : Colors.grey,
-            ),
-          ),
-          SizedBox(
-            height: 50,
-            width: 50,
-            child: Icon(
-              FontAwesomeIcons.house,
-              color: page == 2 ? Colors.white : Colors.grey,
-            ),
-          ),
-          SizedBox(
-            height: 50,
-            width: 50,
-            child: Icon(
-              FontAwesomeIcons.gift,
-              color: page == 3 ? Colors.white : Colors.grey,
-            ),
-          ),
-          SizedBox(
-            height: 50,
-            width: 50,
-            child: Icon(
-              FontAwesomeIcons.solidUser,
-              color: page == 4 ? Colors.white : Colors.grey,
-            ),
-          ),
-        ],
-      ),
-      body: Stack(
-        children: [
-          PageView(
-            controller: _pageViewController,
-            physics: const NeverScrollableScrollPhysics(),
-            children:  <Widget>[
-              const Cart(),
-              const CatagoryPage(),
-              Dashboard(context: context),
-              const PromotionPage(),
-              const Profile(),
-            ],
-          ),
-          Visibility(
+            body: Stack(
+              children: [
+                PageView(
+                  controller: _pageViewController,
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: <Widget>[
+                    // const Cart(),
+                    Dashboard(context: context),
+                    const CatagoryPage(),
+
+                    const PromotionPage(),
+                    const Profile(),
+                  ],
+                ),
+                Visibility(
                   visible: netVersion > 4,
                   child: ForcedUpdate(),
                 ),
-        ],
-      ),
-    );
+              ],
+            ),
+          );
   }
 }

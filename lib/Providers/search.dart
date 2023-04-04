@@ -10,12 +10,10 @@ class SearchProvider with ChangeNotifier {
 
   setSearchResults(String searchValue, BuildContext context) async {
     final products = Provider.of<List<Product>>(context, listen: false);
-    print(products[0].name);
+    
     searchResults = getSearchResults(searchValue, products);
-    print("===============");
-    // print(searchResults[0]);
-    print(searchResults.length);
 
+  
     notifyListeners();
   }
 

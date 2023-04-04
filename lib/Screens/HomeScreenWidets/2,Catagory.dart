@@ -53,43 +53,65 @@ class _CatagoryPageState extends State<CatagoryPage> {
         child: Column(
           children: [
             Expanded(
-              child: catagory.length == 0
-                  ? EmptyScreen(context, 'No Category.')
-                  : ListView.builder(
-                      shrinkWrap: true,
-                      // scrollDirection: Axis.horizontal,
-                      itemCount: catagory.length,
-                      physics: const BouncingScrollPhysics(
-                        parent: AlwaysScrollableScrollPhysics(),
-                      ),
-                      // physics: const NeverScrollableScrollPhysics()
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => StreamProvider<
-                                        List<SellerInformation>>.value(
-                                      initialData: [],
-                                      value: SellerDatabaseService(
-                                              businessType:
-                                                  catagory[index].type)
-                                          .sellers,
-                                      child: CategoryScreen(
-                                        category: catagory[index].type,
+                child: catagory.length == 0
+                    ? EmptyScreen(context, 'No Category.')
+                    : Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        child: GridView.builder(
+                          shrinkWrap: true,
+                          physics: BouncingScrollPhysics(
+                              parent: AlwaysScrollableScrollPhysics()),
+                          gridDelegate:
+                              const SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent: 250,
+                            childAspectRatio: (2.5 / 3),
+                            crossAxisSpacing: 4.0,
+                            mainAxisSpacing: 8.0,
+                          ),
+                          itemCount: catagory.length,
+                          itemBuilder: (BuildContext ctx, index) {
+                            return GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => StreamProvider<
+                                          List<SellerInformation>>.value(
+                                        initialData: [],
+                                        value: SellerDatabaseService(
+                                                businessType:
+                                                    catagory[index].type)
+                                            .sellers,
+                                        child: CategoryScreen(
+                                          category: catagory[index].type,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                );
-                              },
-                              child: CategoryCard(text: catagory[index].type)),
-                        );
-                      },
-                    ),
-            ),
+                                  );
+                                },
+                                child: CategoryCard(
+                                    text: catagory[index].type,
+                                    image: catagory[index].image));
+                          },
+                        ),
+                      )
+
+                // ListView.builder(
+                //     shrinkWrap: true,
+                //     // scrollDirection: Axis.horizontal,
+                //     itemCount: catagory.length,
+                //     physics: const BouncingScrollPhysics(
+                //       parent: AlwaysScrollableScrollPhysics(),
+                //     ),
+                //     // physics: const NeverScrollableScrollPhysics()
+                //     itemBuilder: (context, index) {
+                //       return Padding(
+                //         padding: const EdgeInsets.all(8.0),
+                //         child:
+                //       );
+                //     },
+                //   ),
+                ),
           ],
         ),
       ),

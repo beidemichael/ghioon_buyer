@@ -170,15 +170,17 @@ void main() async {
           ChangeNotifierProvider(
             create: (context) => RangeData(),
           ),
-          ChangeNotifierProvider(
-            create: (context) => LanguageProvider(),
-          ),
-          ChangeNotifierProvider(
-            create: (_) {
-              LanguageProvider().loadSelectedLanguageIndex;
-            },
-            //create: (context) => LanguageProvider().loadSelectedLanguageIndex,
-          ),
+          // ChangeNotifierProvider(
+          //   create: (context) => LanguageProvider(),
+          // ),
+
+           ChangeNotifierProvider(
+             create: (context) => LanguageProvider(),
+
+           ),
+
+
+         
         ],
         child: const MyApp(),
       ),

@@ -1,7 +1,7 @@
 class Language {
   // main pages
   List<String> search = ["Search Product", "ምርትን ይፈልጉ"];
-  List<String> categories = ["categories", "ምድቦች"];
+  List<String> categories = ["Category", "ምድቦች"];
   List<String> promotion = ["Promotion", "ማስታወቂያ"];
   List<String> profile = ["Profile", "መገለጫ"];
   List<String> cart = ["Cart", "ዘምቢል"];
@@ -18,7 +18,7 @@ class Language {
   List<String> birthdate = ["Birthdate", "የልደት ቀን"];
   List<String> email = ["Email", "ኢሜይል"];
   List<String> update = ["Update", "አድስ"];
-  List<String> no_text_error = ["Please enter some text", "እባክህ ጽሑፍ አስገባ"];
+  List<String> no_text_error = ["Please Enter Some Text", "እባክህ ጽሑፍ አስገባ"];
   List<String> saved_address = ["Saved Delivery Address", "የማስረከቢያ አድራሻ"];
   List<String> no_saved_address = [
     "You have no saved address",
@@ -59,7 +59,7 @@ class Language {
     "Please enter the activation code we have sent via SMS to: ",
     "እባኮትን በኤስኤምኤስ የላክነውን ኮድ ያስገቡ፡ "
   ];
-  List<String> phonenumber = ["phonenumber", "ስልክ ቁጥር"];
+  List<String> phonenumber = ["Phonenumber", "ስልክ ቁጥር"];
   List<String> submit = ["Submit", "አስገባ"];
   List<String> login = ["Login", "ግባ"];
 }
