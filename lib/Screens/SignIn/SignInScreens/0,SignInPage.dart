@@ -358,7 +358,7 @@ class _SignInPageState extends State<SignInPage> {
                       padding: const EdgeInsets.symmetric(horizontal: 50),
                       child: TextFormField(
                         validator: (val) => val!.length != 6
-                            ? 'Code should be 6 digits long'
+                            ? Language().mustbe6[languageprov.LanguageIndex]
                             : null,
                         textAlign: TextAlign.center,
                         onChanged: (val) {

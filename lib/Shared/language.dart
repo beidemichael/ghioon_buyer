@@ -51,6 +51,10 @@ class Language {
     "You’ll receive 6 digit code for phone number verification",
     "ለስልክ ቁጥር ማረጋገጫ ባለ 6 አሃዝ ኮድ ይደርስዎታል"
   ];
+  List<String> mustbe6 = [
+    "Code should be 6 digits long",
+    "ኮድ 6 አሃዝ ርዝመት ሊኖረው ይገባል"
+  ];
   List<String> enterOtp = [
     "Please enter the activation code we have sent via SMS to: ",
     "እባኮትን በኤስኤምኤስ የላክነውን ኮድ ያስገቡ፡ "

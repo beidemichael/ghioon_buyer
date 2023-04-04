@@ -4,8 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Screens/components/Button.dart';
 import 'package:ghioon_buyer/Screens/components/Loading.dart';
+import 'package:ghioon_buyer/Shared/language.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import '../../../Services/Database/User/userDatabase.dart';
@@ -64,6 +66,7 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
+    var languageprov = Provider.of<LanguageProvider>(context);
     void whenScheduleUpDateTapped() {
       DatePicker.showDatePicker(context,
           // minTime: DateTime.now(),
@@ -116,8 +119,10 @@ class _RegisterState extends State<Register> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            addRadioButton(0, 'Male'),
-                            addRadioButton(1, 'Female'),
+                            addRadioButton(
+                                0, Language().male[languageprov.LanguageIndex]),
+                            addRadioButton(1,
+                                Language().female[languageprov.LanguageIndex]),
                           ],
                         ),
                         GestureDetector(
@@ -205,6 +210,7 @@ class _RegisterState extends State<Register> {
   }
 
   Widget birthdayWidget() {
+    var languageprov = Provider.of<LanguageProvider>(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
       child: Container(
@@ -221,7 +227,7 @@ class _RegisterState extends State<Register> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const Text('Birthday: ',
+                Text(Language().birthdate[languageprov.LanguageIndex],
                     style: TextStyle(
                         fontSize: 17.0,
                         color: Color.fromARGB(255, 112, 112, 112),
@@ -248,6 +254,7 @@ class _RegisterState extends State<Register> {
   }
 
   Widget TextField(var label, var value) {
+    var languageprov = Provider.of<LanguageProvider>(context);
     return Column(
       children: [
         const SizedBox(
@@ -265,7 +272,7 @@ class _RegisterState extends State<Register> {
             },
             validator: (val) {
               if (val!.isEmpty) {
-                return 'Please enter some text';
+                return Language().no_text_error[languageprov.LanguageIndex];
               }
               return null;
             },
