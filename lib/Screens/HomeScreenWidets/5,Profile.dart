@@ -44,7 +44,7 @@ class _ProfileState extends State<Profile> {
     final userInfo = Provider.of<List<UserInformation>>(context);
     var languageprov = Provider.of<LanguageProvider>(context);
     double width = MediaQuery.of(context).size.width;
-    
+
     return userInfo.isEmpty
         ? Loading()
         : Scaffold(
@@ -234,16 +234,16 @@ class _ProfileState extends State<Profile> {
                     },
                     child: StoreList(FontAwesomeIcons.rightFromBracket,
                         Language().logout[languageprov.LanguageIndex], width)),
-                         GestureDetector(
-                    onTap: () async {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>  PromotionsPage()),
-                      );
-                    },
-                    child: StoreList(FontAwesomeIcons.rightFromBracket,
-                       "promo", width)),
+                // GestureDetector(
+                //     onTap: () async {
+                //       Navigator.push(
+                //         context,
+                //         MaterialPageRoute(
+                //             builder: (context) => PromotionsPage()),
+                //       );
+                //     },
+                //     child: StoreList(
+                //         FontAwesomeIcons.rightFromBracket, "promo", width)),
               ],
             ),
           );

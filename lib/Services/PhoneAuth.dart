@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import '../Models/models.dart';
+
 class PhoneAuthServices {
   String? wholePhoneNumber;
 
@@ -109,14 +110,14 @@ class PhoneAuthServices {
       print('verificationCompleted');
 
       _phoneAuthCredential = phoneAuthCredential;
-      print(phoneAuthCredential);
+      // print(phoneAuthCredential);
       try {
         await FirebaseAuth.instance
             .signInWithCredential(_phoneAuthCredential!)
             .then((authRes) {
           _firebaseUser = authRes.user;
 
-          print(_firebaseUser.toString());
+          //  print(_firebaseUser.toString());
         });
         final User user = FirebaseAuth.instance.currentUser!;
         final uid = user.uid;
@@ -140,14 +141,14 @@ class PhoneAuthServices {
     void codeSent(String verificationId, [int? code]) {
       print('codeSent');
       _verificationId = verificationId;
-      print(verificationId);
-      print(code.toString());
+      // print(verificationId);
+      //  print(code.toString());
     }
 
     void codeAutoRetrievalTimeout(String verificationId) {
       print('codeAutoRetrievalTimeout');
 
-      print(verificationId);
+      // print(verificationId);
     }
 
     await FirebaseAuth.instance.verifyPhoneNumber(

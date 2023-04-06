@@ -21,9 +21,9 @@ class ProductForGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userInfo = Provider.of<List<UserInformation>>(context);
-    print("Products");
+
     final products = Provider.of<List<Product>>(context);
-    print(products);
+
     return userInfo == null
         ? Loading()
         : Scaffold(

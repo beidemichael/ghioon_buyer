@@ -22,7 +22,7 @@ class UserDatabaseService {
   }
 
   Stream<List<UserInformation>> get userInfo {
-    print(userUid);
+    // print(userUid);
     if (userUid == null) {
       return Stream.value([]);
     } else {
