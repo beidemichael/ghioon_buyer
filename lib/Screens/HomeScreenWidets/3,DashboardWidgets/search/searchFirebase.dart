@@ -11,6 +11,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ghioon_buyer/Services/Database/SellerDatabase/sellerDatabase.dart';
 import 'package:ghioon_buyer/Shared/constants.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
+import 'package:ghioon_buyer/Shared/dimensions.dart';
 import 'package:ghioon_buyer/Shared/language.dart';
 import 'package:provider/provider.dart';
 
@@ -64,7 +65,6 @@ class _ProductSearchState extends State<ProductSearch> {
                                                 1))
                                 // .where("name".toLowerCase(),
                                 //     isGreaterThanOrEqualTo: value.toLowerCase())
-
                                 .get();
                           }
                         });
@@ -83,22 +83,38 @@ class _ProductSearchState extends State<ProductSearch> {
                           child: CircularProgressIndicator(),
                         );
                       } else if (snapshot.hasData) {
-                        return ListView.builder(
-                          itemCount: snapshot.data!.docs.length,
-                          itemBuilder: (context, index) {
-                            Map<String, dynamic> product =
-                                snapshot.data!.docs[index].data()
-                                    as Map<String, dynamic>;
-                            return searchResultWidget(product: product);
-                          },
-                        );
+                        return snapshot.data!.docs.length != 0
+                            ? ListView.builder(
+                                itemCount: snapshot.data!.docs.length,
+                                itemBuilder: (context, index) {
+                                  Map<String, dynamic> product =
+                                      snapshot.data!.docs[index].data()
+                                          as Map<String, dynamic>;
+                                  return searchResultWidget(product: product);
+                                },
+                              )
+                            : Center(
+                                child: Text(
+                                  Language()
+                                      .No_products[languageprov.LanguageIndex],
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 30),
+                                ),
+                              );
+                        ;
                       } else {
                         return Center(
-                          child: Text(
-                            Language().No_products[languageprov.LanguageIndex],
-                            style: TextStyle(color: Colors.black, fontSize: 30),
-                          ),
-                        );
+                            child: Icon(
+                          Icons.search_outlined,
+                          color: CustomColors().grey,
+                          size: Dimensions.height45 * 4,
+                        )
+                            // Text(
+                            //   Language().No_products[languageprov.LanguageIndex],
+                            //   style: TextStyle(color: Colors.black, fontSize: 30),
+                            // ),
+
+                            );
                       }
                     },
                   ),

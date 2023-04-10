@@ -23,6 +23,7 @@ class ProductForGrid extends StatelessWidget {
     final userInfo = Provider.of<List<UserInformation>>(context);
 
     final products = Provider.of<List<Product>>(context);
+    bool clicked = false;
 
     return userInfo == null
         ? Loading()
@@ -45,30 +46,33 @@ class ProductForGrid extends StatelessWidget {
                       itemBuilder: (BuildContext ctx, index) {
                         return GestureDetector(
                           onTap: () async {
-                            print(products[index].name);
-                            print(
-                                "+++++++++++++++++++++++++++++++++++++++++++++++++++++");
-                            if (await SellerDatabaseService()
-                                    .getOnline(products[index].userUid) ==
-                                true) {
-                              var phone = await SellerDatabaseService()
-                                  .getSellerPhone(products[index].userUid);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ProductDetail(
-                                          product: products[index],
-                                          phone: phone,
-                                        )),
-                              );
-                              await ReadProductDatabaseService().addUserRead(
-                                  userInfo[0].userName,
-                                  userInfo[0].userUid,
-                                  Timestamp.now(),
-                                  products[index].documentId);
-                            } else {
-                              snackBar(context, 'Product not available.',
-                                  CustomColors().blue, Colors.white);
+                            if (clicked == false) {
+                              clicked = true;
+
+                              if (await SellerDatabaseService()
+                                      .getOnline(products[index].userUid) ==
+                                  true) {
+                                var phone = await SellerDatabaseService()
+                                    .getSellerPhone(products[index].userUid);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ProductDetail(
+                                            product: products[index],
+                                            phone: phone,
+                                          )),
+                                );
+                                await ReadProductDatabaseService().addUserRead(
+                                    userInfo[0].userName,
+                                    userInfo[0].userUid,
+                                    Timestamp.now(),
+                                    products[index].documentId);
+                                clicked = false;
+                              } else {
+                                snackBar(context, 'Product not available.',
+                                    CustomColors().blue, Colors.white);
+                                clicked = false;
+                              }
                             }
                           },
                           child: ProductListCard(product: products[index]),
