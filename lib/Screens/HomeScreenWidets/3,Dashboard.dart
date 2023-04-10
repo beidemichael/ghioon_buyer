@@ -41,42 +41,40 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     final products = Provider.of<List<Product>>(context);
     final search = Provider.of<SearchProvider>(context);
-     var languageprov = Provider.of<LanguageProvider>(context);
+    var languageprov = Provider.of<LanguageProvider>(context);
 
     return Scaffold(
       body: SafeArea(
-        child: ListView(
-          children: [
-            SizedBox(
-              height: ScreenSize().ScreenHeight(context),
-              child: Column(
-                children: [
-                  Padding(
-                    padding:  EdgeInsets.fromLTRB(Dimensions.width10, Dimensions.width20, Dimensions.width10, Dimensions.width10),
-                    child: GestureDetector(
-                        onTap: () {
-                          search.searchResults.clear();
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  ProductSearch(), //SearchScreen(),
-                            ),
-                          );
-                        },
-                        child: SearchBar()),
-                  ),
-                 
-                  HorizontalSlider(),
-                  Carousel_Slider(), //  Carousel(),
-                  Expanded(
-                    child: products.length == 0
-                        ? EmptyScreen(context,(Language().No_products[languageprov.LanguageIndex]))
-                        : ProductForGrid(),
-                  ),
-                ],
+        child: SizedBox(
+          height: ScreenSize().ScreenHeight(context),
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(Dimensions.width10,
+                    Dimensions.width20, Dimensions.width10, Dimensions.width10),
+                child: GestureDetector(
+                    onTap: () {
+                      search.searchResults.clear();
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              ProductSearch(), //SearchScreen(),
+                        ),
+                      );
+                    },
+                    child: SearchBar()),
               ),
-            ),
-          ],
+
+              HorizontalSlider(),
+              Carousel_Slider(), //  Carousel(),
+              Expanded(
+                child: products.length == 0
+                    ? EmptyScreen(context,
+                        (Language().No_products[languageprov.LanguageIndex]))
+                    : ProductForGrid(),
+              ),
+            ],
+          ),
         ),
       ),
     );

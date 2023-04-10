@@ -45,6 +45,9 @@ class ProductForGrid extends StatelessWidget {
                       itemBuilder: (BuildContext ctx, index) {
                         return GestureDetector(
                           onTap: () async {
+                            print(products[index].name);
+                            print(
+                                "+++++++++++++++++++++++++++++++++++++++++++++++++++++");
                             if (await SellerDatabaseService()
                                     .getOnline(products[index].userUid) ==
                                 true) {
