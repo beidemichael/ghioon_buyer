@@ -37,7 +37,7 @@ class SellerDatabaseService {
     }).toList();
   }
 
-  //orders lounges stream
+  //fetch sellers
   Stream<List<SellerInformation>> get sellers {
     return sellersCollection
         .where('businessType', isEqualTo: businessType)

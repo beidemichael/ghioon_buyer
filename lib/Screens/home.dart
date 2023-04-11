@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ghioon_buyer/Screens/HomeScreenWidets/2,Catagory.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/2,Catagory_store.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/Catagory_screen.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,Dashboard.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/5,Profile.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/1,Cart.dart';
@@ -143,7 +144,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: <Widget>[
                     // const Cart(),
                     Dashboard(context: context),
-                    const CatagoryPage(),
+                    //const CatagoryPage(),
+                    Category_Screen(),
 
                     const PromotionPage(),
                     const Profile(),

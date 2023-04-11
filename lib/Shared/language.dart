@@ -62,4 +62,9 @@ class Language {
   List<String> phonenumber = ["Phonenumber", "ስልክ ቁጥር"];
   List<String> submit = ["Submit", "አስገባ"];
   List<String> login = ["Login", "ግባ"];
+  List<String> products = ["Products", "ምርቶች"];
+    List<String> store = ["Store", "መደብር"];
+
+  
+
 }

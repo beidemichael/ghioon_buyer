@@ -6,6 +6,7 @@ import 'package:ghioon_buyer/Providers/AppInfo.dart';
 import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,DashboardWidgets/ProductGridListCard.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,DashboardWidgets/productDetail.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/5,Profile/ProfileWidgets/SnackBar.dart';
 import 'package:ghioon_buyer/Services/Database/Product/readProduct.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ghioon_buyer/Services/Database/SellerDatabase/sellerDatabase.dart';
@@ -138,7 +139,9 @@ class searchResultWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool clicked = false;
     final appInformation = Provider.of<AppInformation>(context);
+     final userInfo = Provider.of<List<UserInformation>>(context);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -176,14 +179,39 @@ class searchResultWidget extends StatelessWidget {
             size: 25,
           ),
           onTap: () async {
-            var phone = await SellerDatabaseService()
-                .getSellerPhone(Product.fromMap(product).userUid);
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => ProductDetail(
-                      product: Product.fromMap(product), phone: phone)),
-            );
+
+
+              if (clicked == false) {
+                              clicked = true;
+
+                              if (await SellerDatabaseService()
+                                      .getOnline( Product.fromMap(product).userUid) ==
+                                  true) {
+                                var phone = await SellerDatabaseService()
+                                    .getSellerPhone( Product.fromMap(product).userUid);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ProductDetail(
+                                            product: Product.fromMap(product), phone: phone,
+                                           
+                                          )),
+                                );
+                                await ReadProductDatabaseService().addUserRead(
+                                    userInfo[0].userName,
+                                    userInfo[0].userUid,
+                                    Timestamp.now(),
+                                    Product.fromMap(product).documentId);
+                                clicked = false;
+                              } else {
+                                snackBar(context, 'Product not available.',
+                                    CustomColors().blue, Colors.white);
+                                clicked = false;
+                              }
+                            }
+
+
+            
           },
         ),
       ),

@@ -5,7 +5,8 @@ class ReadProductDatabaseService {
   var barcode;
   var userUid;
   var productName;
-  ReadProductDatabaseService({this.barcode, this.userUid, this.productName});
+  var category;
+  ReadProductDatabaseService({this.barcode, this.userUid, this.productName, this.category});
   final CollectionReference productCollection =
       FirebaseFirestore.instance.collection('Products');
 
@@ -34,13 +35,21 @@ class ReadProductDatabaseService {
     }).toList();
   }
 
-  //orders lounges stream
+  //fetch products
   Stream<List<Product>> get readProduct {
     return productCollection
         //.where('userUid', isEqualTo: userUid)
         .snapshots()
         .map(_productListFromSnapshot);
   }
+
+
+   Stream<List<Product>> get readProductinCategory {
+    return productCollection
+         .where('category', isEqualTo: category)
+        .snapshots()
+        .map(_productListFromSnapshot);
+   }
 
   Stream<List<Product>> get readSellerProduct {
     return productCollection
