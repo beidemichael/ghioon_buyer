@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:ghioon_buyer/Models/models.dart';
+import 'package:ghioon_buyer/Providers/AppInfo.dart';
 import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/2,CategoryWidgets/CategoryCard.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/2,CategoryWidgets/CategoryScreen.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/2,CategoryWidgets/Category_products_list.dart';
+import 'package:ghioon_buyer/Screens/components/emptyScreen.dart';
+import 'package:ghioon_buyer/Services/Database/Product/readProduct.dart';
+import 'package:ghioon_buyer/Shared/constants.dart';
 import 'package:ghioon_buyer/Shared/language.dart';
 import 'package:provider/provider.dart';
 
-import '../../Models/models.dart';
-import '../../Providers/AppInfo.dart';
-import '../../Services/Database/SellerDatabase/sellerDatabase.dart';
-import '../../Shared/constants.dart';
-import '../components/emptyScreen.dart';
-import '2,CategoryWidgets/SellersUnderCategory/Grid.dart';
-
-class CatagoryPage extends StatefulWidget {
-  const CatagoryPage({super.key});
+class CatagoryProductPage extends StatefulWidget {
+  const CatagoryProductPage({super.key});
 
   @override
-  State<CatagoryPage> createState() => _CatagoryPageState();
+  State<CatagoryProductPage> createState() => _CatagoryProductPageState();
 }
 
-class _CatagoryPageState extends State<CatagoryPage> {
+class _CatagoryProductPageState extends State<CatagoryProductPage> {
   @override
   Widget build(BuildContext context) {
     final appInformation = Provider.of<AppInformation>(context);
@@ -56,7 +55,8 @@ class _CatagoryPageState extends State<CatagoryPage> {
                 child: catagory.length == 0
                     ? EmptyScreen(context, 'No Category.')
                     : Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 10),
                         child: GridView.builder(
                           shrinkWrap: true,
                           physics: BouncingScrollPhysics(
@@ -75,14 +75,13 @@ class _CatagoryPageState extends State<CatagoryPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => StreamProvider<
-                                          List<SellerInformation>>.value(
+                                      builder: (context) =>
+                                          StreamProvider<List<Product>>.value(
                                         initialData: [],
-                                        value: SellerDatabaseService(
-                                                businessType:
-                                                    catagory[index].type)
-                                            .sellers,
-                                        child: CategoryScreen(
+                                        value: ReadProductDatabaseService(
+                                                category: catagory[index].type)
+                                            .readProductinCategory,
+                                        child: ProductsWithCategory(
                                           category: catagory[index].type,
                                         ),
                                       ),
@@ -94,24 +93,7 @@ class _CatagoryPageState extends State<CatagoryPage> {
                                     image: catagory[index].image));
                           },
                         ),
-                      )
-
-                // ListView.builder(
-                //     shrinkWrap: true,
-                //     // scrollDirection: Axis.horizontal,
-                //     itemCount: catagory.length,
-                //     physics: const BouncingScrollPhysics(
-                //       parent: AlwaysScrollableScrollPhysics(),
-                //     ),
-                //     // physics: const NeverScrollableScrollPhysics()
-                //     itemBuilder: (context, index) {
-                //       return Padding(
-                //         padding: const EdgeInsets.all(8.0),
-                //         child:
-                //       );
-                //     },
-                //   ),
-                ),
+                      )),
           ],
         ),
       ),

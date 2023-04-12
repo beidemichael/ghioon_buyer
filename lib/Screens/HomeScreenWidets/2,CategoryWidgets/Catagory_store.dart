@@ -1,27 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:ghioon_buyer/Providers/AppInfo.dart';
 import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/2,CategoryWidgets/CategoryCard.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/2,CategoryWidgets/CategoryScreen.dart';
-import 'package:ghioon_buyer/Screens/HomeScreenWidets/2,CategoryWidgets/Category_products_list.dart';
-import 'package:ghioon_buyer/Services/Database/Product/readProduct.dart';
+import 'package:ghioon_buyer/Screens/components/emptyScreen.dart';
+import 'package:ghioon_buyer/Services/Database/SellerDatabase/sellerDatabase.dart';
+import 'package:ghioon_buyer/Shared/constants.dart';
 import 'package:ghioon_buyer/Shared/language.dart';
 import 'package:provider/provider.dart';
 
-import '../../Models/models.dart';
-import '../../Providers/AppInfo.dart';
-import '../../Services/Database/SellerDatabase/sellerDatabase.dart';
-import '../../Shared/constants.dart';
-import '../components/emptyScreen.dart';
-import '2,CategoryWidgets/SellersUnderCategory/Grid.dart';
+import '../../../Models/models.dart';
 
-class CatagoryProductPage extends StatefulWidget {
-  const CatagoryProductPage({super.key});
+class CatagoryPage extends StatefulWidget {
+  const CatagoryPage({super.key});
 
   @override
-  State<CatagoryProductPage> createState() => _CatagoryProductPageState();
+  State<CatagoryPage> createState() => _CatagoryPageState();
 }
 
-class _CatagoryProductPageState extends State<CatagoryProductPage> {
+class _CatagoryPageState extends State<CatagoryPage> {
   @override
   Widget build(BuildContext context) {
     final appInformation = Provider.of<AppInformation>(context);
@@ -58,7 +55,8 @@ class _CatagoryProductPageState extends State<CatagoryProductPage> {
                 child: catagory.length == 0
                     ? EmptyScreen(context, 'No Category.')
                     : Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 10),
                         child: GridView.builder(
                           shrinkWrap: true,
                           physics: BouncingScrollPhysics(
@@ -78,13 +76,13 @@ class _CatagoryProductPageState extends State<CatagoryProductPage> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => StreamProvider<
-                                          List<Product>>.value(
+                                          List<SellerInformation>>.value(
                                         initialData: [],
-                                        value: ReadProductDatabaseService(
-                                                category:
+                                        value: SellerDatabaseService(
+                                                businessType:
                                                     catagory[index].type)
-                                            .readProductinCategory,
-                                        child: ProductsWithCategory(
+                                            .sellers,
+                                        child: CategoryScreen(
                                           category: catagory[index].type,
                                         ),
                                       ),
