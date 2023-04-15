@@ -10,6 +10,7 @@ import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Providers/search.dart';
 import 'package:ghioon_buyer/Screens/GetStarted/Screens/0,Splash.dart';
 import 'package:ghioon_buyer/Screens/home.dart';
+import 'package:ghioon_buyer/Services/Database/Category/categoryDatabase.dart';
 import 'package:ghioon_buyer/Services/Database/Company_promo/company_promo.dart';
 import 'package:ghioon_buyer/Services/Database/Promotion/DatabasePromotion.dart';
 import 'package:ghioon_buyer/firebase_options.dart';
@@ -178,6 +179,10 @@ void main() async {
              create: (context) => LanguageProvider(),
 
            ),
+            StreamProvider<List<Categories>>.value(
+            initialData: [],
+            value: CategoryDatabaseService().categories,
+          ),
 
 
          

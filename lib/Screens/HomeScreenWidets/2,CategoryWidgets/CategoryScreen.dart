@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Models/models.dart';
+import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Screens/components/Loading.dart';
+import 'package:ghioon_buyer/Shared/dimensions.dart';
+import 'package:ghioon_buyer/Shared/language.dart';
 import 'package:provider/provider.dart';
 import '../../../Providers/AppInfo.dart';
 import '../../../Shared/constants.dart';
@@ -20,6 +23,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
   Widget build(BuildContext context) {
     final sellers = Provider.of<List<SellerInformation>>(context);
       final appInformation = Provider.of<AppInformation>(context);
+       var languageprov = Provider.of<LanguageProvider>(context);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(69.0),
@@ -31,7 +35,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
               children: [
                 Text(widget.category,
                     style: TextStyle(
-                        fontSize: 28.0,
+                        fontSize:Dimensions.font26,
                         color: appInformation.appColor,
                         fontWeight: FontWeight.w600)),
               ],
@@ -50,7 +54,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
               child: sellers == null
                   ? Loading()
                   : sellers.isEmpty
-                      ? EmptyScreen(context, 'No Sellers.')
+                      ? EmptyScreen(context, Language().no_seller[languageprov.LanguageIndex] )
                       : SellersUnderCategoryGrid(),
             ),
           ],

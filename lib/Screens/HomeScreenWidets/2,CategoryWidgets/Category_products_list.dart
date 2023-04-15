@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Models/models.dart';
+import 'package:ghioon_buyer/Providers/language_provider.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/2,CategoryWidgets/ProductsUnderCategory/Product_list.dart';
 import 'package:ghioon_buyer/Screens/components/Loading.dart';
+import 'package:ghioon_buyer/Shared/dimensions.dart';
+import 'package:ghioon_buyer/Shared/language.dart';
 import 'package:provider/provider.dart';
 import '../../../Providers/AppInfo.dart';
 import '../../../Shared/constants.dart';
 import '../../components/emptyScreen.dart';
-import 'ProductsUnderCategory/Grid.dart';
+
 
 class ProductsWithCategory extends StatefulWidget {
   String category;
@@ -20,6 +24,7 @@ class _ProductsWithCategoryState extends State<ProductsWithCategory> {
   Widget build(BuildContext context) {
     final product = Provider.of<List<Product>>(context);
       final appInformation = Provider.of<AppInformation>(context);
+       var languageprov = Provider.of<LanguageProvider>(context);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(69.0),
@@ -31,7 +36,7 @@ class _ProductsWithCategoryState extends State<ProductsWithCategory> {
               children: [
                 Text(widget.category,
                     style: TextStyle(
-                        fontSize: 28.0,
+                        fontSize:Dimensions.font26,
                         color: appInformation.appColor,
                         fontWeight: FontWeight.w600)),
               ],
@@ -50,8 +55,8 @@ class _ProductsWithCategoryState extends State<ProductsWithCategory> {
               child: product == null
                   ? Loading()
                   : product.isEmpty
-                      ? EmptyScreen(context, 'No Products.')
-                      : SellersUnderCategoryGrid(),
+                      ? EmptyScreen(context, Language().No_products[languageprov.LanguageIndex])
+                      : ProductsUnderCategoryGrid(category:widget.category),
             ),
           ],
         ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Providers/Order_Provider.dart';
 import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,DashboardWidgets/ProductDetailWidgets.dart/3,inventoryQty.dart';
+import 'package:ghioon_buyer/Shared/constants.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
 import 'package:ghioon_buyer/Shared/dimensions.dart';
 import 'package:ghioon_buyer/Shared/language.dart';
@@ -48,7 +49,7 @@ class _TitleAndDescriptionState extends State<TitleAndDescription> {
          
          
          Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // Quantity(quantity: order.quantity),
                     Padding(
@@ -58,7 +59,7 @@ class _TitleAndDescriptionState extends State<TitleAndDescription> {
                         children: [
                           Text(Language().price[languageprov.LanguageIndex],
                               style: TextStyle(
-                                  fontSize: 18.0,
+                                  fontSize:Dimensions.font18,
                                   fontFamily: 'Inter',
                                   color: CustomColors().grey,
                                   fontWeight: FontWeight.w700)),
@@ -73,6 +74,32 @@ class _TitleAndDescriptionState extends State<TitleAndDescription> {
                         ],
                       ),
                     ),
+                    SizedBox(width: ScreenSize().ScreenWidth(context)/3,),
+
+
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(Language().view[languageprov.LanguageIndex],
+                              style: TextStyle(
+                                  fontSize: Dimensions.font18,
+                                  fontFamily: 'Inter',
+                                  color: CustomColors().grey,
+                                  fontWeight: FontWeight.w700)),
+                       
+                          Text(
+                              widget.product.viewCountTime.length.toString(),
+                              style: TextStyle(
+                                  fontSize: Dimensions.font23,
+                                  fontFamily: 'Inter',
+                                  color: CustomColors().black,
+                                  fontWeight: FontWeight.bold)),
+                        ],
+                      ),
+                    ),
+
                   ],
                 ),
           // widget.product.fixed
@@ -144,115 +171,117 @@ class _TitleAndDescriptionState extends State<TitleAndDescription> {
           //         ),
           //       ),
 
-          SizedBox(
-            height: 60,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: widget.product.fixed == true
-                                ? Colors.purple.withOpacity(0.1)
-                                : Colors.blue.withOpacity(0.2),
-                            borderRadius: const BorderRadius.only(
-                              topRight: Radius.circular(40.0),
-                              bottomRight: Radius.circular(40.0),
-                              topLeft: Radius.circular(40.0),
-                              bottomLeft: Radius.circular(40.0),
-                            ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 8.0, vertical: 2.5),
-                            child: Text(
-                                widget.product.fixed == true
-                                    ? 'Fixed Price'
-                                    : 'Range Price',
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    color: widget.product.fixed == true
-                                        ? Colors.purple.withOpacity(0.7)
-                                        : Colors.blue.withOpacity(0.9),
-                                    fontWeight: FontWeight.w400)),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: widget.product.inStock == true
-                              ? Colors.green.withOpacity(0.2)
-                              : Colors.red.withOpacity(0.2),
-                          borderRadius: const BorderRadius.only(
-                            topRight: Radius.circular(40.0),
-                            bottomRight: Radius.circular(40.0),
-                            topLeft: Radius.circular(40.0),
-                            bottomLeft: Radius.circular(40.0),
-                          ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0, vertical: 2.5),
-                          child: Text(
-                              widget.product.inStock == true
-                                  ? Language()
-                                      .inStock[languageprov.LanguageIndex]
-                                  : Language()
-                                      .outStock[languageprov.LanguageIndex],
-                              style: TextStyle(
-                                  fontSize: 20.0,
-                                  color: widget.product.inStock == true
-                                      ? Colors.green.withOpacity(0.7)
-                                      : Colors.red.withOpacity(0.9),
-                                  fontWeight: FontWeight.w400)),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.orange.withOpacity(0.2),
-                          borderRadius: const BorderRadius.only(
-                            topRight: Radius.circular(40.0),
-                            bottomRight: Radius.circular(40.0),
-                            topLeft: Radius.circular(40.0),
-                            bottomLeft: Radius.circular(40.0),
-                          ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0, vertical: 2.5),
-                          child: Text(
-                              widget.product.quantity.toString() +
-                                  ' ' +
-                                  Language()
-                                      .item_left[languageprov.LanguageIndex],
-                              style: TextStyle(
-                                  fontSize: 20.0,
-                                  color: Colors.orange.withOpacity(0.9),
-                                  fontWeight: FontWeight.w400)),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
+          // SizedBox(
+          //   height: 60,
+          //   child: ListView(
+          //     scrollDirection: Axis.horizontal,
+          //     children: [
+          //       Padding(
+          //         padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+          //         child: Row(
+          //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //           children: [
+          //             Padding(
+          //               padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+          //               child: Container(
+          //                 decoration: BoxDecoration(
+          //                   color: widget.product.fixed == true
+          //                       ? Colors.purple.withOpacity(0.1)
+          //                       : Colors.blue.withOpacity(0.2),
+          //                   borderRadius: const BorderRadius.only(
+          //                     topRight: Radius.circular(40.0),
+          //                     bottomRight: Radius.circular(40.0),
+          //                     topLeft: Radius.circular(40.0),
+          //                     bottomLeft: Radius.circular(40.0),
+          //                   ),
+          //                 ),
+          //                 child: Padding(
+          //                   padding: const EdgeInsets.symmetric(
+          //                       horizontal: 8.0, vertical: 2.5),
+          //                   child: Text(
+          //                       widget.product.fixed == true
+          //                           ? 'Fixed Price'
+          //                           : 'Range Price',
+          //                       style: TextStyle(
+          //                           fontSize: 20.0,
+          //                           color: widget.product.fixed == true
+          //                               ? Colors.purple.withOpacity(0.7)
+          //                               : Colors.blue.withOpacity(0.9),
+          //                           fontWeight: FontWeight.w400)),
+          //                 ),
+          //               ),
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //       Row(
+          //         children: [
+          //           Padding(
+          //             padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
+          //             child: Container(
+          //               decoration: BoxDecoration(
+          //                 color: widget.product.inStock == true
+          //                     ? Colors.green.withOpacity(0.2)
+          //                     : Colors.red.withOpacity(0.2),
+          //                 borderRadius: const BorderRadius.only(
+          //                   topRight: Radius.circular(40.0),
+          //                   bottomRight: Radius.circular(40.0),
+          //                   topLeft: Radius.circular(40.0),
+          //                   bottomLeft: Radius.circular(40.0),
+          //                 ),
+          //               ),
+          //               child: Padding(
+          //                 padding: const EdgeInsets.symmetric(
+          //                     horizontal: 8.0, vertical: 2.5),
+          //                 child: Text(
+          //                     widget.product.inStock == true
+          //                         ? Language()
+          //                             .inStock[languageprov.LanguageIndex]
+          //                         : Language()
+          //                             .outStock[languageprov.LanguageIndex],
+          //                     style: TextStyle(
+          //                         fontSize: 20.0,
+          //                         color: widget.product.inStock == true
+          //                             ? Colors.green.withOpacity(0.7)
+          //                             : Colors.red.withOpacity(0.9),
+          //                         fontWeight: FontWeight.w400)),
+          //               ),
+          //             ),
+          //           ),
+          //           Padding(
+          //             padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
+          //             child: Container(
+          //               decoration: BoxDecoration(
+          //                 color: Colors.orange.withOpacity(0.2),
+          //                 borderRadius: const BorderRadius.only(
+          //                   topRight: Radius.circular(40.0),
+          //                   bottomRight: Radius.circular(40.0),
+          //                   topLeft: Radius.circular(40.0),
+          //                   bottomLeft: Radius.circular(40.0),
+          //                 ),
+          //               ),
+          //               child: Padding(
+          //                 padding: const EdgeInsets.symmetric(
+          //                     horizontal: 8.0, vertical: 2.5),
+          //                 child: Text(
+          //                     widget.product.quantity.toString() +
+          //                         ' ' +
+          //                         Language()
+          //                             .item_left[languageprov.LanguageIndex],
+          //                     style: TextStyle(
+          //                         fontSize: 20.0,
+          //                         color: Colors.orange.withOpacity(0.9),
+          //                         fontWeight: FontWeight.w400)),
+          //               ),
+          //             ),
+          //           ),
+          //         ],
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          
+
           // widget.product.fixed == false
           //     ? Padding(
           //         padding: const EdgeInsets.all(8.0),
@@ -309,6 +338,8 @@ class _TitleAndDescriptionState extends State<TitleAndDescription> {
           //     : const SizedBox(
           //         height: 2,
           //       ),
+
+          SizedBox(height: Dimensions.height10,),
           Padding(
             padding: const EdgeInsets.fromLTRB(10.0, 0, 5, 5),
             child: Text(Language().product_desc[languageprov.LanguageIndex],

@@ -6,13 +6,16 @@ import 'package:ghioon_buyer/Shared/constants.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ghioon_buyer/Shared/dimensions.dart';
+import 'package:intl/intl.dart';
 
 class productWidget extends StatelessWidget {
-  const productWidget({Key? key, required this.width, required this.product})
+  const productWidget({Key? key, required this.width, required this.product, required this.category})
       : super(key: key);
 
   final double width;
   final Product product;
+  final String category;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -78,14 +81,14 @@ class productWidget extends StatelessWidget {
                       ),
                     ), //Image.asset('assets/images/head.png'),
               subtitle: Text(
-                product.userUid,
+              DateFormat('yyyy-MM-dd HH:mm:ss').format(product.created.toDate().toUtc()),
                 style: TextStyle(
                     fontFamily: 'Inter',
                     color: CustomColors().grey,
-                    fontSize: 14,
+                    fontSize: Dimensions.font14,
                     fontWeight: FontWeight.w600),
               ),
-              trailing: Text("ETB 1800",
+              trailing: Text("Views: "+  product.viewCountTime.length.toString(),
                   style: TextStyle(
                       fontFamily: 'Inter',
                       color: CustomColors().black,

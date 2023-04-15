@@ -30,7 +30,16 @@ class ReadProductDatabaseService {
         quantity: (doc.data() as dynamic)['quantity'] ?? 0,
         userUid: (doc.data() as dynamic)['userUid'] ?? '',
         barcode: (doc.data() as dynamic)['barcode'] ?? '',
+        created:(doc.data() as dynamic)['created'] ?? Timestamp.now(),
         documentId: doc.reference.id,
+        viewCountTime: (doc.data() as dynamic)['viewCountTime'] ?? [],
+
+
+
+
+        //created: DateTime.fromMillisecondsSinceEpoch((doc.data() as dynamic)['created'] )?? DateTime.now(),
+
+
       );
     }).toList();
   }
@@ -50,6 +59,14 @@ class ReadProductDatabaseService {
         .snapshots()
         .map(_productListFromSnapshot);
    }
+
+   Stream<List<Product>> get readSellerProductsInCatagory {
+    return productCollection
+        .where('category', isEqualTo: category)
+        .where('userUid', isEqualTo: userUid)
+        .snapshots()
+        .map(_productListFromSnapshot);
+  }
 
   Stream<List<Product>> get readSellerProduct {
     return productCollection

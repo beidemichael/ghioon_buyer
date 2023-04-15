@@ -3,6 +3,7 @@ import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/4,Promotion/promotion_demo.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/5,Profile/SettingPages/aboutUs.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/5,Profile/setting.dart';
+import 'package:ghioon_buyer/Shared/dimensions.dart';
 import 'package:ghioon_buyer/Shared/language.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +61,7 @@ class _ProfileState extends State<Profile> {
                       Text(Language().profile[languageprov.LanguageIndex],
                           style: TextStyle(
                               fontFamily: 'Inter',
-                              fontSize: 30.0,
+                              fontSize: Dimensions.font26,
                               color: CustomColors().white,
                               fontWeight: FontWeight.w700)),
                     ],
@@ -174,7 +175,7 @@ class _ProfileState extends State<Profile> {
                             Text(userInfo[0].userName,
                                 style: TextStyle(
                                     fontFamily: 'Poppins',
-                                    fontSize: 22.0,
+                                    fontSize: Dimensions.font23,
                                     color: CustomColors().white,
                                     fontWeight: FontWeight.w500)),
                           ],

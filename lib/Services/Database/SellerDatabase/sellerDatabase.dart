@@ -40,7 +40,7 @@ class SellerDatabaseService {
   //fetch sellers
   Stream<List<SellerInformation>> get sellers {
     return sellersCollection
-        .where('businessType', isEqualTo: businessType)
+        .where('businessType', arrayContains: businessType)
         .snapshots()
         .map(_userInfoListFromSnapshot);
   }
@@ -70,6 +70,16 @@ class SellerDatabaseService {
       // online = snapshot.data['specie'].toString();
     });
     return phone;
+  }
+
+  Future<String> getShopeName(String sellerId) async {
+    DocumentReference documentReference = sellersCollection.doc(sellerId);
+    String StoreName = "";
+    await documentReference.get().then((snapshot) {
+      StoreName = (snapshot.data() as dynamic)['businessName'] ?? false;
+      // online = snapshot.data['specie'].toString();
+    });
+    return StoreName;
   }
 
   Future addUserRead(

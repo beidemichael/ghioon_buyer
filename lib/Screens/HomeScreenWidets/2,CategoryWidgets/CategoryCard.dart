@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Providers/AppInfo.dart';
+import 'package:ghioon_buyer/Shared/dimensions.dart';
 import 'package:provider/provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -74,7 +75,7 @@ class _CategoryCardState extends State<CategoryCard> {
               child: Text(
                 widget.text,
                 style: TextStyle(
-                    fontSize: 18.0,
+                    fontSize:Dimensions.font18,
                     color: CustomColors().darkBlue,
                     fontWeight: FontWeight.w500),
               ),

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ghioon_buyer/Models/models.dart';
+import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/2,CategoryWidgets/SellersUnderCategory/StoreProfile/Store_profile_components/collection/CollectionDetail/productCard.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,DashboardWidgets/productDetail.dart';
 import 'package:ghioon_buyer/Screens/components/emptyScreen.dart';
+import 'package:ghioon_buyer/Services/Database/SellerDatabase/sellerDatabase.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
+import 'package:ghioon_buyer/Shared/dimensions.dart';
+import 'package:ghioon_buyer/Shared/language.dart';
 
 import 'package:provider/provider.dart';
 
@@ -14,7 +19,7 @@ class CollectionDetail extends StatefulWidget {
   CollectionDetail(
       {super.key,
       required this.collection_name,
-      required this.collection_description});
+       this.collection_description = ''});
 
   @override
   State<CollectionDetail> createState() => _CollectionDetailState();
@@ -23,7 +28,8 @@ class CollectionDetail extends StatefulWidget {
 class _CollectionDetailState extends State<CollectionDetail> {
   @override
   Widget build(BuildContext context) {
-    final collectionitems = Provider.of<List<CollectionItems>>(context);
+     var languageprov = Provider.of<LanguageProvider>(context);
+      final categoryitems = Provider.of<List<Product>>(context);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70.0),
@@ -51,15 +57,15 @@ class _CollectionDetailState extends State<CollectionDetail> {
             ),
             iconTheme: IconThemeData(color: Colors.white)),
       ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(20.0, 10, 20, 0),
+     body: Padding(
+        padding:  EdgeInsets.fromLTRB(Dimensions.width10, 0, Dimensions.width10, 0),
         child: Column(children: [
-          Text(
-            widget.collection_description,
-            style: TextStyle(
-                fontSize: 22, fontFamily: 'INTER', fontWeight: FontWeight.w400),
-            textAlign: TextAlign.center,
-          ),
+          // Text(
+          //   widget.collection_description,
+          //   style: TextStyle(
+          //       fontSize: 22, fontFamily: 'INTER', fontWeight: FontWeight.w400),
+          //   textAlign: TextAlign.center,
+          // ),
           SizedBox(
             height: 10,
           ),
@@ -79,38 +85,35 @@ class _CollectionDetailState extends State<CollectionDetail> {
           Expanded(
             child: Container(
               // height: MediaQuery.of(context).size.height,
-              child: collectionitems.length == 0
-                  ? EmptyScreen(context, 'No Products Found.')
+              child: categoryitems.length == 0
+                  ? EmptyScreen(context,
+                      Language().No_products[languageprov.LanguageIndex])
                   : ListView.builder(
                       physics: const BouncingScrollPhysics(
                           parent: AlwaysScrollableScrollPhysics()),
-                      itemCount: collectionitems.length,
+                      itemCount: categoryitems.length,
                       itemBuilder: (context, index) {
                         return GestureDetector(
-                          onTap: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //       builder: (context) => CollectionDetail(
-                            //             collection: widget.collection.collectionItems.[index],
-                            //           )),
-                            // );
-                            //         Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //       builder: (context) => ProductDetail(
-                            //             product: collectionitems[index],,
-                            //           )),
-                            // );
+                          onTap: () async{
+                              var phone = await SellerDatabaseService()
+                                    .getSellerPhone(categoryitems[index].userUid);
+                              Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ProductDetail(
+                                      product: categoryitems[index],
+                                      phone: phone,
+                                    )),
+                          );
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: ProductList(
-                              title: collectionitems[index].name,
-                              stock: collectionitems[index].quantity.toString(),
-                              image: collectionitems[index].image,
-                              edit: false,
-                              item: collectionitems[index],
+                              title: categoryitems[index].name,
+                              stock: categoryitems[index].quantity.toString(),
+                              image: categoryitems[index].image,
+                              edit: true,
+                              item: categoryitems[index],
                               index: index,
                             ),
                           ),

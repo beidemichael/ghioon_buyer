@@ -17,6 +17,7 @@ class Language {
   List<String> female = ["Female", "ሴት"];
   List<String> birthdate = ["Birthdate", "የልደት ቀን"];
   List<String> email = ["Email", "ኢሜይል"];
+    List<String> email_optional = ["Email(optional)", "ኢሜይል(አማራጭ)"];
   List<String> update = ["Update", "አድስ"];
   List<String> no_text_error = ["Please Enter Some Text", "እባክህ ጽሑፍ አስገባ"];
   List<String> saved_address = ["Saved Delivery Address", "የማስረከቢያ አድራሻ"];
@@ -33,6 +34,7 @@ class Language {
 
   // words in product detail
   List<String> price = ["Price", "ዋጋ"];
+  List<String> view = ["View", "እይታ"];
   List<String> negotiable = ["Negotiable", "በድርድር"];
   List<String> product_desc = ["Product Description", "የምርት ማብራሪያ"];
   List<String> call = ["Call Seller", "ይደውሉ"];
@@ -64,6 +66,10 @@ class Language {
   List<String> login = ["Login", "ግባ"];
   List<String> products = ["Products", "ምርቶች"];
     List<String> store = ["Store", "መደብር"];
+
+    List<String> no_seller = ['No Sellers.', "ሻጭ የለም"];
+
+    
 
   
 

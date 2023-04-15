@@ -83,14 +83,14 @@ class _CatagoryPageState extends State<CatagoryPage> {
                                                     catagory[index].type)
                                             .sellers,
                                         child: CategoryScreen(
-                                          category: catagory[index].type,
+                                          category: catagory[index].name,
                                         ),
                                       ),
                                     ),
                                   );
                                 },
                                 child: CategoryCard(
-                                    text: catagory[index].type,
+                                    text: catagory[index].name,
                                     image: catagory[index].image));
                           },
                         ),

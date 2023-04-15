@@ -82,14 +82,14 @@ class _CatagoryProductPageState extends State<CatagoryProductPage> {
                                                 category: catagory[index].type)
                                             .readProductinCategory,
                                         child: ProductsWithCategory(
-                                          category: catagory[index].type,
+                                          category: catagory[index].name,
                                         ),
                                       ),
                                     ),
                                   );
                                 },
                                 child: CategoryCard(
-                                    text: catagory[index].type,
+                                    text: catagory[index].name,
                                     image: catagory[index].image));
                           },
                         ),

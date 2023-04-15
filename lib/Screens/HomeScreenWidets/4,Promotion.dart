@@ -4,6 +4,7 @@ import 'package:ghioon_buyer/Screens/GetStarted/Screens/1,SlideScreen.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/4,Promotion/PromotionScreens.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
+import 'package:ghioon_buyer/Shared/dimensions.dart';
 import 'package:ghioon_buyer/Shared/language.dart';
 import 'package:provider/provider.dart';
 
@@ -34,7 +35,7 @@ class _PromotionPageState extends State<PromotionPage> {
               children: [
                 Text(Language().promotion[languageprov.LanguageIndex],
                     style: TextStyle(
-                        fontSize: 28.0,
+                        fontSize: Dimensions.font26,
                         color: CustomColors().white,
                         fontWeight: FontWeight.w600)),
               ],

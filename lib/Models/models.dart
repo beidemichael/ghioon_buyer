@@ -32,7 +32,7 @@ class SellerInformation {
   String userUid;
   bool approved;
   String documentId;
-  String businessCategory;
+  List businessCategory;
   String businessName;
   String email;
   String businessNo;
@@ -75,11 +75,16 @@ class SellerInformation {
 }
 
 class Categories {
-  String type;
+ String type;
   String documentId;
+  String name;
+  String image;
   Categories({
-    required this.type,
+     required this.type,
     required this.documentId,
+    required this.name,
+    required this.image
+
   });
 }
 
@@ -110,6 +115,8 @@ class Product {
   String video;
   String userUid;
   String barcode;
+  var created;
+  List viewCountTime;
 
   Product({
     required this.productId,
@@ -130,6 +137,8 @@ class Product {
     required this.video,
     required this.userUid,
     required this.barcode,
+    required this.created,
+    required this.viewCountTime,
   });
 
   factory Product.fromMap(Map<String, dynamic> map) {
@@ -152,6 +161,8 @@ class Product {
       barcode: '', // map['barcode'],
       userUid: map['userUid'],
       documentId: map['productId'],
+      created: map['created'],
+      viewCountTime: map['viewCountTime']
     );
   }
 }
@@ -268,13 +279,15 @@ class Controller {
 }
 
 class Category {
-  String type;
+   String type;
   String documentId;
+  String name;
   String image;
   Category({
     required this.documentId,
     required this.type,
     required this.image,
+    required this.name,
   });
 }
 

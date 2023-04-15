@@ -11,6 +11,7 @@ class ReadCategoryDatabaseService {
       return Category(
         type: (doc.data() as dynamic)['type'] ?? '',
          image: (doc.data() as dynamic)['image'] ?? '',
+         name:(doc.data() as dynamic)['name'] ?? '', 
         documentId: doc.reference.id,
       );
     }).toList();

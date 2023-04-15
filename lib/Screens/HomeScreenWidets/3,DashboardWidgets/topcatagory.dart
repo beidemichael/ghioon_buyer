@@ -42,7 +42,7 @@ class _HorizontalSliderState extends State<HorizontalSlider> {
                                     businessType: catagory[index].type)
                                 .sellers,
                             child: CategoryScreen(
-                              category: catagory[index].type,
+                              category: catagory[index].name,
                             ),
                           ),
                         ),
@@ -78,7 +78,7 @@ class _HorizontalSliderState extends State<HorizontalSlider> {
                             vertical: 8.0, horizontal: 18),
                         child: Center(
                           child: Text(
-                            catagory[index].type,
+                            catagory[index].name,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: ScreenSize().ScreenWidth(context) *

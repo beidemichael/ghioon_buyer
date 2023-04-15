@@ -1,12 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ghioon_buyer/Models/models.dart';
 import 'package:ghioon_buyer/Shared/constants.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
+import 'package:provider/provider.dart';
 
 class CollectionList extends StatelessWidget {
   CollectionList(
-      {Key? key, required this.title, this.desc = '', required this.image})
+      {Key? key, required this.title, this.desc = '',  this.image = ''})
       : super(key: key);
   final String title;
   String desc;
@@ -14,6 +16,13 @@ class CollectionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final categories = Provider.of<List<Categories>>(context);
+    for(Categories x in categories){
+      if (x.type == title){
+        image = x.image;
+      }
+
+    }
     return Container(
       height: ScreenSize().ScreenWidth(context) / 3.5,
       decoration: BoxDecoration(

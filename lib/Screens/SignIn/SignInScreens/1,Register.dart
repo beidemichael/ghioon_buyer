@@ -30,7 +30,7 @@ class _RegisterState extends State<Register> {
   DateTime birthday = DateTime.now();
 
   List gender = ["Male", "Female"];
-  String? select;
+  String select = "Male";
   Row addRadioButton(int btnValue, String title) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -115,7 +115,7 @@ class _RegisterState extends State<Register> {
                         const SizedBox(
                           height: 20,
                         ),
-                        TextField('Name', 'name'),
+                        TextField(Language().name[languageprov.LanguageIndex], 'name', true),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
@@ -131,7 +131,7 @@ class _RegisterState extends State<Register> {
                             },
                             child: birthdayWidget()),
 
-                        TextField('Email', 'email'),
+                        TextField(Language().email_optional[languageprov.LanguageIndex], 'email', false),
                         const SizedBox(
                           height: 20,
                         ),
@@ -253,7 +253,7 @@ class _RegisterState extends State<Register> {
     );
   }
 
-  Widget TextField(var label, var value) {
+  Widget TextField(var label, var value, bool validate) {
     var languageprov = Provider.of<LanguageProvider>(context);
     return Column(
       children: [
@@ -271,10 +271,16 @@ class _RegisterState extends State<Register> {
               });
             },
             validator: (val) {
-              if (val!.isEmpty) {
-                return Language().no_text_error[languageprov.LanguageIndex];
+
+if (validate) {
+                if (val!.isEmpty) {
+                 return Language().no_text_error[languageprov.LanguageIndex];
+                }
+                return null;
               }
               return null;
+
+            
             },
             style: TextStyle(
                 color: Colors.grey[700],

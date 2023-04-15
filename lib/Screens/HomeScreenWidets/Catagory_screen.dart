@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:ghioon_buyer/Screens/HomeScreenWidets/2,Catagory_product.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/2,CategoryWidgets/Catagory_product.dart';
+import 'package:ghioon_buyer/Screens/HomeScreenWidets/2,CategoryWidgets/Catagory_store.dart';
 import 'package:ghioon_buyer/Shared/dimensions.dart';
 import 'package:provider/provider.dart';
 
@@ -11,7 +12,6 @@ import '../../Shared/loading.dart';
 import '../../Providers/AppInfo.dart';
 import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Shared/language.dart';
-import 'package:ghioon_buyer/Screens/HomeScreenWidets/2,Catagory_store.dart';
 
 class Category_Screen extends StatefulWidget {
   const Category_Screen({super.key});
@@ -65,7 +65,7 @@ class _Category_ScreenState extends State<Category_Screen> {
                        Text(
                        Language().categories[languageprov.LanguageIndex],
                         style: TextStyle(
-                            fontSize: 30.0,
+                            fontSize: Dimensions.font26,
                             color: Colors.white,
                             fontWeight: FontWeight.w600),
                       ),
