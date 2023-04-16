@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
   ///////////////////
   int netVersion = 0;
   /////////////////////////// App version
-  int appVersion = 10;
+  int appVersion = 15;
   //////////////////////////  App version
   ///
   optionalUpdateActivator(BuildContext context, netVersionInput) {
