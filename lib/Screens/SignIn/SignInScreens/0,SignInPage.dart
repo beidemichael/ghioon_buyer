@@ -204,7 +204,7 @@ class _SignInPageState extends State<SignInPage> {
                       );
                     },
                     child: StoreList(
-                        FontAwesomeIcons.lock,
+                        FontAwesomeIcons.globe,
                         languageprov.languagesList[languageprov.LanguageIndex],
                         ScreenSize().ScreenWidth(context))),
               ],

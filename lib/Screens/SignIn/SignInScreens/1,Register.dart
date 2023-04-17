@@ -7,10 +7,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ghioon_buyer/Providers/language_provider.dart';
 import 'package:ghioon_buyer/Screens/components/Button.dart';
 import 'package:ghioon_buyer/Screens/components/Loading.dart';
+import 'package:ghioon_buyer/Shared/dimensions.dart';
 import 'package:ghioon_buyer/Shared/language.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import '../../../Services/Database/User/userDatabase.dart';
+import 'package:ghioon_buyer/Shared/customColors.dart';
 
 class Register extends StatefulWidget {
   Register({super.key});
@@ -27,7 +29,7 @@ class _RegisterState extends State<Register> {
   bool isLoading = false;
   String name = '';
   String email = '';
-  DateTime birthday = DateTime.now();
+  DateTime birthday = DateTime(DateTime.now().year - 18, DateTime.now().month, DateTime.now().day);
 
   List gender = ["Male", "Female"];
   String select = "Male";
@@ -67,9 +69,12 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     var languageprov = Provider.of<LanguageProvider>(context);
+    final now = DateTime.now();
+    final minDate = DateTime(now.year - 18, now.month, now.day);
     void whenScheduleUpDateTapped() {
       DatePicker.showDatePicker(context,
-          // minTime: DateTime.now(),
+          maxTime: minDate,
+          minTime: DateTime(now.year - 118, now.month, now.day),
           showTitleActions: true,
           theme: const DatePickerTheme(
               containerHeight: 400,
@@ -253,6 +258,62 @@ class _RegisterState extends State<Register> {
     );
   }
 
+//   Widget TextField(var label, var value, bool validate) {
+//     var languageprov = Provider.of<LanguageProvider>(context);
+//     return Column(
+//       children: [
+//         const SizedBox(
+//           height: 20,
+//         ),
+//         Padding(
+//           padding: const EdgeInsets.symmetric(horizontal: 40.0),
+//           child: TextFormField(
+//             // initialValue: inital,
+//             onChanged: (val) {
+//               setState(() {
+//                 if (value == 'name') name = val;
+//                 if (value == 'email') email = val;
+//               });
+//             },
+//             validator: (val) {
+
+// if (validate) {
+//                 if (val!.isEmpty) {
+//                  return Language().no_text_error[languageprov.LanguageIndex];
+//                 }
+//                 return null;
+//               }
+//               return null;
+
+            
+//             },
+//             style: TextStyle(
+//                 color: Colors.grey[700],
+//                 fontSize: 20.0,
+//                 fontWeight: FontWeight.w500),
+//             decoration: InputDecoration(
+//               contentPadding:
+//                   const EdgeInsets.only(left: 20, top: 30, bottom: 10),
+//               labelText: label,
+//               focusColor: Colors.blue,
+//               labelStyle: TextStyle(
+//                   fontWeight: FontWeight.w200,
+//                   fontSize: 20.0,
+//                   color: Colors.grey[800]),
+//               enabledBorder: OutlineInputBorder(
+//                   borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+//                   borderSide: BorderSide(color: Colors.grey.shade400)),
+//               focusedBorder: OutlineInputBorder(
+//                   borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+//                   borderSide: BorderSide(color: Colors.blue.shade200)),
+//             ),
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+
+
   Widget TextField(var label, var value, bool validate) {
     var languageprov = Provider.of<LanguageProvider>(context);
     return Column(
@@ -261,9 +322,8 @@ class _RegisterState extends State<Register> {
           height: 20,
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40.0),
+          padding:  EdgeInsets.symmetric(horizontal: Dimensions.width10),
           child: TextFormField(
-            // initialValue: inital,
             onChanged: (val) {
               setState(() {
                 if (value == 'name') name = val;
@@ -271,16 +331,32 @@ class _RegisterState extends State<Register> {
               });
             },
             validator: (val) {
+              if(value == "email" && val!.isNotEmpty ){
+                  final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+                  if (!emailRegex.hasMatch(val)) {
+                     return Language().invalid_email[languageprov.LanguageIndex];
+                  }
 
-if (validate) {
-                if (val!.isEmpty) {
-                 return Language().no_text_error[languageprov.LanguageIndex];
-                }
-                return null;
               }
+             
+              if (validate) {
+                if (val!.isEmpty) {
+                 
+                   return Language().no_text_error[languageprov.LanguageIndex];
+                } 
+                else {
+                 
+                  if (value =="name") {
+                    bool letterOnly = RegExp(r'^[a-zA-Z ]+$').hasMatch(val!);
+                    if (!letterOnly) {
+                       return Language().invalid_letter[languageprov.LanguageIndex];
+                    }
+                  }
+                }
+                
+              }
+               
               return null;
-
-            
             },
             style: TextStyle(
                 color: Colors.grey[700],
@@ -290,7 +366,7 @@ if (validate) {
               contentPadding:
                   const EdgeInsets.only(left: 20, top: 30, bottom: 10),
               labelText: label,
-              focusColor: Colors.blue,
+              focusColor: CustomColors().blue,
               labelStyle: TextStyle(
                   fontWeight: FontWeight.w200,
                   fontSize: 20.0,
@@ -300,8 +376,9 @@ if (validate) {
                   borderSide: BorderSide(color: Colors.grey.shade400)),
               focusedBorder: OutlineInputBorder(
                   borderRadius: const BorderRadius.all(Radius.circular(20.0)),
-                  borderSide: BorderSide(color: Colors.blue.shade200)),
+                  borderSide: BorderSide(color: Colors.orange.shade200)),
             ),
+            keyboardType:  TextInputType.text,
           ),
         ),
       ],

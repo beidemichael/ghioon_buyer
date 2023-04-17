@@ -23,6 +23,8 @@ class _ImagesListState extends State<ImagesList> {
   late VideoPlayerController _controller;
   bool play = false;
   bool clear = true;
+   double currentOffset = 0;
+double threshold = 50;
 
   @override
   void initState() {
@@ -56,6 +58,19 @@ class _ImagesListState extends State<ImagesList> {
               clear = !clear;
             });
           },
+           onHorizontalDragUpdate: (details) {
+    currentOffset += details.delta.dx;
+    if (currentOffset.abs() > threshold) {
+      setState(() {
+        if (details.delta.dx > 0 && ImageIndex > 0) {
+          ImageIndex--;
+        } else if (details.delta.dx < 0 && ImageIndex <widget.product.image.length - 1) {
+          ImageIndex++;
+        }
+        currentOffset = 0;
+      });
+    }
+  },
           child: ClipRRect(
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(8.0),
