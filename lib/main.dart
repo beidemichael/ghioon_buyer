@@ -92,6 +92,9 @@ import 'package:provider/provider.dart';
 import 'Models/models.dart';
 import 'Providers/AppInfo.dart';
 import 'Screens/SignIn/SignInLogic/wrapper.dart';
+import 'Screens/components/Loading.dart';
+import 'Screens/update/forced_update.dart';
+import 'Screens/update/optional_update.dart';
 import 'Services/Database/Addresses/DatabaseAddress.dart';
 import 'Services/Database/Category/readCategory.dart';
 import 'Services/Database/Controller/Controller.dart';
@@ -175,17 +178,13 @@ void main() async {
           //   create: (context) => LanguageProvider(),
           // ),
 
-           ChangeNotifierProvider(
-             create: (context) => LanguageProvider(),
-
-           ),
-            StreamProvider<List<Categories>>.value(
+          ChangeNotifierProvider(
+            create: (context) => LanguageProvider(),
+          ),
+          StreamProvider<List<Categories>>.value(
             initialData: [],
             value: CategoryDatabaseService().categories,
           ),
-
-
-         
         ],
         child: const MyApp(),
       ),
@@ -193,19 +192,66 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  ///////////////////
+  int netVersion = 0;
+  /////////////////////////// App version
+  int appVersion = 15;
+  //////////////////////////  App version
+  ///
+  optionalUpdateActivator(BuildContext context, netVersionInput) {
+    if (netVersionInput == 3 || netVersionInput == 4) {
+      OptionalUpdate alert = OptionalUpdate();
+
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return alert;
+        },
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 4), () {
+      // optionalUpdateActivator(context, netVersion);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final controller = Provider.of<List<VersionController>>(context);
+    if (controller.isNotEmpty) {
+      netVersion = controller[0].sellerVersion - appVersion;
+    }
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: StreamProvider<UserAuth?>.value(
-          value: PhoneAuthServices().user,
-          initialData: null,
-          child: Splash(),
-        ),
-      ),
+      home: controller.isEmpty
+          ? Loading()
+          : Scaffold(
+              body: Stack(
+                children: [
+                  StreamProvider<UserAuth?>.value(
+                    value: PhoneAuthServices().user,
+                    initialData: null,
+                    child: Splash(),
+                  ),
+                  Visibility(
+                    visible: netVersion > 4,
+                    child: ForcedUpdate(),
+                  ),
+                ],
+              ),
+            ),
     );
   }
 }

@@ -25,6 +25,7 @@ class _ImagesListState extends State<ImagesList> {
   bool clear = true;
    double currentOffset = 0;
 double threshold = 50;
+ bool hasAddedImageIndex = false;
 
   @override
   void initState() {
@@ -58,19 +59,32 @@ double threshold = 50;
               clear = !clear;
             });
           },
-           onHorizontalDragUpdate: (details) {
-    currentOffset += details.delta.dx;
-    if (currentOffset.abs() > threshold) {
+       
+
+onHorizontalDragUpdate: (details) {
+  currentOffset += details.delta.dx;
+  if (currentOffset.abs() > threshold) {
+    if (!hasAddedImageIndex) {
       setState(() {
         if (details.delta.dx > 0 && ImageIndex > 0) {
           ImageIndex--;
-        } else if (details.delta.dx < 0 && ImageIndex <widget.product.image.length - 1) {
+        } else if (details.delta.dx < 0 && ImageIndex < widget.product.image.length - 1) {
           ImageIndex++;
         }
         currentOffset = 0;
+        hasAddedImageIndex = true;
       });
     }
-  },
+  }
+},
+onHorizontalDragEnd: (details) {
+  if (hasAddedImageIndex) {
+    setState(() {
+      hasAddedImageIndex = false;
+    });
+  }
+},
+
           child: ClipRRect(
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(8.0),

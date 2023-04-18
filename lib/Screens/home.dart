@@ -29,32 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   int activePage = 0;
   int page = 0;
-  ///////////////////
-  int netVersion = 0;
-  /////////////////////////// App version
-  int appVersion = 15;
-  //////////////////////////  App version
-  ///
-  optionalUpdateActivator(BuildContext context, netVersionInput) {
-    if (netVersionInput == 3 || netVersionInput == 4) {
-      OptionalUpdate alert = OptionalUpdate();
- 
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return alert;
-        },
-      );
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(Duration(seconds: 4), () {
-      optionalUpdateActivator(context, netVersion);
-    });
-  }
+  
 
   @override
   void dispose() {
@@ -66,14 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final appInformation = Provider.of<AppInformation>(context);
 
-    final controller = Provider.of<List<VersionController>>(context);
-    if (controller.isNotEmpty) {
-      netVersion = controller[0].sellerVersion - appVersion;
-    }
+    
 
-    return controller.isEmpty
-        ? Loading()
-        : Scaffold(
+    return Scaffold(
             backgroundColor: Colors.white,
             bottomNavigationBar: CurvedNavigationBar(
               index: 0,
@@ -150,10 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     const Profile(),
                   ],
                 ),
-                Visibility(
-                  visible: netVersion > 4,
-                  child: ForcedUpdate(),
-                ),
+                
               ],
             ),
           );
