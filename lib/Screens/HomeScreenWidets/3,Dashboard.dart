@@ -45,36 +45,51 @@ class _DashboardState extends State<Dashboard> {
 
     return Scaffold(
       body: SafeArea(
-        child: SizedBox(
-          height: ScreenSize().ScreenHeight(context),
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(Dimensions.width10,
-                    Dimensions.width20, Dimensions.width10, Dimensions.width10),
+        child: Column(
+          children: [
+            Container(
+              // height: 100, // Set a fixed height for the GestureDetector
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(
+                  Dimensions.width10,
+                  Dimensions.width20,
+                  Dimensions.width10,
+                  Dimensions.width10,
+                ),
                 child: GestureDetector(
-                    onTap: () {
-                      search.searchResults.clear();
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              ProductSearch(), //SearchScreen(),
-                        ),
-                      );
-                    },
-                    child: SearchBar()),
+                  onTap: () {
+                    search.searchResults.clear();
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => ProductSearch(),
+                      ),
+                    );
+                  },
+                  child: SearchBar(),
+                ),
               ),
-
-              HorizontalSlider(),
-              Carousel_Slider(), //  Carousel(),
-              Expanded(
-                child: products.length == 0
-                    ? EmptyScreen(context,
-                        (Language().No_products[languageprov.LanguageIndex]))
-                    : ProductForGrid(),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    HorizontalSlider(),
+                    Carousel_Slider(),
+                    Container(
+                      height: ScreenSize().ScreenHeight(context) * 0.7,
+                      child: products.length == 0
+                          ? EmptyScreen(
+                              context,
+                              (Language()
+                                  .No_products[languageprov.LanguageIndex]),
+                            )
+                          : ProductForGrid(),
+                    )
+                  ],
+                ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -141,7 +141,7 @@ class searchResultWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     bool clicked = false;
     final appInformation = Provider.of<AppInformation>(context);
-     final userInfo = Provider.of<List<UserInformation>>(context);
+    final userInfo = Provider.of<List<UserInformation>>(context);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -169,49 +169,44 @@ class searchResultWidget extends StatelessWidget {
                   fontSize: ScreenSize().ScreenWidth(context) * 0.05,
                   color: Colors.black,
                   fontWeight: FontWeight.w500)),
-          subtitle: Text('\ETB ${product["price"][0].toStringAsFixed(2)}',
-              style: TextStyle(
-                  fontSize: ScreenSize().ScreenWidth(context) * 0.04,
-                  fontWeight: FontWeight.w500)),
+          // subtitle: Text('\ETB ${product["price"][0].toStringAsFixed(2)}',
+          //     style: TextStyle(
+          //         fontSize: ScreenSize().ScreenWidth(context) * 0.04,
+          //         fontWeight: FontWeight.w500)),
           trailing: Icon(
             FontAwesomeIcons.angleRight,
             color: appInformation.appColor,
             size: 25,
           ),
           onTap: () async {
+            if (clicked == false) {
+              clicked = true;
 
-
-              if (clicked == false) {
-                              clicked = true;
-
-                              if (await SellerDatabaseService()
-                                      .getOnline( Product.fromMap(product).userUid) ==
-                                  true) {
-                                var phone = await SellerDatabaseService()
-                                    .getSellerPhone( Product.fromMap(product).userUid);
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ProductDetail(
-                                            product: Product.fromMap(product), phone: phone,
-                                           
-                                          )),
-                                );
-                                await ReadProductDatabaseService().addUserRead(
-                                    userInfo[0].userName,
-                                    userInfo[0].userUid,
-                                    Timestamp.now(),
-                                    Product.fromMap(product).documentId);
-                                clicked = false;
-                              } else {
-                                snackBar(context, 'Product not available.',
-                                    CustomColors().blue, Colors.white);
-                                clicked = false;
-                              }
-                            }
-
-
-            
+              if (await SellerDatabaseService()
+                      .getOnline(Product.fromMap(product).userUid) ==
+                  true) {
+                var phone = await SellerDatabaseService()
+                    .getSellerPhone(Product.fromMap(product).userUid);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ProductDetail(
+                            product: Product.fromMap(product),
+                            phone: phone,
+                          )),
+                );
+                await ReadProductDatabaseService().addUserRead(
+                    userInfo[0].userName,
+                    userInfo[0].userUid,
+                    Timestamp.now(),
+                    Product.fromMap(product).documentId);
+                clicked = false;
+              } else {
+                snackBar(context, 'Product not available.', CustomColors().blue,
+                    Colors.white);
+                clicked = false;
+              }
+            }
           },
         ),
       ),

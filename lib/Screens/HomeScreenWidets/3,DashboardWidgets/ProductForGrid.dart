@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ghioon_buyer/Models/models.dart';
+import 'package:ghioon_buyer/Providers/language_provider.dart';
 //import 'package:ghioon_buyer/Screens/HomeScreenWidets/DashboardWidgets/ProductDetail.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,DashboardWidgets/productDetail.dart';
 import 'package:ghioon_buyer/Screens/HomeScreenWidets/3,DashboardWidgets/ProductGridListCard.dart';
@@ -9,6 +10,7 @@ import 'package:ghioon_buyer/Screens/components/emptyScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ghioon_buyer/Services/Database/Product/readProduct.dart';
 import 'package:ghioon_buyer/Services/Database/SellerDatabase/sellerDatabase.dart';
+import 'package:ghioon_buyer/Shared/language.dart';
 import 'package:provider/provider.dart';
 import 'package:ghioon_buyer/Shared/constants.dart';
 import 'package:ghioon_buyer/Shared/customColors.dart';
@@ -21,7 +23,7 @@ class ProductForGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userInfo = Provider.of<List<UserInformation>>(context);
-
+    var languageprov = Provider.of<LanguageProvider>(context);
     final products = Provider.of<List<Product>>(context);
     bool clicked = false;
 
@@ -79,7 +81,8 @@ class ProductForGrid extends StatelessWidget {
                         );
                       },
                     )
-                  : EmptyScreen(context, "No Products in Store"),
+                  : EmptyScreen(context,
+                      Language().No_products[languageprov.LanguageIndex]),
             ),
           );
   }
