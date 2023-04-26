@@ -45,8 +45,7 @@ class _DashboardState extends State<Dashboard> {
 
     return Scaffold(
       body: SafeArea(
-        child: ListView(
-          shrinkWrap: true,
+        child: Column(
           children: [
             Container(
               // height: 100, // Set a fixed height for the GestureDetector
@@ -70,17 +69,26 @@ class _DashboardState extends State<Dashboard> {
                 ),
               ),
             ),
-            HorizontalSlider(),
-            Carousel_Slider(),
-            Container(
-              color: Colors.transparent,
-              // height: double.infinity,
-              child: products.length == 0
-                  ? EmptyScreen(
-                      context,
-                      (Language().No_products[languageprov.LanguageIndex]),
-                    )
-                  : ProductForGrid(),
+            Expanded(
+              child: ListView(
+                shrinkWrap: true,
+                 physics: BouncingScrollPhysics(),
+                children: [
+                  HorizontalSlider(),
+                  Carousel_Slider(),
+                  Container(
+                    color: Colors.transparent,
+                    // height: double.infinity,
+                    child: products.length == 0
+                        ? EmptyScreen(
+                            context,
+                            (Language()
+                                .No_products[languageprov.LanguageIndex]),
+                          )
+                        : ProductForGrid(),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

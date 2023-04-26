@@ -26,6 +26,8 @@ class _HorizontalSliderState extends State<HorizontalSlider> {
         height: ScreenSize().ScreenHeight(context) * 0.07,
         child: catagory.length != 0
             ? ListView.builder(
+                shrinkWrap: true,
+                physics: BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 itemCount: catagory.length,
                 itemBuilder: (context, index) {
