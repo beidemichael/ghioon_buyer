@@ -203,7 +203,7 @@ class _MyAppState extends State<MyApp> {
   ///////////////////
   int netVersion = 0;
   /////////////////////////// App version
-  int appVersion = 17;
+  int appVersion = 18;
   //////////////////////////  App version
   ///
   optionalUpdateActivator(BuildContext context, netVersionInput) {
