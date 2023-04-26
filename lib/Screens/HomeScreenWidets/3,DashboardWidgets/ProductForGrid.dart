@@ -29,61 +29,60 @@ class ProductForGrid extends StatelessWidget {
 
     return userInfo == null
         ? Loading()
-        : Scaffold(
-            body: Padding(
-              padding: const EdgeInsets.fromLTRB(8.0, 0, 8, 8),
-              child: products.isNotEmpty
-                  ? GridView.builder(
-                      shrinkWrap: true,
-                      physics: BouncingScrollPhysics(
-                          parent: AlwaysScrollableScrollPhysics()),
-                      gridDelegate:
-                          const SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: 250,
-                        childAspectRatio: (2.5 / 3),
-                        crossAxisSpacing: 4.0,
-                        mainAxisSpacing: 8.0,
-                      ),
-                      itemCount: products.length,
-                      itemBuilder: (BuildContext ctx, index) {
-                        return GestureDetector(
-                          onTap: () async {
-                            if (clicked == false) {
-                              clicked = true;
+        : Padding(
+            padding: const EdgeInsets.fromLTRB(8.0, 0, 8, 8),
+            child: products.isNotEmpty
+                ? GridView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    // physics: BouncingScrollPhysics(
+                    //     parent: AlwaysScrollableScrollPhysics()),
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 250,
+                      childAspectRatio: (2.5 / 3),
+                      crossAxisSpacing: 4.0,
+                      mainAxisSpacing: 8.0,
+                    ),
+                    itemCount: products.length,
+                    itemBuilder: (BuildContext ctx, index) {
+                      return GestureDetector(
+                        onTap: () async {
+                          if (clicked == false) {
+                            clicked = true;
 
-                              if (await SellerDatabaseService()
-                                      .getOnline(products[index].userUid) ==
-                                  true) {
-                                var phone = await SellerDatabaseService()
-                                    .getSellerPhone(products[index].userUid);
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ProductDetail(
-                                            product: products[index],
-                                            phone: phone,
-                                          )),
-                                );
-                                await ReadProductDatabaseService().addUserRead(
-                                    userInfo[0].userName,
-                                    userInfo[0].userUid,
-                                    Timestamp.now(),
-                                    products[index].documentId);
-                                clicked = false;
-                              } else {
-                                snackBar(context, 'Product not available.',
-                                    CustomColors().blue, Colors.white);
-                                clicked = false;
-                              }
+                            if (await SellerDatabaseService()
+                                    .getOnline(products[index].userUid) ==
+                                true) {
+                              var phone = await SellerDatabaseService()
+                                  .getSellerPhone(products[index].userUid);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ProductDetail(
+                                          product: products[index],
+                                          phone: phone,
+                                        )),
+                              );
+                              await ReadProductDatabaseService().addUserRead(
+                                  userInfo[0].userName,
+                                  userInfo[0].userUid,
+                                  Timestamp.now(),
+                                  products[index].documentId);
+                              clicked = false;
+                            } else {
+                              snackBar(context, 'Product not available.',
+                                  CustomColors().blue, Colors.white);
+                              clicked = false;
                             }
-                          },
-                          child: ProductListCard(product: products[index]),
-                        );
-                      },
-                    )
-                  : EmptyScreen(context,
-                      Language().No_products[languageprov.LanguageIndex]),
-            ),
+                          }
+                        },
+                        child: ProductListCard(product: products[index]),
+                      );
+                    },
+                  )
+                : EmptyScreen(context,
+                    Language().No_products[languageprov.LanguageIndex]),
           );
   }
 }

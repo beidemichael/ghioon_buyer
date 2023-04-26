@@ -29,7 +29,6 @@ class _HomeScreenState extends State<HomeScreen> {
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   int activePage = 0;
   int page = 0;
-  
 
   @override
   void dispose() {
@@ -41,88 +40,85 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final appInformation = Provider.of<AppInformation>(context);
 
-    
-
     return Scaffold(
-            backgroundColor: Colors.white,
-            bottomNavigationBar: CurvedNavigationBar(
-              index: 0,
-              color: Colors.grey.shade800.withOpacity(0.3),
-              buttonBackgroundColor: appInformation.appColor,
-              backgroundColor: Colors.white,
-              animationCurve: Curves.easeInOut,
-              animationDuration: const Duration(milliseconds: 300),
-              onTap: (index) {
-                _pageViewController.animateToPage(index,
-                    duration: const Duration(milliseconds: 200),
-                    curve: Curves.bounceOut);
-                setState(() {
-                  page = index;
-                });
-              },
-              letIndexChange: (index) => true,
-              key: _bottomNavigationKey,
-              items: <Widget>[
-                // SizedBox(
-                //   height: 50,
-                //   width: 50,
-                //   child: Icon(
-                //     FontAwesomeIcons.cartShopping,
-                //     color: page == 0 ? Colors.white : Colors.grey,
-                //   ),
-                // ),
-                SizedBox(
-                  height: 50,
-                  width: 50,
-                  child: Icon(
-                    FontAwesomeIcons.house,
-                    color: page == 0 ? Colors.white : Colors.grey,
-                  ),
-                ),
-                SizedBox(
-                  height: 50,
-                  width: 50,
-                  child: Icon(
-                    FontAwesomeIcons.list,
-                    color: page == 1 ? Colors.white : Colors.grey,
-                  ),
-                ),
-                SizedBox(
-                  height: 50,
-                  width: 50,
-                  child: Icon(
-                    FontAwesomeIcons.gift,
-                    color: page == 2 ? Colors.white : Colors.grey,
-                  ),
-                ),
-                SizedBox(
-                  height: 50,
-                  width: 50,
-                  child: Icon(
-                    FontAwesomeIcons.solidUser,
-                    color: page == 3 ? Colors.white : Colors.grey,
-                  ),
-                ),
-              ],
+      backgroundColor: Colors.white,
+      bottomNavigationBar: CurvedNavigationBar(
+        index: 0,
+        color: Colors.grey.shade800.withOpacity(0.3),
+        buttonBackgroundColor: appInformation.appColor,
+        backgroundColor: Colors.white,
+        animationCurve: Curves.easeInOut,
+        animationDuration: const Duration(milliseconds: 300),
+        onTap: (index) {
+          _pageViewController.animateToPage(index,
+              duration: const Duration(milliseconds: 200),
+              curve: Curves.bounceOut);
+          setState(() {
+            page = index;
+          });
+        },
+        letIndexChange: (index) => true,
+        key: _bottomNavigationKey,
+        items: <Widget>[
+          // SizedBox(
+          //   height: 50,
+          //   width: 50,
+          //   child: Icon(
+          //     FontAwesomeIcons.cartShopping,
+          //     color: page == 0 ? Colors.white : Colors.grey,
+          //   ),
+          // ),
+          SizedBox(
+            height: 50,
+            width: 50,
+            child: Icon(
+              FontAwesomeIcons.house,
+              color: page == 0 ? Colors.white : Colors.grey,
             ),
-            body: Stack(
-              children: [
-                PageView(
-                  controller: _pageViewController,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: <Widget>[
-                    // const Cart(),
-                    Dashboard(context: context),
-                    //const CatagoryPage(),
-                    Category_Screen(),
+          ),
+          SizedBox(
+            height: 50,
+            width: 50,
+            child: Icon(
+              FontAwesomeIcons.list,
+              color: page == 1 ? Colors.white : Colors.grey,
+            ),
+          ),
+          SizedBox(
+            height: 50,
+            width: 50,
+            child: Icon(
+              FontAwesomeIcons.gift,
+              color: page == 2 ? Colors.white : Colors.grey,
+            ),
+          ),
+          SizedBox(
+            height: 50,
+            width: 50,
+            child: Icon(
+              FontAwesomeIcons.solidUser,
+              color: page == 3 ? Colors.white : Colors.grey,
+            ),
+          ),
+        ],
+      ),
+      body: Stack(
+        children: [
+          PageView(
+            controller: _pageViewController,
+            physics: const NeverScrollableScrollPhysics(),
+            children: <Widget>[
+              // const Cart(),
+              Dashboard(context: context),
+              //const CatagoryPage(),
+              Category_Screen(),
 
-                    const PromotionPage(),
-                    const Profile(),
-                  ],
-                ),
-                
-              ],
-            ),
-          );
+              const PromotionPage(),
+              const Profile(),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
